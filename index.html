@@ -268,6 +268,26 @@ section { padding: 5.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
 
 footer { text-align: center; padding: 2.2rem 1.5rem 3.2rem; border-top: 1px solid var(--divider); }
 footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .9rem; color: var(--text-dim); }
+
+/* ══ SAVED DATA NOTICE & CLEAR BUTTONS ══ */
+.saved-notice { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; background: rgba(220,184,106,.07); border: 1px solid var(--gold-dim); padding: .75rem 1.2rem; margin-bottom: 1.5rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+.saved-notice-text { font-family: 'Space Mono', monospace; font-size: .5rem; color: var(--gold); letter-spacing: .06em; }
+.saved-notice-text span { color: var(--text-dim); display: block; margin-top: .2rem; font-size: .46rem; }
+.clear-btn { font-family: 'Space Mono', monospace; font-size: .48rem; letter-spacing: .1em; color: var(--red); background: none; border: 1px solid rgba(168,37,37,.4); padding: .4rem .85rem; cursor: pointer; transition: background .2s, color .2s; text-transform: uppercase; white-space: nowrap; }
+.clear-btn:hover { background: rgba(168,37,37,.15); color: #e05050; }
+.clear-btn-row { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
+
+/* ══ CONFIRM MODAL ══ */
+.confirm-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 9000; align-items: center; justify-content: center; }
+.confirm-overlay.active { display: flex; }
+.confirm-box { background: var(--bg2); border: 1px solid var(--divider-bright); padding: 2rem 2.4rem; max-width: 380px; width: 90%; text-align: center; }
+.confirm-box-title { font-family: 'Cormorant SC', serif; font-size: .6rem; letter-spacing: .3em; color: var(--gold); margin-bottom: 1rem; }
+.confirm-box-msg { font-family: 'Lato', sans-serif; font-size: .85rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 1.8rem; }
+.confirm-box-btns { display: flex; gap: .8rem; justify-content: center; }
+.confirm-yes { font-family: 'Space Mono', monospace; font-size: .52rem; letter-spacing: .12em; background: var(--red); color: #fff; border: none; padding: .65rem 1.4rem; cursor: pointer; text-transform: uppercase; transition: opacity .2s; }
+.confirm-yes:hover { opacity: .8; }
+.confirm-no { font-family: 'Space Mono', monospace; font-size: .52rem; letter-spacing: .12em; background: none; color: var(--text-dim); border: 1px solid var(--divider); padding: .65rem 1.4rem; cursor: pointer; text-transform: uppercase; transition: background .2s; }
+.confirm-no:hover { background: rgba(255,255,255,.05); }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 </style>
 </head>
@@ -609,7 +629,7 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
     </div>
   </section>
   </div>
-  <footer><p>The Nasution Family &nbsp;◆&nbsp; Nasution Group &nbsp;◆&nbsp; Jakarta, Indonesia</p></footer>
+  <footer><p>The Nasution Family &nbsp;◆&nbsp; Nasution Group &nbsp;◆&nbsp; Jakarta, Indonesia</p><p style="margin-top:.85rem;"><button class="clear-btn" onclick="clearAllSavedData()" style="font-size:.44rem; opacity:.6;">⚠ Clear All Saved Data</button></p></footer>
 </div>
 
 <!-- ═══════════════════════════════ CHAT PAGE ═══════════════════════════════ -->
@@ -692,6 +712,18 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
   <footer><p>The Nasution Family &nbsp;◆&nbsp; Nasution Group &nbsp;◆&nbsp; Jakarta, Indonesia</p></footer>
 </div>
 
+<!-- ══ CONFIRM MODAL ══ -->
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-box">
+    <div class="confirm-box-title">Confirm Delete</div>
+    <div class="confirm-box-msg" id="confirmMsg">Are you sure?</div>
+    <div class="confirm-box-btns">
+      <button class="confirm-yes" id="confirmYesBtn">Delete</button>
+      <button class="confirm-no" onclick="closeConfirm()">Cancel</button>
+    </div>
+  </div>
+</div>
+
 <script>
 // ══════════════════════════════════════════════════════════════════
 // PAGE ROUTING & GLOBAL SETTINGS SYNC
@@ -757,7 +789,207 @@ function toggleApiFieldsAll() {
   document.querySelectorAll('.global-apibox').forEach(el => el.style.display = mode === 'custom' ? 'grid' : 'none');
   updateUIForLimit();
 }
-window.addEventListener('DOMContentLoaded', () => { loadFromLocal(); initFeedCards(); });
+window.addEventListener('DOMContentLoaded', () => { loadFromLocal(); initFeedCards(); restoreChatFromLocal(); restoreFeedFromLocal(); });
+
+// ══════════════════════════════════════════════════════════════════
+// CONFIRM MODAL
+// ══════════════════════════════════════════════════════════════════
+let _confirmCallback = null;
+function showConfirm(msg, callback) {
+  document.getElementById('confirmMsg').textContent = msg;
+  _confirmCallback = callback;
+  document.getElementById('confirmOverlay').classList.add('active');
+}
+function closeConfirm() {
+  document.getElementById('confirmOverlay').classList.remove('active');
+  _confirmCallback = null;
+}
+document.getElementById('confirmYesBtn').addEventListener('click', () => {
+  if (_confirmCallback) _confirmCallback();
+  closeConfirm();
+});
+document.getElementById('confirmOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeConfirm();
+});
+
+// ══════════════════════════════════════════════════════════════════
+// CHAT PERSISTENCE
+// ══════════════════════════════════════════════════════════════════
+const CHAT_SAVE_KEY = 'nasution_chat_session';
+
+function saveChatToLocal() {
+  const session = {
+    who: selectedWho,
+    messages: chatMessages.filter(m => m.role),
+    system: chatMessages._system,
+    open: document.getElementById('chatWindow').classList.contains('active'),
+    htmlSnapshot: document.getElementById('chatMessages').innerHTML
+  };
+  try { localStorage.setItem(CHAT_SAVE_KEY, JSON.stringify(session)); } catch(e) {}
+}
+
+function restoreChatFromLocal() {
+  const raw = localStorage.getItem(CHAT_SAVE_KEY);
+  if (!raw) return;
+  try {
+    const session = JSON.parse(raw);
+    if (!session.messages || !session.messages.length) return;
+
+    selectedWho = session.who || 'group';
+    chatMessages = session.messages;
+    chatMessages._system = session.system || '';
+
+    // Restore who selector UI
+    document.querySelectorAll('.chat-who-card').forEach(c => {
+      c.classList.toggle('selected', c.dataset.who === selectedWho);
+    });
+
+    if (session.open) {
+      const isGroup = selectedWho === 'group';
+      document.getElementById('chatWindowName').textContent = isGroup ? 'rumah' : (CHAR_DATA[selectedWho]?.name || selectedWho);
+      document.getElementById('chatWindowSub').textContent = isGroup ? 'group chat · 5 brothers' : 'private chat';
+      const avatarsEl = document.getElementById('chatWindowAvatars');
+      avatarsEl.innerHTML = '';
+      const keys = isGroup ? ['varen','guntur','kaivan','mahesa','anggara'] : [selectedWho];
+      keys.forEach(k => { avatarsEl.insertAdjacentHTML('beforeend', `<div class="cwa"><img src="${CHAR_DATA[k].img}" referrerpolicy="no-referrer"></div>`); });
+      document.getElementById('chatSetupPanel').style.display = 'none';
+      document.getElementById('chatWindow').classList.add('active');
+      if (session.htmlSnapshot) document.getElementById('chatMessages').innerHTML = session.htmlSnapshot;
+      updateUIForLimit();
+      setTimeout(() => { const c = document.getElementById('chatMessages'); c.scrollTop = c.scrollHeight; }, 100);
+    }
+
+    showChatSavedNotice();
+  } catch(e) {}
+}
+
+function showChatSavedNotice() {
+  const panel = document.getElementById('chatSetupPanel');
+  if (!panel) return;
+  if (document.getElementById('chatSavedNotice')) return;
+  const raw = localStorage.getItem(CHAT_SAVE_KEY);
+  if (!raw) return;
+  try {
+    const session = JSON.parse(raw);
+    const count = session.messages ? session.messages.length : 0;
+    if (!count) return;
+    const who = session.who === 'group' ? 'rumah (group)' : (CHAR_DATA[session.who]?.name || session.who);
+    const notice = document.createElement('div');
+    notice.id = 'chatSavedNotice';
+    notice.className = 'saved-notice';
+    notice.innerHTML = `
+      <div class="saved-notice-text">◈ Saved chat found
+        <span>${count} messages · with ${who}</span>
+      </div>
+      <div class="clear-btn-row">
+        <button class="clear-btn" onclick="clearChatData()">Delete Chat</button>
+      </div>`;
+    panel.parentNode.insertBefore(notice, panel);
+  } catch(e) {}
+}
+
+function clearChatData() {
+  showConfirm('Delete your saved chat history? This cannot be undone.', () => {
+    localStorage.removeItem(CHAT_SAVE_KEY);
+    chatMessages = [];
+    document.getElementById('chatMessages').innerHTML = '';
+    document.getElementById('chatWindow').classList.remove('active');
+    document.getElementById('chatSetupPanel').style.display = 'block';
+    const notice = document.getElementById('chatSavedNotice');
+    if (notice) notice.remove();
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════
+// FEED PERSISTENCE
+// ══════════════════════════════════════════════════════════════════
+const FEED_SAVE_KEY = 'nasution_feed_posts';
+
+function saveFeedToLocal() {
+  try {
+    const userCards = [];
+    document.querySelectorAll('#feedGrid .feed-card.type-x[data-user-post="true"]').forEach(card => {
+      const cardId = card.dataset.cardId;
+      userCards.push({
+        cardId,
+        html: card.outerHTML,
+        history: socialHistories['threads-' + cardId] || []
+      });
+    });
+    localStorage.setItem(FEED_SAVE_KEY, JSON.stringify({ cards: userCards, histories: socialHistories }));
+  } catch(e) {}
+}
+
+function restoreFeedFromLocal() {
+  const raw = localStorage.getItem(FEED_SAVE_KEY);
+  if (!raw) return;
+  try {
+    const saved = JSON.parse(raw);
+    if (saved.histories) Object.assign(socialHistories, saved.histories);
+    if (saved.cards && saved.cards.length) {
+      const grid = document.getElementById('feedGrid');
+      saved.cards.forEach(({ cardId, html }) => {
+        // Insert before the first static card (afterbegin puts newest first)
+        grid.insertAdjacentHTML('afterbegin', html);
+      });
+      initFeedCards();
+    }
+    showFeedSavedNotice();
+  } catch(e) {}
+}
+
+function showFeedSavedNotice() {
+  const raw = localStorage.getItem(FEED_SAVE_KEY);
+  if (!raw) return;
+  if (document.getElementById('feedSavedNotice')) return;
+  try {
+    const saved = JSON.parse(raw);
+    const count = saved.cards ? saved.cards.length : 0;
+    if (!count) return;
+    const anchor = document.getElementById('feedComposeBox') || document.getElementById('feedGrid');
+    if (!anchor) return;
+    const notice = document.createElement('div');
+    notice.id = 'feedSavedNotice';
+    notice.className = 'saved-notice';
+    notice.innerHTML = `
+      <div class="saved-notice-text">◈ Saved feed posts found
+        <span>${count} user post${count !== 1 ? 's' : ''} restored</span>
+      </div>
+      <div class="clear-btn-row">
+        <button class="clear-btn" onclick="clearFeedData()">Delete Posts</button>
+      </div>`;
+    anchor.parentNode.insertBefore(notice, anchor);
+  } catch(e) {}
+}
+
+function clearFeedData() {
+  showConfirm('Delete all your saved feed posts and thread replies?', () => {
+    localStorage.removeItem(FEED_SAVE_KEY);
+    // Remove all user-posted cards from DOM
+    document.querySelectorAll('#feedGrid .feed-card[data-user-post="true"]').forEach(c => c.remove());
+    // Clear socialHistories for user posts
+    Object.keys(socialHistories).forEach(k => {
+      if (k.startsWith('threads-post-')) delete socialHistories[k];
+    });
+    const notice = document.getElementById('feedSavedNotice');
+    if (notice) notice.remove();
+  });
+}
+
+function clearAllSavedData() {
+  showConfirm('Delete ALL saved data — chat history, feed posts, and profile settings?', () => {
+    localStorage.removeItem(CHAT_SAVE_KEY);
+    localStorage.removeItem(FEED_SAVE_KEY);
+    localStorage.removeItem('nasution_profile_settings');
+    chatMessages = [];
+    document.getElementById('chatMessages').innerHTML = '';
+    document.getElementById('chatWindow').classList.remove('active');
+    document.getElementById('chatSetupPanel').style.display = 'block';
+    document.querySelectorAll('#feedGrid .feed-card[data-user-post="true"]').forEach(c => c.remove());
+    Object.keys(socialHistories).forEach(k => delete socialHistories[k]);
+    ['chatSavedNotice','feedSavedNotice'].forEach(id => { const el = document.getElementById(id); if(el) el.remove(); });
+  });
+}
 
 // ══════════════════════════════════════════════════════════════════
 // API & RATE LIMIT LOGIC
@@ -887,7 +1119,7 @@ async function postSocialNew() {
   
   const grid = document.getElementById('feedGrid');
   const cardHtml = `
-    <div class="feed-card type-x visible">
+    <div class="feed-card type-x visible" data-user-post="true" data-card-id="${cardId}">
       <div class="feed-header">
         <div class="feed-avatar"><div class="feed-avatar-placeholder">${name.charAt(0).toUpperCase()}</div></div>
         <div class="feed-handle"><strong>${name}</strong>${handle} · just now</div>
@@ -915,6 +1147,7 @@ async function postSocialNew() {
     
     document.querySelector(`#threads-${cardId} .loading`).remove();
     appendSocialReplies(`threads-${cardId}`, replyTxt, `replybox-${cardId}`, `input-${cardId}`);
+    saveFeedToLocal();
   } catch (e) { document.querySelector(`#threads-${cardId} .loading`).innerHTML = `⚠ Failed.`; }
 }
 
@@ -955,6 +1188,7 @@ async function sendSocialReply(boxId, inputId, threadContainerId, originalName, 
     
     tContainer.querySelector('.loading').remove();
     appendSocialReplies(threadContainerId, replyTxt, boxId, inputId);
+    saveFeedToLocal();
   } catch (e) { tContainer.querySelector('.loading').innerHTML = `⚠ Failed.`; }
 }
 
@@ -1042,6 +1276,11 @@ function startChat() {
   document.getElementById('chatMessages').innerHTML = '';
   updateUIForLimit();
 
+  // Clear old save when starting a fresh chat
+  localStorage.removeItem(CHAT_SAVE_KEY);
+  const oldNotice = document.getElementById('chatSavedNotice');
+  if (oldNotice) oldNotice.remove();
+
   const el = document.createElement('div');
   el.style.cssText = 'font-family:"Space Mono";font-size:.5rem;color:var(--text-dim);text-align:center;padding:.8rem;border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);margin:.5rem 0;';
   el.textContent = `Chatting with ${isGroup ? 'rumah' : CHAR_DATA[selectedWho].name}`;
@@ -1071,6 +1310,7 @@ async function sendChatMsg() {
     </div>`);
   c.scrollTop = c.scrollHeight;
   chatMessages.push({ role: 'user', content: text });
+  saveChatToLocal();
 
   const tId = 'type-' + Date.now();
   c.insertAdjacentHTML('beforeend', `
@@ -1097,6 +1337,7 @@ async function sendChatMsg() {
       });
       if(current) appendChatBotMsg(current.name, current.text);
     } else { appendChatBotMsg(CHAR_DATA[selectedWho].name.split(' ')[0], replyTxt); }
+    saveChatToLocal();
   } catch(e) { document.getElementById(tId).remove(); c.insertAdjacentHTML('beforeend', `<div style="text-align:center;color:red;font-size:.7rem;">⚠ Error: ${e.message}</div>`); }
   
   if (updateUIForLimit()) { document.getElementById('chatSendBtn').disabled = false; input.focus(); }
