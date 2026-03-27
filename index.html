@@ -8,19 +8,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Lato:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  /* Brightened Backgrounds */
   --bg: #161412;
   --bg2: #1e1b18;
   --bg3: #26231e;
-  
-  /* Brightened Accents & Text for Better Contrast */
   --gold: #dcb86a;
   --gold-light: #f9e7b8;
   --gold-dim: rgba(220,184,106,.4);
   --divider: rgba(220,210,195,.18);
   --divider-bright: rgba(220,210,195,.35);
   --text: #f7f3ea; 
-  --text-dim: #c8bfb0; /* Increased opacity/brightness */
+  --text-dim: #c8bfb0; 
   --text-bright: #ffffff;
   --red: #a82525;
 }
@@ -41,64 +38,25 @@ body::before {
 
 /* ══ TICKER ══ */
 .news-ticker {
-  background: var(--red);
-  padding: .42rem 0;
-  overflow: hidden;
-  position: sticky; top: 0; z-index: 500;
-  border-bottom: 1px solid rgba(80,10,10,.6);
+  background: var(--red); padding: .42rem 0; overflow: hidden; position: sticky; top: 0; z-index: 500; border-bottom: 1px solid rgba(80,10,10,.6);
 }
 .ticker-inner {
-  display: flex; align-items: center;
-  white-space: nowrap;
-  animation: ticker 70s linear infinite;
+  display: flex; align-items: center; white-space: nowrap; animation: ticker 70s linear infinite;
 }
 .ticker-tag {
-  font-family: 'Space Mono', monospace; font-size: .56rem;
-  background: #0b0907; color: var(--red);
-  padding: .15rem .75rem; letter-spacing: .1em;
-  flex-shrink: 0; margin-right: 1.4rem;
-  font-weight: 700;
+  font-family: 'Space Mono', monospace; font-size: .56rem; background: #0b0907; color: var(--red); padding: .15rem .75rem; letter-spacing: .1em; flex-shrink: 0; margin-right: 1.4rem; font-weight: 700;
 }
-.ticker-text {
-  font-family: 'Space Mono', monospace; font-size: .56rem;
-  color: #fff; letter-spacing: .03em; padding-right: 3rem;
-}
+.ticker-text { font-family: 'Space Mono', monospace; font-size: .56rem; color: #fff; letter-spacing: .03em; padding-right: 3rem; }
 .ticker-dot { color: rgba(255,255,255,.4); padding: 0 .9rem; }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ══ NAV ══ */
-.main-nav {
-  background: rgba(22, 20, 18, .95);
-  border-bottom: 1px solid var(--divider);
-  position: sticky; top: 28px; z-index: 400;
-  backdrop-filter: blur(8px);
-}
-.nav-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: flex; align-items: center;
-  padding: 0 1.5rem;
-  overflow-x: auto; scrollbar-width: none;
-}
+.main-nav { background: rgba(22, 20, 18, .95); border-bottom: 1px solid var(--divider); position: sticky; top: 28px; z-index: 400; backdrop-filter: blur(8px); }
+.nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; padding: 0 1.5rem; overflow-x: auto; scrollbar-width: none; }
 .nav-inner::-webkit-scrollbar { display: none; }
-.nav-brand {
-  font-family: 'Cormorant SC', serif; font-size: .7rem;
-  letter-spacing: .3em; color: var(--gold);
-  padding: 1rem 1.5rem 1rem 0;
-  border-right: 1px solid var(--divider);
-  margin-right: 1.5rem; flex-shrink: 0;
-  white-space: nowrap;
-}
+.nav-brand { font-family: 'Cormorant SC', serif; font-size: .7rem; letter-spacing: .3em; color: var(--gold); padding: 1rem 1.5rem 1rem 0; border-right: 1px solid var(--divider); margin-right: 1.5rem; flex-shrink: 0; white-space: nowrap; }
 .nav-tabs { display: flex; gap: 0; }
-.nav-tab {
-  font-family: 'Cormorant SC', serif; font-size: .58rem;
-  letter-spacing: .25em; color: var(--text-dim);
-  padding: 1rem 1.2rem; cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: color .25s, border-color .25s;
-  white-space: nowrap; background: none; border-top: none;
-  border-left: none; border-right: none;
-  text-transform: uppercase;
-}
+.nav-tab { font-family: 'Cormorant SC', serif; font-size: .58rem; letter-spacing: .25em; color: var(--text-dim); padding: 1rem 1.2rem; cursor: pointer; border-bottom: 2px solid transparent; transition: color .25s, border-color .25s; white-space: nowrap; background: none; border: none; text-transform: uppercase; }
 .nav-tab:hover { color: var(--text-bright); }
 .nav-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
 
@@ -106,110 +64,29 @@ body::before {
 .page { display: none; }
 .page.active { display: block; }
 
-/* ══ HERO ══ */
-.hero {
-  min-height: 92vh;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding: 5rem 2rem;
-  position: relative; overflow: hidden;
-}
-.hero::before {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(ellipse 70% 55% at 50% 55%, rgba(220,184,106,.055) 0%, transparent 70%);
-}
-.hero::after {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background-image:
-    linear-gradient(rgba(220,184,106,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(220,184,106,.025) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: gridDrift 24s linear infinite; opacity: .65;
-}
-@keyframes gridDrift { from { background-position: 0 0; } to { background-position: 60px 60px; } }
-.hero-eyebrow {
-  font-family: 'Cormorant SC', serif; font-size: .56rem; letter-spacing: .52em;
-  color: var(--gold); text-transform: uppercase; margin-bottom: 2.2rem;
-  position: relative; z-index: 1;
-  opacity: 0; animation: fadeUp .8s ease .2s forwards;
-}
-.hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3.6rem, 14vw, 8rem);
-  font-weight: 300; font-style: italic;
-  color: var(--text-bright); line-height: .88;
-  position: relative; z-index: 1;
-  opacity: 0; animation: fadeUp .9s ease .35s forwards;
-}
-.hero-title-top {
-  display: block; font-style: normal; font-weight: 300;
-  font-size: clamp(.85rem, 2.8vw, 1.7rem);
-  letter-spacing: .5em; color: var(--gold-light);
-  font-family: 'Cormorant SC', serif; margin-bottom: .55rem;
-}
-.hero-sub {
-  font-family: 'Lato', sans-serif; font-weight: 400;
-  font-size: .68rem; letter-spacing: .2em; color: var(--text-dim);
-  text-transform: uppercase; margin-top: 1.3rem;
-  position: relative; z-index: 1;
-  opacity: 0; animation: fadeUp .9s ease .55s forwards;
-}
-.hero-divider {
-  display: flex; align-items: center; gap: 1rem;
-  margin: 3rem auto 2.4rem; width: min(260px, 65%);
-  position: relative; z-index: 1;
-  opacity: 0; animation: fadeUp .9s ease .7s forwards;
-}
+/* ══ HERO & HOME ══ */
+.hero { min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 5rem 2rem; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 70% 55% at 50% 55%, rgba(220,184,106,.055) 0%, transparent 70%); }
+.hero-eyebrow { font-family: 'Cormorant SC', serif; font-size: .56rem; letter-spacing: .52em; color: var(--gold); text-transform: uppercase; margin-bottom: 2.2rem; position: relative; z-index: 1; opacity: 0; animation: fadeUp .8s ease .2s forwards; }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.6rem, 14vw, 8rem); font-weight: 300; font-style: italic; color: var(--text-bright); line-height: .88; position: relative; z-index: 1; opacity: 0; animation: fadeUp .9s ease .35s forwards; }
+.hero-title-top { display: block; font-style: normal; font-weight: 300; font-size: clamp(.85rem, 2.8vw, 1.7rem); letter-spacing: .5em; color: var(--gold-light); font-family: 'Cormorant SC', serif; margin-bottom: .55rem; }
+.hero-sub { font-family: 'Lato', sans-serif; font-weight: 400; font-size: .68rem; letter-spacing: .2em; color: var(--text-dim); text-transform: uppercase; margin-top: 1.3rem; position: relative; z-index: 1; opacity: 0; animation: fadeUp .9s ease .55s forwards; }
+.hero-divider { display: flex; align-items: center; gap: 1rem; margin: 3rem auto 2.4rem; width: min(260px, 65%); position: relative; z-index: 1; opacity: 0; animation: fadeUp .9s ease .7s forwards; }
 .hero-divider hr { flex: 1; border: none; border-top: 1px solid var(--divider-bright); }
 .hero-divider span { color: var(--gold); font-size: .62rem; }
-.hero-tagline {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: clamp(1.05rem, 2.4vw, 1.25rem); font-weight: 400;
-  color: var(--text-dim); line-height: 2;
-  max-width: 380px; margin: 0 auto;
-  position: relative; z-index: 1;
-  opacity: 0; animation: fadeUp .9s ease .85s forwards;
-}
-.hero-stats {
-  display: flex; gap: 3rem; justify-content: center;
-  margin-top: 3.2rem;
-  position: relative; z-index: 1;
-  opacity: 0; animation: fadeUp .9s ease 1.05s forwards;
-}
-.hero-stat { text-align: center; }
-.hero-stat-num {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: clamp(1.4rem, 3.5vw, 2rem); color: var(--gold-light); line-height: 1;
-}
-.hero-stat-label {
-  font-family: 'Cormorant SC', serif; font-size: .47rem;
-  letter-spacing: .22em; color: var(--text-dim);
-  text-transform: uppercase; margin-top: .35rem;
-}
+.hero-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.05rem, 2.4vw, 1.25rem); font-weight: 400; color: var(--text-dim); line-height: 2; max-width: 380px; margin: 0 auto; position: relative; z-index: 1; opacity: 0; animation: fadeUp .9s ease .85s forwards; }
 
-/* ══ HOME SECTION QUICK LINKS ══ */
-.home-sections {
-  border-top: 1px solid var(--divider);
-  padding: 4rem 1.5rem;
-  max-width: 1100px; margin: 0 auto;
-}
-.home-sections-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
-  gap: 1px; background: var(--divider);
-  border: 1px solid var(--divider);
-  margin-top: 3rem;
-}
-.home-section-card {
-  background: var(--bg2); padding: 2.8rem 2rem;
-  cursor: pointer; transition: background .25s;
-  display: flex; flex-direction: column; gap: .75rem;
-  position: relative; overflow: hidden;
-}
-.home-section-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
-  opacity: 0; transition: opacity .4s;
-}
+.lore-band { background: var(--bg2); border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider); padding: 2.4rem 1.5rem; }
+.lore-band-inner { display: flex; align-items: flex-start; gap: 2.2rem; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
+.lore-pill { flex: 1; min-width: 200px; border-left: 1px solid var(--gold-dim); padding-left: 1.2rem; opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+.lore-pill.visible { opacity: 1; transform: none; }
+.lore-pill-label { font-family: 'Cormorant SC', serif; font-size: .48rem; letter-spacing: .32em; color: var(--gold); margin-bottom: .45rem; }
+.lore-pill-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--text-dim); line-height: 1.78; }
+
+.home-sections { border-top: 1px solid var(--divider); padding: 4rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+.home-sections-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: 1px; background: var(--divider); border: 1px solid var(--divider); margin-top: 3rem; }
+.home-section-card { background: var(--bg2); padding: 2.8rem 2rem; cursor: pointer; transition: background .25s; display: flex; flex-direction: column; gap: .75rem; position: relative; overflow: hidden; }
+.home-section-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-dim), transparent); opacity: 0; transition: opacity .4s; }
 .home-section-card:hover { background: var(--bg3); }
 .home-section-card:hover::before { opacity: 1; }
 .hsc-glyph { font-size: 1rem; color: var(--gold); opacity: .6; font-family: 'Cormorant Garamond', serif; }
@@ -219,460 +96,176 @@ body::before {
 .hsc-arrow { font-family: 'Cormorant SC', serif; font-size: .5rem; letter-spacing: .2em; color: var(--gold); opacity: 0; transition: opacity .3s; margin-top: auto; }
 .home-section-card:hover .hsc-arrow { opacity: 1; }
 
-/* ══ SHARED ══ */
 section { padding: 5.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
-.section-eyebrow {
-  font-family: 'Cormorant SC', serif; font-size: .53rem; letter-spacing: .45em;
-  color: var(--gold); text-transform: uppercase; text-align: center; margin-bottom: .85rem;
-}
-.section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.7rem, 5vw, 2.8rem);
-  font-weight: 300; font-style: italic;
-  color: var(--text-bright); text-align: center;
-  line-height: 1.15; margin-bottom: .55rem;
-}
-.section-rule {
-  display: flex; align-items: center; gap: .8rem;
-  max-width: 230px; margin: 0 auto 3.8rem;
-}
+.section-eyebrow { font-family: 'Cormorant SC', serif; font-size: .53rem; letter-spacing: .45em; color: var(--gold); text-transform: uppercase; text-align: center; margin-bottom: .85rem; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.7rem, 5vw, 2.8rem); font-weight: 300; font-style: italic; color: var(--text-bright); text-align: center; line-height: 1.15; margin-bottom: .55rem; }
+.section-rule { display: flex; align-items: center; gap: .8rem; max-width: 230px; margin: 0 auto 3.8rem; }
 .section-rule hr { flex: 1; border: none; border-top: 1px solid var(--divider); }
 .section-rule span { color: var(--gold); font-size: .58rem; }
 .full-bleed-wrap { border-top: 1px solid var(--divider); width: 100%; }
 
-/* ══ LORE BAND ══ */
-.lore-band {
-  background: var(--bg2);
-  border-top: 1px solid var(--divider);
-  border-bottom: 1px solid var(--divider);
-  padding: 2.4rem 1.5rem;
+/* ══ SETUP / FORM PANELS ══ */
+.setup-panel { background: var(--bg2); border: 1px solid var(--divider); padding: 2.4rem; margin: 0 auto 2.5rem; max-width: 900px; }
+.setup-title { font-family: 'Cormorant SC', serif; font-size: .6rem; letter-spacing: .38em; color: var(--gold); margin-bottom: 1.6rem; padding-bottom: .8rem; border-bottom: 1px solid var(--divider); display: flex; align-items: center; gap: .6rem; text-transform: uppercase; }
+.setup-title::before { content: '◈'; }
+.setup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+/* FIX FOR OVERFLOW */
+.setup-grid > div { min-width: 0; } 
+@media (max-width: 600px) { 
+  .setup-grid { grid-template-columns: 1fr; gap: 1.2rem; } 
+  .setup-panel { padding: 1.4rem; } 
 }
-.lore-band-inner {
-  display: flex; align-items: flex-start; gap: 2.2rem;
-  max-width: 1100px; margin: 0 auto; flex-wrap: wrap;
-}
-.lore-pill {
-  flex: 1; min-width: 200px;
-  border-left: 1px solid var(--gold-dim); padding-left: 1.2rem;
-  opacity: 0; transform: translateY(14px);
-  transition: opacity .6s ease, transform .6s ease;
-}
-.lore-pill.visible { opacity: 1; transform: none; }
-.lore-pill-label {
-  font-family: 'Cormorant SC', serif; font-size: .48rem;
-  letter-spacing: .32em; color: var(--gold); margin-bottom: .45rem;
-}
-.lore-pill-text {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: 1rem; color: var(--text-dim); line-height: 1.78;
-}
+
+.field-label { font-family: 'Cormorant SC', serif; font-size: .55rem; letter-spacing: .28em; color: var(--text-dim); display: block; margin-bottom: .6rem; font-weight: 500; text-transform: uppercase; }
+.field-input, .field-select { width: 100%; max-width: 100%; background: rgba(255,255,255,.04); border: 1px solid var(--divider); color: var(--text-bright); font-family: 'Lato', sans-serif; font-size: .9rem; font-weight: 400; padding: .75rem 1rem; outline: none; transition: border-color .25s; -webkit-appearance: none; appearance: none; text-overflow: ellipsis; }
+.field-input::placeholder { color: rgba(220,210,195,.4); }
+.field-input:focus, .field-select:focus { border-color: var(--gold-dim); background: rgba(255,255,255,.07); }
+.field-input:disabled { opacity: 0.5; cursor: not-allowed; }
+.field-select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23dcb86a' opacity='.7'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+.field-select option { background: var(--bg2); color: var(--text-bright); }
+.setup-full { grid-column: 1 / -1; }
+
+.custom-api-fields { background: rgba(255,255,255,.02); padding: 1.5rem; border: 1px solid var(--divider); margin-top: -0.5rem; display: none; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+@media (max-width: 600px) { .custom-api-fields { grid-template-columns: 1fr; padding: 1rem; } }
+
+.primary-btn { display: block; width: 100%; font-family: 'Cormorant SC', serif; font-size: .65rem; letter-spacing: .32em; color: #0b0907; background: var(--gold-light); border: none; padding: 1.1rem 2rem; cursor: pointer; transition: background .2s; text-transform: uppercase; font-weight: 600; text-align: center; }
+.primary-btn:hover { background: var(--gold); }
+
+/* ══ FEED & SOCIAL POSTS ══ */
+.feed-compose-wrap { background: var(--bg2); border: 1px solid var(--divider); padding: 1.5rem; margin-bottom: 2rem; }
+.feed-compose-label { font-family: 'Space Mono', monospace; font-size: .55rem; letter-spacing: .1em; color: var(--gold); margin-bottom: .8rem; }
+.feed-compose-area { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--divider); color: var(--text-bright); font-family: 'Lato', sans-serif; font-size: .95rem; font-weight: 400; padding: .5rem 0 1rem; resize: none; outline: none; }
+.feed-compose-area::placeholder { color: rgba(220,210,195,.4); }
+.feed-compose-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
+.feed-compose-btn { font-family: 'Space Mono', monospace; font-size: .5rem; letter-spacing: .15em; background: var(--gold-light); color: #000; padding: .5rem 1.2rem; border: none; cursor: pointer; text-transform: uppercase; font-weight: bold; }
+.feed-compose-btn:hover { background: var(--gold); }
+.feed-compose-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.feed-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: 1px; background: var(--divider); border: 1px solid var(--divider); max-width: 960px; margin: 0 auto; align-items: start; }
+.feed-card { background: var(--bg2); padding: 1.6rem 1.5rem; opacity: 0; transform: translateY(12px); transition: opacity .55s ease, transform .55s ease; display: flex; flex-direction: column; }
+.feed-card.visible { opacity: 1; transform: none; }
+.feed-card:hover { background: var(--bg3); }
+.feed-header { display: flex; align-items: center; gap: .8rem; margin-bottom: .85rem; }
+.feed-avatar { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; border: 1px solid var(--divider-bright); flex-shrink: 0; background: #1a1612; }
+.feed-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.feed-avatar-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant SC', serif; font-size: .6rem; color: var(--gold); }
+.feed-handle { font-family: 'Space Mono', monospace; font-size: .6rem; color: var(--text-dim); line-height: 1.45; }
+.feed-handle strong { display: block; color: var(--text-bright); font-size: .63rem; }
+.feed-x-text { font-family: 'Lato', sans-serif; font-weight: 400; font-size: .88rem; line-height: 1.8; color: var(--text); }
+.feed-x-meta { font-family: 'Space Mono', monospace; font-size: .5rem; color: var(--text-dim); margin-top: .85rem; padding-top: .65rem; border-top: 1px solid var(--divider); }
+
+.x-action-bar { display: flex; gap: 1.5rem; margin-top: 1rem; font-family: 'Space Mono', monospace; font-size: .55rem; color: var(--gold); opacity: .7; }
+.x-action-btn { cursor: pointer; transition: opacity .2s; }
+.x-action-btn:hover { opacity: 1; color: var(--gold-light); }
+
+.x-reply-box { display: none; margin-top: 1rem; border-top: 1px solid var(--divider); padding-top: 1rem; }
+.x-reply-box.active { display: block; }
+.x-reply-input-wrap { display: flex; gap: .5rem; }
+.x-reply-input { flex: 1; background: rgba(255,255,255,.03); border: 1px solid var(--divider); color: var(--text-bright); padding: .5rem .8rem; font-family: 'Lato', sans-serif; font-size: .85rem; outline: none; }
+.x-reply-input:focus { border-color: var(--gold-dim); }
+.x-reply-send { background: var(--gold-dim); color: var(--text-bright); border: none; padding: 0 1rem; cursor: pointer; font-size: .8rem; transition: background .2s; }
+.x-reply-send:hover { background: var(--gold); color: #000; }
+
+.thread-replies { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+.thread-item { display: flex; gap: .8rem; align-items: flex-start; border-top: 1px solid var(--divider); padding-top: 1rem; }
+.thread-avatar { width: 30px; height: 30px; border-radius: 50%; overflow: hidden; border: 1px solid var(--divider); flex-shrink: 0; background: #1a1612; }
+.thread-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.thread-body { flex: 1; min-width: 0; }
+.thread-name { font-family: 'Space Mono', monospace; font-size: .55rem; color: var(--gold); margin-bottom: .2rem; }
+.thread-text { font-family: 'Lato', sans-serif; font-size: .85rem; color: var(--text-bright); line-height: 1.6; }
+
+/* Group Chat specific inside feed */
+.feed-card.type-groupchat { background: #1a1714; }
+.feed-card.type-groupchat:hover { background: #221f1b; }
+.groupchat-header { font-family: 'Space Mono', monospace; font-size: .55rem; letter-spacing: .1em; color: var(--gold); opacity: .8; margin-bottom: 1rem; padding-bottom: .6rem; border-bottom: 1px solid var(--divider); display: flex; align-items: center; gap: .5rem; }
+.chat-bubble-wrap { display: flex; flex-direction: column; gap: .85rem; }
+.chat-bubble { display: flex; align-items: flex-start; gap: .6rem; }
+.chat-bubble-avatar { width: 28px; height: 28px; border-radius: 50%; overflow: hidden; border: 1px solid var(--divider); flex-shrink: 0; background: #1a1612; margin-top: .1rem; }
+.chat-bubble-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.chat-bubble-body { flex: 1; }
+.chat-bubble-name { font-family: 'Space Mono', monospace; font-size: .55rem; color: var(--gold); margin-bottom: .3rem; letter-spacing: .04em; }
+.chat-bubble-text { font-family: 'Lato', sans-serif; font-weight: 400; font-size: .85rem; line-height: 1.72; color: var(--text); background: rgba(255,255,255,.05); border: 1px solid var(--divider); padding: .6rem .85rem; display: inline-block; max-width: 100%; border-radius: 4px; }
+.chat-meta { font-family: 'Space Mono', monospace; font-size: .5rem; color: var(--text-dim); margin-top: .5rem; opacity: .8; }
 
 /* ══ PROFILES OVERVIEW ONLY ══ */
-.profile-hero-wrap {
-  display: grid; grid-template-columns: 220px 1fr;
-  gap: 2.8rem; align-items: start;
-  max-width: 960px; margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
-}
-@media (max-width: 600px) {
-  .profile-hero-wrap { grid-template-columns: 1fr; gap: 1.5rem; }
-}
-.profile-img-frame {
-  width: 100%; aspect-ratio: .75;
-  overflow: hidden; border: 1px solid var(--divider-bright);
-  position: relative; background: #111009;
-}
-.profile-img-frame img {
-  width: 100%; height: 100%; object-fit: cover; object-position: center top;
-  display: block; filter: sepia(.06) contrast(1.05);
-}
-.profile-img-frame::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(22,20,18,.55) 0%, transparent 60%);
-  pointer-events: none;
-}
-.profile-meta-name {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: clamp(2.4rem, 8vw, 3.8rem); font-weight: 300;
-  color: var(--text-bright); line-height: .92;
-}
-.profile-meta-full {
-  font-family: 'Cormorant SC', serif; font-size: .55rem;
-  letter-spacing: .2em; color: var(--text-dim); margin-top: .65rem; display: block;
-}
-.profile-meta-tag {
-  font-family: 'Cormorant SC', serif; font-size: .55rem;
-  letter-spacing: .22em; color: var(--gold); margin-top: .4rem; display: block;
-}
+.profile-hero-wrap { display: grid; grid-template-columns: 220px 1fr; gap: 2.8rem; align-items: start; max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+@media (max-width: 600px) { .profile-hero-wrap { grid-template-columns: 1fr; gap: 1.5rem; } }
+.profile-img-frame { width: 100%; aspect-ratio: .75; overflow: hidden; border: 1px solid var(--divider-bright); position: relative; background: #111009; }
+.profile-img-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; filter: sepia(.06) contrast(1.05); }
+.profile-img-frame::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(22,20,18,.55) 0%, transparent 60%); pointer-events: none; }
+.profile-meta-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(2.4rem, 8vw, 3.8rem); font-weight: 300; color: var(--text-bright); line-height: .92; }
+.profile-meta-full { font-family: 'Cormorant SC', serif; font-size: .55rem; letter-spacing: .2em; color: var(--text-dim); margin-top: .65rem; display: block; }
+.profile-meta-tag { font-family: 'Cormorant SC', serif; font-size: .55rem; letter-spacing: .22em; color: var(--gold); margin-top: .4rem; display: block; }
 .profile-meta-divider { border: none; border-top: 1px solid var(--divider); margin: 1.4rem 0; }
-.profile-meta-row {
-  display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;
-}
-.profile-meta-item { }
-.profile-meta-item-label {
-  font-family: 'Cormorant SC', serif; font-size: .48rem;
-  letter-spacing: .2em; color: var(--text-dim); display: block; margin-bottom: .2rem;
-}
-.profile-meta-item-val {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: 1.05rem; color: var(--text-bright);
-}
-.profile-desc-para {
-  font-family: 'Lato', sans-serif; font-weight: 400;
-  font-size: .9rem; line-height: 1.9; color: var(--text-dim);
-  margin-top: 1.2rem;
-}
+.profile-meta-row { display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.profile-meta-item-label { font-family: 'Cormorant SC', serif; font-size: .48rem; letter-spacing: .2em; color: var(--text-dim); display: block; margin-bottom: .2rem; }
+.profile-meta-item-val { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--text-bright); }
+.profile-desc-para { font-family: 'Lato', sans-serif; font-weight: 400; font-size: .9rem; line-height: 1.9; color: var(--text-dim); margin-top: 1.2rem; }
 
-.profile-selector-row {
-  max-width: 960px; margin: 0 auto; padding: 0 1.5rem 2rem;
-  display: flex; flex-wrap: wrap; gap: .7rem; border-bottom: 1px solid var(--divider);
-}
-.profile-selector-btn {
-  font-family: 'Cormorant SC', serif; font-size: .52rem;
-  letter-spacing: .22em; color: var(--text-dim);
-  background: var(--bg2); border: 1px solid var(--divider);
-  padding: .65rem 1.4rem; cursor: pointer;
-  transition: all .2s; text-transform: uppercase;
-}
+.profile-selector-row { max-width: 960px; margin: 0 auto; padding: 0 1.5rem 2rem; display: flex; flex-wrap: wrap; gap: .7rem; border-bottom: 1px solid var(--divider); }
+.profile-selector-btn { font-family: 'Cormorant SC', serif; font-size: .52rem; letter-spacing: .22em; color: var(--text-dim); background: var(--bg2); border: 1px solid var(--divider); padding: .65rem 1.4rem; cursor: pointer; transition: all .2s; text-transform: uppercase; }
 .profile-selector-btn:hover { color: var(--text-bright); border-color: var(--divider-bright); }
 .profile-selector-btn.active { color: var(--gold); border-color: var(--gold-dim); background: rgba(220,184,106,.06); }
 
-/* ══ FEED ══ */
-.feed-section { border-top: 1px solid var(--divider); }
-.feed-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
-  gap: 1px; background: var(--divider);
-  border: 1px solid var(--divider);
-  max-width: 960px; margin: 0 auto;
-}
-.feed-card {
-  background: var(--bg2); padding: 1.6rem 1.5rem;
-  opacity: 0; transform: translateY(12px);
-  transition: opacity .55s ease, transform .55s ease, background .25s;
-}
-.feed-card:hover { background: var(--bg3); }
-.feed-card.visible { opacity: 1; transform: none; }
-.feed-header { display: flex; align-items: center; gap: .8rem; margin-bottom: .85rem; }
-.feed-avatar {
-  width: 36px; height: 36px; border-radius: 50%;
-  overflow: hidden; border: 1px solid var(--divider-bright);
-  flex-shrink: 0; background: #1a1612;
-}
-.feed-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-.feed-avatar-placeholder {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Cormorant SC', serif; font-size: .6rem; color: var(--gold);
-}
-.feed-handle {
-  font-family: 'Space Mono', monospace; font-size: .6rem;
-  color: var(--text-dim); line-height: 1.45;
-}
-.feed-handle strong { display: block; color: var(--text-bright); font-size: .63rem; }
-.feed-x-text {
-  font-family: 'Lato', sans-serif; font-weight: 400;
-  font-size: .88rem; line-height: 1.8; color: var(--text);
-}
-.feed-x-meta {
-  font-family: 'Space Mono', monospace; font-size: .5rem;
-  color: var(--text-dim); margin-top: .85rem; padding-top: .65rem;
-  border-top: 1px solid var(--divider);
-}
-.feed-card.type-groupchat { background: #1a1714; }
-.feed-card.type-groupchat:hover { background: #221f1b; }
-.groupchat-header {
-  font-family: 'Space Mono', monospace; font-size: .55rem;
-  letter-spacing: .1em; color: var(--gold); opacity: .8;
-  margin-bottom: 1rem; padding-bottom: .6rem;
-  border-bottom: 1px solid var(--divider);
-  display: flex; align-items: center; gap: .5rem;
-}
-.groupchat-header::before { content: '🏠'; font-size: .7rem; }
-.groupchat-name { color: var(--gold-light); }
-.chat-bubble-wrap { display: flex; flex-direction: column; gap: .85rem; }
-.chat-bubble { display: flex; align-items: flex-start; gap: .6rem; }
-.chat-bubble-avatar {
-  width: 28px; height: 28px; border-radius: 50%;
-  overflow: hidden; border: 1px solid var(--divider); flex-shrink: 0;
-  background: #1a1612; margin-top: .1rem;
-}
-.chat-bubble-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-.chat-bubble-body { flex: 1; }
-.chat-bubble-name {
-  font-family: 'Space Mono', monospace; font-size: .55rem;
-  color: var(--gold); margin-bottom: .3rem; letter-spacing: .04em;
-}
-.chat-bubble-text {
-  font-family: 'Lato', sans-serif; font-weight: 400;
-  font-size: .85rem; line-height: 1.72; color: var(--text);
-  background: rgba(255,255,255,.05); border: 1px solid var(--divider);
-  padding: .6rem .85rem; display: inline-block; max-width: 100%;
-  border-radius: 4px;
-}
-.chat-meta {
-  font-family: 'Space Mono', monospace; font-size: .5rem;
-  color: var(--text-dim); margin-top: .5rem; opacity: .8;
-}
-.feed-tabloid-tag {
-  font-family: 'Space Mono', monospace; font-size: .55rem;
-  letter-spacing: .1em; color: var(--red); margin-bottom: .55rem;
-  display: flex; align-items: center; gap: .45rem;
-}
-.feed-tabloid-tag::before { content: '●'; animation: blink 1.4s ease infinite; }
-@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .15; } }
-.feed-tabloid-headline {
-  font-family: 'Cormorant Garamond', serif; font-weight: 600;
-  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
-  color: var(--text-bright); line-height: 1.3; margin-bottom: .65rem;
-}
-.feed-tabloid-body {
-  font-family: 'Lato', sans-serif; font-weight: 400;
-  font-size: .85rem; color: var(--text-dim); line-height: 1.78;
-}
-.feed-tabloid-source {
-  font-family: 'Space Mono', monospace; font-size: .5rem;
-  color: var(--text-dim); margin-top: .85rem; opacity: .7;
-}
-.feed-society-ornament {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: .8rem; color: var(--gold); margin-bottom: .55rem; letter-spacing: .04em;
-}
-.feed-society-text {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: clamp(1rem, 2.1vw, 1.15rem); color: var(--text); line-height: 1.92;
-}
-.feed-society-text strong { font-style: normal; color: var(--text-bright); font-weight: 500; }
-.feed-society-sig {
-  font-family: 'Cormorant SC', serif; font-size: .5rem;
-  letter-spacing: .22em; color: var(--text-dim);
-  margin-top: .95rem; padding-top: .65rem; border-top: 1px solid var(--divider);
-}
-
-/* ══ CHAT PAGE ══ */
-.chat-page-wrap {
-  max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem 6rem;
-}
-.chat-setup-panel {
-  background: var(--bg2); border: 1px solid var(--divider);
-  padding: 2.4rem; margin-bottom: 2rem;
-}
-.chat-setup-title {
-  font-family: 'Cormorant SC', serif; font-size: .6rem;
-  letter-spacing: .38em; color: var(--gold); margin-bottom: 1.6rem;
-  padding-bottom: .8rem; border-bottom: 1px solid var(--divider);
-  display: flex; align-items: center; gap: .6rem;
-}
-.chat-setup-title::before { content: '◈'; }
-.chat-setup-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-@media (max-width: 560px) { .chat-setup-grid { grid-template-columns: 1fr; } }
-.chat-field-label {
-  font-family: 'Cormorant SC', serif; font-size: .55rem;
-  letter-spacing: .28em; color: var(--text-dim);
-  display: block; margin-bottom: .6rem; font-weight: 500;
-}
-.chat-field-input, .chat-field-select {
-  width: 100%; background: rgba(255,255,255,.04);
-  border: 1px solid var(--divider); color: var(--text-bright);
-  font-family: 'Lato', sans-serif; font-size: .9rem; font-weight: 400;
-  padding: .75rem 1rem; outline: none;
-  transition: border-color .25s;
-  -webkit-appearance: none; appearance: none;
-}
-.chat-field-input::placeholder { color: rgba(220,210,195,.4); }
-.chat-field-input:focus, .chat-field-select:focus { border-color: var(--gold-dim); background: rgba(255,255,255,.07); }
-.chat-field-input:disabled { opacity: 0.5; cursor: not-allowed; }
-.chat-field-select {
-  cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23dcb86a' opacity='.7'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 1rem center;
-  padding-right: 2.5rem;
-}
-.chat-field-select option { background: var(--bg2); color: var(--text-bright); }
-.chat-setup-full { grid-column: 1 / -1; }
-
-#customApiFields {
-  background: rgba(255,255,255,.02);
-  padding: 1.5rem; border: 1px solid var(--divider);
-  margin-top: -0.5rem; display: none; grid-template-columns: 1fr 1fr; gap: 1.2rem;
-}
-@media (max-width: 560px) { #customApiFields { grid-template-columns: 1fr; } }
-
-.chat-start-btn {
-  display: block; width: 100%; margin-top: 2rem;
-  font-family: 'Cormorant SC', serif; font-size: .65rem;
-  letter-spacing: .32em; color: #0b0907; background: var(--gold-light);
-  border: none; padding: 1.1rem 2rem; cursor: pointer;
-  transition: background .2s; text-transform: uppercase; font-weight: 600;
-}
-.chat-start-btn:hover { background: var(--gold); }
-
-/* ── Chat Window ── */
-.chat-window-wrap {
-  display: none;
-  flex-direction: column;
-  height: 65vh; min-height: 480px;
-  border: 1px solid var(--divider);
-  background: var(--bg2);
-  position: relative;
-}
+/* ══ CHAT WINDOW ══ */
+.chat-window-wrap { display: none; flex-direction: column; height: 65vh; min-height: 480px; border: 1px solid var(--divider); background: var(--bg2); position: relative; max-width: 900px; margin: 0 auto; }
 .chat-window-wrap.active { display: flex; }
-.chat-window-header {
-  display: flex; align-items: center; gap: 1rem;
-  padding: 1.2rem 1.4rem;
-  border-bottom: 1px solid var(--divider);
-  background: var(--bg3); flex-shrink: 0;
-}
+.chat-window-header { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 1.4rem; border-bottom: 1px solid var(--divider); background: var(--bg3); flex-shrink: 0; }
 .chat-window-avatars { display: flex; gap: -6px; }
-.cwa {
-  width: 36px; height: 36px; border-radius: 50%;
-  overflow: hidden; border: 1px solid var(--divider-bright);
-  margin-left: -8px; flex-shrink: 0; background: #1a1612;
-}
+.cwa { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; border: 1px solid var(--divider-bright); margin-left: -8px; flex-shrink: 0; background: #1a1612; }
 .cwa:first-child { margin-left: 0; }
 .cwa img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .chat-window-meta { flex: 1; min-width: 0; }
-.chat-window-name {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: 1.2rem; color: var(--text-bright); line-height: 1;
-}
-.chat-window-sub {
-  font-family: 'Space Mono', monospace; font-size: .5rem;
-  color: var(--text-dim); margin-top: .35rem; letter-spacing: .05em;
-}
-.chat-edit-btn {
-  font-family: 'Cormorant SC', serif; font-size: .5rem;
-  letter-spacing: .2em; color: var(--gold); opacity: .8;
-  background: none; border: 1px solid var(--divider); padding: .5rem .95rem;
-  cursor: pointer; transition: background .2s, color .2s;
-}
+.chat-window-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--text-bright); line-height: 1; }
+.chat-window-sub { font-family: 'Space Mono', monospace; font-size: .5rem; color: var(--text-dim); margin-top: .35rem; letter-spacing: .05em; }
+.chat-edit-btn { font-family: 'Cormorant SC', serif; font-size: .5rem; letter-spacing: .2em; color: var(--gold); opacity: .8; background: none; border: 1px solid var(--divider); padding: .5rem .95rem; cursor: pointer; transition: background .2s, color .2s; }
 .chat-edit-btn:hover { background: var(--gold-dim); color: var(--text-bright); }
 
-.chat-messages {
-  flex: 1; overflow-y: auto; padding: 1.5rem;
-  display: flex; flex-direction: column; gap: 1.2rem;
-  scrollbar-width: thin; scrollbar-color: var(--divider-bright) transparent;
-}
+.chat-messages { flex: 1; overflow-y: auto; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; scrollbar-width: thin; scrollbar-color: var(--divider-bright) transparent; }
 .chat-messages::-webkit-scrollbar { width: 6px; }
-.chat-messages::-webkit-scrollbar-track { background: transparent; }
 .chat-messages::-webkit-scrollbar-thumb { background: var(--divider-bright); border-radius: 3px; }
 
 .cm-msg { display: flex; gap: .8rem; align-items: flex-start; }
 .cm-msg.user-msg { flex-direction: row-reverse; }
-.cm-avatar {
-  width: 34px; height: 34px; border-radius: 50%;
-  overflow: hidden; border: 1px solid var(--divider); flex-shrink: 0;
-  background: #1a1612; margin-top: .1rem;
-}
+.cm-avatar { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; border: 1px solid var(--divider); flex-shrink: 0; background: #1a1612; margin-top: .1rem; }
 .cm-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-.cm-avatar-placeholder {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Cormorant SC', serif; font-size: .6rem; color: var(--gold);
-}
+.cm-avatar-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant SC', serif; font-size: .6rem; color: var(--gold); }
 .cm-body { max-width: 75%; }
-.cm-name {
-  font-family: 'Space Mono', monospace; font-size: .55rem;
-  color: var(--gold); margin-bottom: .35rem; letter-spacing: .04em;
-}
+.cm-name { font-family: 'Space Mono', monospace; font-size: .55rem; color: var(--gold); margin-bottom: .35rem; letter-spacing: .04em; }
 .user-msg .cm-name { text-align: right; color: var(--text-dim); }
-.cm-bubble {
-  font-family: 'Lato', sans-serif; font-weight: 400;
-  font-size: .9rem; line-height: 1.6; color: var(--text-bright);
-  background: rgba(255,255,255,.05); border: 1px solid var(--divider);
-  padding: .7rem 1rem; border-radius: 6px; border-top-left-radius: 0;
-}
-.user-msg .cm-bubble {
-  background: rgba(220,184,106,.15); border-color: rgba(220,184,106,.3);
-  color: var(--text-bright); border-radius: 6px; border-top-right-radius: 0;
-}
+.cm-bubble { font-family: 'Lato', sans-serif; font-weight: 400; font-size: .9rem; line-height: 1.6; color: var(--text-bright); background: rgba(255,255,255,.05); border: 1px solid var(--divider); padding: .7rem 1rem; border-radius: 6px; border-top-left-radius: 0; }
+.user-msg .cm-bubble { background: rgba(220,184,106,.15); border-color: rgba(220,184,106,.3); color: var(--text-bright); border-radius: 6px; border-top-right-radius: 0; }
 .cm-bubble em { font-style: italic; color: var(--text-dim); }
 
 .cm-typing { display: flex; gap: .8rem; align-items: flex-start; }
-.cm-typing-dots {
-  display: flex; gap: 5px; padding: .7rem 1rem;
-  background: rgba(255,255,255,.05); border: 1px solid var(--divider);
-  border-radius: 6px; border-top-left-radius: 0; margin-top: .35rem;
-}
-.cm-typing-dots span {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--gold); opacity: .4;
-  animation: typingDot 1.2s ease infinite;
-}
+.cm-typing-dots { display: flex; gap: 5px; padding: .7rem 1rem; background: rgba(255,255,255,.05); border: 1px solid var(--divider); border-radius: 6px; border-top-left-radius: 0; margin-top: .35rem; }
+.cm-typing-dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); opacity: .4; animation: typingDot 1.2s ease infinite; }
 .cm-typing-dots span:nth-child(2) { animation-delay: .2s; }
 .cm-typing-dots span:nth-child(3) { animation-delay: .4s; }
 @keyframes typingDot { 0%,80%,100% { opacity: .4; transform: none; } 40% { opacity: 1; transform: translateY(-4px); } }
 
-.chat-input-bar {
-  display: flex; gap: 0;
-  border-top: 1px solid var(--divider); flex-shrink: 0;
-  background: var(--bg3);
-}
-.chat-input-field {
-  flex: 1; background: transparent;
-  border: none; outline: none;
-  color: var(--text-bright); font-family: 'Lato', sans-serif;
-  font-size: .95rem; font-weight: 400;
-  padding: 1.2rem 1.4rem; resize: none;
-  height: 60px; overflow: hidden;
-}
+.chat-input-bar { display: flex; gap: 0; border-top: 1px solid var(--divider); flex-shrink: 0; background: var(--bg3); }
+.chat-input-field { flex: 1; background: transparent; border: none; outline: none; color: var(--text-bright); font-family: 'Lato', sans-serif; font-size: .95rem; font-weight: 400; padding: 1.2rem 1.4rem; resize: none; height: 60px; overflow: hidden; }
 .chat-input-field::placeholder { color: rgba(220,210,195,.5); }
-.chat-send-btn {
-  width: 60px; height: 60px;
-  background: var(--gold-dim); border: none; border-left: 1px solid var(--divider);
-  color: var(--text-bright); cursor: pointer;
-  font-size: 1.2rem; transition: background .2s;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
+.chat-send-btn { width: 60px; height: 60px; background: var(--gold-dim); border: none; border-left: 1px solid var(--divider); color: var(--text-bright); cursor: pointer; font-size: 1.2rem; transition: background .2s; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .chat-send-btn:hover { background: rgba(220,184,106,.6); }
 .chat-send-btn:disabled { opacity: .35; cursor: not-allowed; }
 
-/* ══ CHAT PROFILE PICK ══ */
-.chat-who-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: var(--divider); border: 1px solid var(--divider);
-  margin-top: 0.5rem;
-}
+.chat-who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--divider); border: 1px solid var(--divider); margin-top: 0.5rem; }
 @media (max-width: 500px) { .chat-who-grid { grid-template-columns: repeat(2, 1fr); } }
-.chat-who-card {
-  background: var(--bg2); padding: 1.2rem 1rem;
-  cursor: pointer; display: flex; gap: .85rem; align-items: center;
-  transition: background .2s; border: 2px solid transparent;
-}
+.chat-who-card { background: var(--bg2); padding: 1.2rem 1rem; cursor: pointer; display: flex; gap: .85rem; align-items: center; transition: background .2s; border: 2px solid transparent; }
 .chat-who-card:hover { background: var(--bg3); }
 .chat-who-card.selected { border-color: var(--gold-dim); background: rgba(220,184,106,.08); }
-.chat-who-avatar {
-  width: 44px; height: 44px; border-radius: 50%;
-  overflow: hidden; border: 1px solid var(--divider-bright);
-  flex-shrink: 0; background: #1a1612;
-}
+.chat-who-avatar { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; border: 1px solid var(--divider-bright); flex-shrink: 0; background: #1a1612; }
 .chat-who-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-.chat-who-name {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: 1.1rem; color: var(--text-bright); line-height: 1; margin-bottom: .2rem;
-}
-.chat-who-tag {
-  font-family: 'Cormorant SC', serif; font-size: .48rem;
-  letter-spacing: .15em; color: var(--text-dim); display: block;
-}
-.chat-who-check {
-  margin-left: auto; color: var(--gold); font-size: .8rem; opacity: 0; flex-shrink: 0;
-}
+.chat-who-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--text-bright); line-height: 1; margin-bottom: .2rem; }
+.chat-who-tag { font-family: 'Cormorant SC', serif; font-size: .48rem; letter-spacing: .15em; color: var(--text-dim); display: block; }
+.chat-who-check { margin-left: auto; color: var(--gold); font-size: .8rem; opacity: 0; flex-shrink: 0; }
 .chat-who-card.selected .chat-who-check { opacity: 1; }
 
-footer {
-  text-align: center; padding: 2.2rem 1.5rem 3.2rem;
-  border-top: 1px solid var(--divider);
-}
-footer p {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: .9rem; color: var(--text-dim);
-}
-
+footer { text-align: center; padding: 2.2rem 1.5rem 3.2rem; border-top: 1px solid var(--divider); }
+footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .9rem; color: var(--text-dim); }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 </style>
 </head>
@@ -688,44 +281,36 @@ footer p {
     <span class="ticker-text">
       Nasution Group Q3 earnings surpass projections by 340%
       <span class="ticker-dot">◆</span>
-      Varen Togar Nasution spotted stress-vacuuming penthouse at 3AM — assistant confirms he is "fine"
+      Varen Togar Nasution spotted stress-vacuuming penthouse at 3AM
       <span class="ticker-dot">◆</span>
-      Guntur Sanggam Nasution followed unfamiliar student across Suryakencana campus to hand him a nutrient bar — no words exchanged
+      Guntur Sanggam Nasution followed unfamiliar student across Suryakencana campus to hand him a nutrient bar
       <span class="ticker-dot">◆</span>
-      Kaivan Pandu Nasution exhibition SOLD OUT in 11 minutes — artist was not present for the final hour
+      Kaivan Pandu Nasution exhibition SOLD OUT in 11 minutes
       <span class="ticker-dot">◆</span>
-      Mahesa Saut Nasution played unreleased set inside Varen's office — security stayed to listen
+      Mahesa Saut Nasution played unreleased set inside Varen's office
       <span class="ticker-dot">◆</span>
-      Rival tech startup dissolves 48hrs after dispute with Anggara Sahat Nasution — cause "unclear"
-      <span class="ticker-dot">◆</span>
-      Firman Rahardja Nasution exits board meeting after single emoji from wife — meeting concluded quietly regardless
-      <span class="ticker-dot">◆</span>
-      Suryakencana Institute student poll: Nasution quintuplets ranked Most Intimidating for fifth year running
+      Rival tech startup dissolves 48hrs after dispute with Anggara Sahat Nasution
       <span class="ticker-dot">◆</span>
     </span>
     <span class="ticker-tag">BREAKING</span>
     <span class="ticker-text">
       Nasution Group Q3 earnings surpass projections by 340%
       <span class="ticker-dot">◆</span>
-      Varen Togar Nasution spotted stress-vacuuming penthouse at 3AM — assistant confirms he is "fine"
+      Varen Togar Nasution spotted stress-vacuuming penthouse at 3AM
       <span class="ticker-dot">◆</span>
-      Guntur Sanggam Nasution followed unfamiliar student across Suryakencana campus to hand him a nutrient bar — no words exchanged
+      Guntur Sanggam Nasution followed unfamiliar student across Suryakencana campus to hand him a nutrient bar
       <span class="ticker-dot">◆</span>
-      Kaivan Pandu Nasution exhibition SOLD OUT in 11 minutes — artist was not present for the final hour
+      Kaivan Pandu Nasution exhibition SOLD OUT in 11 minutes
       <span class="ticker-dot">◆</span>
-      Mahesa Saut Nasution played unreleased set inside Varen's office — security stayed to listen
+      Mahesa Saut Nasution played unreleased set inside Varen's office
       <span class="ticker-dot">◆</span>
-      Rival tech startup dissolves 48hrs after dispute with Anggara Sahat Nasution — cause "unclear"
-      <span class="ticker-dot">◆</span>
-      Firman Rahardja Nasution exits board meeting after single emoji from wife — meeting concluded quietly regardless
-      <span class="ticker-dot">◆</span>
-      Suryakencana Institute student poll: Nasution quintuplets ranked Most Intimidating for fifth year running
+      Rival tech startup dissolves 48hrs after dispute with Anggara Sahat Nasution
       <span class="ticker-dot">◆</span>
     </span>
   </div>
 </div>
 
-<!-- MAIN NAV -->
+<!-- NAV -->
 <nav class="main-nav">
   <div class="nav-inner">
     <div class="nav-brand">The Nasutions</div>
@@ -742,35 +327,10 @@ footer p {
 <div id="page-home" class="page active">
   <div class="hero">
     <div class="hero-eyebrow">✦ &nbsp; Jakarta, Indonesia &nbsp; ✦</div>
-    <h1 class="hero-title">
-      <span class="hero-title-top">The</span>
-      Nasution
-    </h1>
+    <h1 class="hero-title"><span class="hero-title-top">The</span>Nasution</h1>
     <div class="hero-sub">Family &nbsp;·&nbsp; Nasution Group &nbsp;·&nbsp; Est. Jakarta</div>
     <div class="hero-divider"><hr><span>◆</span><hr></div>
     <p class="hero-tagline">A family of considerable weight.<br>Five sons. One iron patriarch.<br>One woman who runs them all.</p>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num">5</div>
-        <div class="hero-stat-label">Quintuplets</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num" style="font-size:clamp(1rem,2.4vw,1.45rem);padding-top:.2rem;">Multi-B</div>
-        <div class="hero-stat-label">Conglomerate</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">①</div>
-        <div class="hero-stat-label">Matriarch</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="lore-band">
-    <div class="lore-band-inner">
-      <div class="lore-pill"><div class="lore-pill-label">The Empire</div><div class="lore-pill-text">Nasution Group. Multi-billion dollar conglomerate spanning real estate, hospitality, and corporate acquisitions. Their name commands both absolute respect and absolute fear across Jakarta high society.</div></div>
-      <div class="lore-pill"><div class="lore-pill-label">The Rule</div><div class="lore-pill-text">At 18, each son received a massive trust fund — and was locked out of Nasution Corp entirely. They must each build their own empire first. Prove their worth. Then, perhaps, a seat at the table.</div></div>
-      <div class="lore-pill"><div class="lore-pill-label">Suryakencana Institute</div><div class="lore-pill-text">Jakarta's ultra-elite institution for heirs, prodigies, and socialites. Astronomical tuition. The Nasution quintuplets are its undisputed campus royalty — feared, admired, and absolutely everywhere.</div></div>
-    </div>
   </div>
 
   <div class="home-sections">
@@ -783,28 +343,23 @@ footer p {
         <div class="hsc-label">Dossiers</div>
         <div class="hsc-title">Meet the<br>Quintuplets</div>
         <div class="hsc-hint">Full profiles. Understand who they are and what domain they rule.</div>
-        <div class="hsc-arrow">Open Profiles →</div>
       </div>
       <div class="home-section-card" onclick="showPage('feed')">
         <div class="hsc-glyph">◉</div>
         <div class="hsc-label">Dispatches</div>
-        <div class="hsc-title">Whispers &amp;<br>Headlines</div>
-        <div class="hsc-hint">Group chats, tabloid headlines, society columns, and X posts they definitely didn't approve of.</div>
-        <div class="hsc-arrow">Read Dispatches →</div>
+        <div class="hsc-title">Social Media<br>&amp; Feed</div>
+        <div class="hsc-hint">Post tweets, reply to their posts, and read tabloid headlines.</div>
       </div>
       <div class="home-section-card" onclick="showPage('chat')">
         <div class="hsc-glyph">✦</div>
         <div class="hsc-label">Live Chat</div>
         <div class="hsc-title">Talk to the<br>Nasutions</div>
-        <div class="hsc-hint">Text chat directly with them. Group or 1-on-1 text formats. Free proxy included.</div>
-        <div class="hsc-arrow">Enter Chat →</div>
+        <div class="hsc-hint">Text chat directly with them. Group or 1-on-1 formats.</div>
       </div>
     </div>
   </div>
 
-  <footer>
-    <p>The Nasution Family &nbsp;◆&nbsp; Nasution Group &nbsp;◆&nbsp; Jakarta, Indonesia</p>
-  </footer>
+  <footer><p>The Nasution Family &nbsp;◆&nbsp; Nasution Group &nbsp;◆&nbsp; Jakarta, Indonesia</p></footer>
 </div>
 
 <!-- ═══════════════════════════════ PROFILES PAGE ═══════════════════════════════ -->
@@ -826,25 +381,13 @@ footer p {
   <!-- VAREN -->
   <div id="profile-varen" class="profile-pane" style="display:block;">
     <div class="profile-hero-wrap">
-      <div class="profile-img-frame">
-        <img src="https://file.garden/aGgA7xAxFEwFoSQZ/varen.jpg" alt="Varen" referrerpolicy="no-referrer" onerror="this.style.opacity='.2'">
-      </div>
+      <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/varen.jpg" alt="Varen" referrerpolicy="no-referrer"></div>
       <div>
         <div class="profile-meta-name">Varen</div>
         <span class="profile-meta-full">Varen Togar Nasution</span>
         <span class="profile-meta-tag">① The Exhausted Anchor</span>
         <hr class="profile-meta-divider">
-        <div class="profile-meta-row">
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Birth Order</span><span class="profile-meta-item-val">First</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Domain</span><span class="profile-meta-item-val">Glass-Steel Penthouse</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Vibe</span><span class="profile-meta-item-val">Exhausted elegance</span></div>
-        </div>
-        <div class="profile-meta-row">
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Dad</span><span class="profile-meta-item-val">Bapak</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Mom</span><span class="profile-meta-item-val">Ibu</span></div>
-        </div>
         <p class="profile-desc-para">Carries everything. Asks for nothing. The natural leader who ensures everyone else is okay first — and quietly deteriorates second. His anger is terrifyingly calm; he whispers instead of yelling, which is considerably worse than yelling.</p>
-        <p class="profile-desc-para">He has an uncontrollable reflex to fix his brothers' collars and double-texts "udah makan?" to anyone he worries about. If the hum of a vacuum cleaner is heard from his immaculate penthouse at 3AM, it means Varen is having a stress-induced crisis and needs an intervention.</p>
       </div>
     </div>
   </div>
@@ -852,23 +395,13 @@ footer p {
   <!-- GUNTUR -->
   <div id="profile-guntur" class="profile-pane" style="display:none;">
     <div class="profile-hero-wrap">
-      <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/guntur.jpg" alt="Guntur" referrerpolicy="no-referrer" onerror="this.style.opacity='.2'"></div>
+      <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/guntur.jpg" alt="Guntur" referrerpolicy="no-referrer"></div>
       <div>
         <div class="profile-meta-name">Guntur</div>
         <span class="profile-meta-full">Guntur Sanggam Nasution</span>
         <span class="profile-meta-tag">② The Grumpy Giant</span>
         <hr class="profile-meta-divider">
-        <div class="profile-meta-row">
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Birth Order</span><span class="profile-meta-item-val">Second</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Domain</span><span class="profile-meta-item-val">Gym + Kitchen</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Vibe</span><span class="profile-meta-item-val">Permanent scowl, soft interior</span></div>
-        </div>
-        <div class="profile-meta-row">
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Dad</span><span class="profile-meta-item-val">Amang</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Mom</span><span class="profile-meta-item-val">Inang</span></div>
-        </div>
         <p class="profile-desc-para">Permanent scowl. Faint eyebrow scar. Physically cannot let people be uncomfortable. Will shove food at you without warning or explanation and then pretend it never happened. Loves deeply in the language of brute force and rendang.</p>
-        <p class="profile-desc-para">His domain is a brutalist space where a heavy-duty home gym bleeds into an obsessively stocked kitchen. He regularly texts in ALL CAPS complaining about traffic, but these are essentially his love letters to check if you're safe.</p>
       </div>
     </div>
   </div>
@@ -876,23 +409,13 @@ footer p {
   <!-- KAIVAN -->
   <div id="profile-kaivan" class="profile-pane" style="display:none;">
     <div class="profile-hero-wrap">
-      <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/kaivan.jpg" alt="Kaivan" referrerpolicy="no-referrer" onerror="this.style.opacity='.2'"></div>
+      <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/kaivan.jpg" alt="Kaivan" referrerpolicy="no-referrer"></div>
       <div>
         <div class="profile-meta-name">Kaivan</div>
         <span class="profile-meta-full">Kaivan Pandu Nasution</span>
         <span class="profile-meta-tag">③ The Artsy Playboy</span>
         <hr class="profile-meta-divider">
-        <div class="profile-meta-row">
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Birth Order</span><span class="profile-meta-item-val">Third</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Domain</span><span class="profile-meta-item-val">Photography Loft</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Vibe</span><span class="profile-meta-item-val">Slow-burning intensity</span></div>
-        </div>
-        <div class="profile-meta-row">
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Dad</span><span class="profile-meta-item-val">Ayah</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Mom</span><span class="profile-meta-item-val">Bunda</span></div>
-        </div>
-        <p class="profile-desc-para">Silver rings. Messy hair. Studies your micro-expressions before you finish your sentence. Needs freedom — until suddenly he doesn't. He is perpetually surrounded by companions who all independently say he is "not like that at all, actually."</p>
-        <p class="profile-desc-para">A moody, dimly lit loft full of velvet couches and expensive camera gear serves as his domain. He operates on his own frequency—leaving people on read for hours only to send a blurry indie photo to show he cares, and Irish-exiting parties before midnight.</p>
+        <p class="profile-desc-para">Silver rings. Messy hair. Studies your micro-expressions before you finish your sentence. Needs freedom — until suddenly he doesn't. Leaves people on read for hours only to send a blurry indie photo to show he cares.</p>
       </div>
     </div>
   </div>
@@ -900,23 +423,13 @@ footer p {
   <!-- MAHESA -->
   <div id="profile-mahesa" class="profile-pane" style="display:none;">
     <div class="profile-hero-wrap">
-      <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/mahesa.jpg" alt="Mahesa" referrerpolicy="no-referrer" onerror="this.style.opacity='.2'"></div>
+      <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/mahesa.jpg" alt="Mahesa" referrerpolicy="no-referrer"></div>
       <div>
         <div class="profile-meta-name">Mahesa</div>
         <span class="profile-meta-full">Mahesa Saut Nasution</span>
         <span class="profile-meta-tag">④ The Loud One</span>
         <hr class="profile-meta-divider">
-        <div class="profile-meta-row">
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Birth Order</span><span class="profile-meta-item-val">Fourth</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Domain</span><span class="profile-meta-item-val">Music Studio</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Vibe</span><span class="profile-meta-item-val">Golden retriever with a guitar</span></div>
-        </div>
-        <div class="profile-meta-row">
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Dad</span><span class="profile-meta-item-val">Papa</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Mom</span><span class="profile-meta-item-val">Mama</span></div>
-        </div>
-        <p class="profile-desc-para">Always a song in his head, a guitar pick in his pocket. Taps drum beats on every surface. Breaks tension by being too much, on purpose, until it works. Requires significant external validation and will pay you back with unreasonable amounts of warmth.</p>
-        <p class="profile-desc-para">He rules over a soundproofed music studio with cables and setlists scattering the floor. His love language includes sending seventeen voice notes in a row and showing up to simple events with obscenely large flower bouquets like it's a soap opera.</p>
+        <p class="profile-desc-para">Always a song in his head, a guitar pick in his pocket. Breaks tension by being too much, on purpose, until it works. Requires significant external validation and will pay you back with unreasonable amounts of warmth.</p>
       </div>
     </div>
   </div>
@@ -924,111 +437,131 @@ footer p {
   <!-- ANGGARA -->
   <div id="profile-anggara" class="profile-pane" style="display:none;">
     <div class="profile-hero-wrap">
-      <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/anggara.jpg" alt="Anggara" referrerpolicy="no-referrer" onerror="this.style.opacity='.2'"></div>
+      <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/anggara.jpg" alt="Anggara" referrerpolicy="no-referrer"></div>
       <div>
         <div class="profile-meta-name">Anggara</div>
         <span class="profile-meta-full">Anggara Sahat Nasution</span>
         <span class="profile-meta-tag">⑤ The Silent Genius</span>
         <hr class="profile-meta-divider">
-        <div class="profile-meta-row">
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Birth Order</span><span class="profile-meta-item-val">Fifth</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Domain</span><span class="profile-meta-item-val">Biometric Server Cave</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Vibe</span><span class="profile-meta-item-val">Quiet devastation</span></div>
-        </div>
-        <div class="profile-meta-row">
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Dad</span><span class="profile-meta-item-val">Dad</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Mom</span><span class="profile-meta-item-val">Mom</span></div>
-        </div>
-        <p class="profile-desc-para">Recognizes people by their footstep cadence. Fixes your problems before you notice them. Sudden physical touch causes internal system crash — he looks stoic throughout. He is building a private intelligence firm out of a frozen, biometric-locked cave.</p>
-        <p class="profile-desc-para">He strictly communicates via Google Maps pins, calendar invites, and "Done." Nothing else is needed. He will silently memorize your weird habits and recalibrate his entire routine around them without ever actually telling you he cares.</p>
+        <p class="profile-desc-para">Recognizes people by their footstep cadence. Fixes your problems before you notice them. Sudden physical touch causes internal system crash. Strictly communicates via Google Maps pins, calendar invites, and "Done."</p>
       </div>
     </div>
   </div>
 
-  <footer>
-    <p>The Nasution Family &nbsp;◆&nbsp; Nasution Group &nbsp;◆&nbsp; Jakarta, Indonesia</p>
-  </footer>
+  <footer><p>The Nasution Family &nbsp;◆&nbsp; Nasution Group &nbsp;◆&nbsp; Jakarta, Indonesia</p></footer>
 </div>
 
 <!-- ═══════════════════════════════ FEED PAGE ═══════════════════════════════ -->
 <div id="page-feed" class="page">
   <div class="full-bleed-wrap feed-section">
-  <section style="max-width:960px;">
+  <section style="max-width:960px; padding-top: 3rem;">
     <div class="section-eyebrow">Dispatches &amp; Whispers</div>
-    <h2 class="section-title">What They're Saying</h2>
+    <h2 class="section-title">The Social Feed</h2>
     <div class="section-rule"><hr><span>◆</span><hr></div>
 
-    <div class="feed-grid">
-      <!-- GROUP CHAT -->
-      <div class="feed-card type-groupchat" data-delay="0">
-        <div class="groupchat-header"><span class="groupchat-name">rumah</span> &nbsp;· 7 members</div>
-        <div class="chat-bubble-wrap">
-          <div class="chat-bubble">
-            <div class="chat-bubble-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/varen.jpg" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'"></div>
-            <div class="chat-bubble-body"><div class="chat-bubble-name">1st</div><div class="chat-bubble-text">Whoever left the estate kitchen in that condition last night, I need you to sit with what you've done. I stress-cleaned it at 2AM. I am fine. This is fine. Please just clean up after yourselves.</div></div>
-          </div>
-          <div class="chat-bubble">
-            <div class="chat-bubble-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/mahesa.jpg" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'"></div>
-            <div class="chat-bubble-body"><div class="chat-bubble-name">4th</div><div class="chat-bubble-text">bro said "i am fine" 💀💀 kak varen it's 2am</div></div>
-          </div>
-          <div class="chat-bubble">
-            <div class="chat-bubble-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/guntur.jpg" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'"></div>
-            <div class="chat-bubble-body"><div class="chat-bubble-name">2nd</div><div class="chat-bubble-text">gue masak buat semua orang???</div></div>
-          </div>
-          <div class="chat-bubble">
-            <div class="chat-bubble-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/varen.jpg" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'"></div>
-            <div class="chat-bubble-body"><div class="chat-bubble-name">1st</div><div class="chat-bubble-text">That is not the point.</div></div>
-          </div>
-          <div class="chat-meta">my istri, 1st, 2nd, 4th, and 3 others &nbsp;·&nbsp; 2:34 AM</div>
+    <!-- FEED GLOBAL SETUP -->
+    <div class="setup-panel" id="feedSetupPanel">
+      <div class="setup-title">Your Social Profile & Settings</div>
+      <div class="setup-grid">
+        <div><label class="field-label">Your Name</label><input class="field-input global-name" type="text" placeholder="e.g. Rina" maxlength="40" oninput="syncInputs(this, '.global-name')"></div>
+        <div><label class="field-label">Your @Username</label><input class="field-input global-handle" type="text" placeholder="e.g. @rinaxx" oninput="syncInputs(this, '.global-handle')"></div>
+        <div>
+          <label class="field-label">Era</label>
+          <select class="field-select global-era" onchange="syncInputs(this, '.global-era')">
+            <option value="college">College Era — Suryakencana Institute</option>
+            <option value="adult">Adult Era — Post-graduation</option>
+          </select>
+        </div>
+        <div>
+          <label class="field-label">Relationship to the Family</label>
+          <select class="field-select global-rel" onchange="syncInputs(this, '.global-rel')">
+            <option value="friend">Friend / Acquaintance</option>
+            <option value="lover-varen">Varen's Lover / Partner</option>
+            <option value="lover-guntur">Guntur's Lover / Partner</option>
+            <option value="lover-kaivan">Kaivan's Lover / Partner</option>
+            <option value="lover-mahesa">Mahesa's Lover / Partner</option>
+            <option value="lover-anggara">Anggara's Lover / Partner</option>
+            <option value="rival">Rival / Campus Nemesis</option>
+          </select>
+        </div>
+        <div class="setup-full" style="border-top: 1px solid var(--divider); padding-top: 1rem; margin-top: .5rem;">
+          <label class="field-label">API Settings</label>
+          <select class="field-select global-apimode" onchange="syncInputs(this, '.global-apimode'); toggleApiFieldsAll()">
+            <option value="free">Free Tier (10 req/day, ends 25/04/2026)</option>
+            <option value="custom">Custom API / Proxy</option>
+          </select>
+        </div>
+        <div class="setup-full custom-api-fields global-apibox">
+          <div style="grid-column: 1 / -1;"><label class="field-label">Proxy / API URL</label><input class="field-input global-apiurl" type="text" placeholder="https://api.openai.com/v1/chat/completions" oninput="syncInputs(this, '.global-apiurl')"></div>
+          <div><label class="field-label">API Key</label><input class="field-input global-apikey" type="password" placeholder="sk-..." oninput="syncInputs(this, '.global-apikey')"></div>
+          <div><label class="field-label">Model Name</label><input class="field-input global-apimodel" type="text" placeholder="gpt-4o, claude-3-opus, etc." oninput="syncInputs(this, '.global-apimodel')"></div>
         </div>
       </div>
+      <button class="primary-btn" style="margin-top: 1.5rem;" onclick="document.getElementById('feedSetupPanel').style.display='none'; document.getElementById('feedComposeBox').style.display='block';">Save & View Feed</button>
+    </div>
 
-      <!-- TABLOID — Guntur -->
-      <div class="feed-card type-tabloid" data-delay="1">
-        <div class="feed-tabloid-tag">EXCLUSIVE</div>
-        <div class="feed-tabloid-headline">GUNTUR SANGGAM NASUTION FOLLOWS "VISIBLY TIRED" STUDENT ACROSS SURYAKENCANA CAMPUS TO HAND HIM A NUTRIENT BAR</div>
-        <div class="feed-tabloid-body">No words were exchanged. Guntur Sanggam Nasution, 22, approached the first-year from behind, placed a nutrient bar in his hand, and walked away. The student stood in place for several seconds. "I don't know what just happened," he told a friend shortly after. "But I feel cared for." Guntur has not commented. He has done it again since.</div>
-        <div class="feed-tabloid-source">— Suryakencana Campus Gazette</div>
+    <!-- COMPOSE TWEET -->
+    <div class="feed-compose-wrap" id="feedComposeBox" style="display:none;">
+      <div class="feed-compose-label">POST TO FEED</div>
+      <textarea class="feed-compose-area" id="socialComposeText" rows="3" placeholder="What's happening in Jakarta? Mention a Nasution to get their attention..."></textarea>
+      <div class="feed-compose-footer">
+        <span style="font-family:'Space Mono'; font-size:.5rem; color:var(--text-dim);" id="socialLimitText">Ready</span>
+        <button class="feed-compose-btn" id="socialComposeBtn" onclick="postSocialNew()">Post Update</button>
       </div>
+    </div>
 
-      <!-- SOCIETY — Kaivan -->
-      <div class="feed-card type-society" data-delay="2">
-        <div class="feed-society-ornament">◈ &nbsp; Social Observation</div>
-        <div class="feed-society-text"><strong>Kaivan Pandu Nasution</strong> was photographed at a South Jakarta café with an unidentified companion last Tuesday. This is the third such sighting this month. Fourth, if one counts the gallery opening. Fifth, if one counts Wednesday. Each companion, when reached separately, used the exact same words: <em>"He's not like that at all, actually."</em> None of them elaborated. None of them looked particularly unhappy about it. The investigation continues.</div>
-        <div class="feed-society-sig">Jakarta Socials Weekly &nbsp;·&nbsp; Issue 219</div>
-      </div>
-
+    <div class="feed-grid" id="feedGrid">
+      
       <!-- X — Mahesa -->
-      <div class="feed-card type-x" data-delay="3">
+      <div class="feed-card type-x">
         <div class="feed-header">
-          <div class="feed-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/mahesa.jpg" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'"></div>
+          <div class="feed-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/mahesa.jpg" referrerpolicy="no-referrer"></div>
           <div class="feed-handle"><strong>mahesa nasution 🎸</strong>@mahesasaut · ✓</div>
         </div>
-        <div class="feed-x-text">just played an unreleased song at varen's office bc he "looked tense" 🎶 he called security. i played THROUGH it. security stayed to listen 🙏 varen is still tense but that is a him problem and also a great sign bc it means the song hits</div>
-        <div class="feed-x-meta">posted at 11:42 AM &nbsp;·&nbsp; 88.3K likes &nbsp;·&nbsp; 14.1K reposts</div>
-      </div>
-      
-      <!-- SOCIETY — Firman -->
-      <div class="feed-card type-society" data-delay="5">
-        <div class="feed-society-ornament">◈ &nbsp; The Patriarch</div>
-        <div class="feed-society-text"><strong>Firman Rahardja Nasution</strong> has not missed a Sunday family lunch in twenty-two years. Not once for a merger. Not once for a state matter. In a 2019 interview, he was asked how he managed it. He was quiet for a long moment. Then he said: <em>"My wife makes the schedule."</em> The interviewer waited for him to elaborate. He did not. The interview ended shortly after.</div>
-        <div class="feed-society-sig">Jakarta Society Quarterly &nbsp;·&nbsp; The Patriarch Issue</div>
+        <div class="feed-x-text" id="mahesa-post-text">just played an unreleased song at varen's office bc he "looked tense" 🎶 he called security. i played THROUGH it. security stayed to listen 🙏 varen is still tense but that is a him problem and also a great sign bc it means the song hits</div>
+        
+        <div class="x-action-bar">
+          <div class="x-action-btn" onclick="toggleReplyBox('replybox-mahesa1')">💬 Reply</div>
+          <div class="x-action-btn">🔁 Repost</div>
+          <div class="x-action-btn">❤️ Like</div>
+        </div>
+        
+        <!-- Reply Input -->
+        <div class="x-reply-box" id="replybox-mahesa1">
+          <div class="x-reply-input-wrap">
+            <input type="text" class="x-reply-input" id="input-mahesa1" placeholder="Tweet your reply...">
+            <button class="x-reply-send" onclick="sendSocialReply('replybox-mahesa1', 'input-mahesa1', 'threads-mahesa1', 'Mahesa', 'just played an unreleased song at varen\'s office bc he looked tense...')">Send</button>
+          </div>
+        </div>
+        <!-- Thread Container for AI replies -->
+        <div class="thread-replies" id="threads-mahesa1"></div>
       </div>
 
-      <!-- TABLOID — Anggara -->
-      <div class="feed-card type-tabloid" data-delay="4">
-        <div class="feed-tabloid-tag">DEVELOPING</div>
-        <div class="feed-tabloid-headline">RIVAL TECH STARTUP DISSOLVES 48 HOURS AFTER PUBLIC DISPUTE WITH ANGGARA NASUTION. CAUSE DESCRIBED AS "UNCLEAR." HE ATTENDED 8AM CLASS AS USUAL. HE BROUGHT HIS OWN COFFEE. IT WAS VERY GOOD COFFEE.</div>
-        <div class="feed-tabloid-body">Authorities are not investigating. Anggara Sahat Nasution has not been contacted. When a reporter attempted to approach him outside Suryakencana Institute, he looked up from his laptop, held eye contact for three seconds, and looked back down. The reporter left.</div>
-        <div class="feed-tabloid-source">— Bisnis Jakarta, Breaking Desk</div>
+      <!-- X — Suryakencana confessions -->
+      <div class="feed-card type-x">
+        <div class="feed-header">
+          <div class="feed-avatar"><div class="feed-avatar-placeholder">SI</div></div>
+          <div class="feed-handle"><strong>suryakencana confessions</strong>@sikonfes · anon</div>
+        </div>
+        <div class="feed-x-text">submission: "anggara nasution corrected our professor mid-lecture. with sources. printed. the professor said thank you and asked if he had time to consult on the next module. anggara said he'd check his schedule. he has not checked his schedule. that was four weeks ago. i am not fine with this."</div>
+        
+        <div class="x-action-bar">
+          <div class="x-action-btn" onclick="toggleReplyBox('replybox-anon1')">💬 Reply</div>
+        </div>
+        
+        <div class="x-reply-box" id="replybox-anon1">
+          <div class="x-reply-input-wrap">
+            <input type="text" class="x-reply-input" id="input-anon1" placeholder="Tweet your reply...">
+            <button class="x-reply-send" onclick="sendSocialReply('replybox-anon1', 'input-anon1', 'threads-anon1', 'Campus Confessions', 'anggara nasution corrected our professor mid-lecture...')">Send</button>
+          </div>
+        </div>
+        <div class="thread-replies" id="threads-anon1"></div>
       </div>
+
     </div>
   </section>
   </div>
-
-  <footer>
-    <p>The Nasution Family &nbsp;◆&nbsp; Nasution Group &nbsp;◆&nbsp; Jakarta, Indonesia</p>
-  </footer>
+  <footer><p>The Nasution Family &nbsp;◆&nbsp; Nasution Group &nbsp;◆&nbsp; Jakarta, Indonesia</p></footer>
 </div>
 
 <!-- ═══════════════════════════════ CHAT PAGE ═══════════════════════════════ -->
@@ -1038,28 +571,22 @@ footer p {
     <h2 class="section-title" style="margin-bottom:.55rem;">Talk to the Nasutions</h2>
     <div class="section-rule" style="margin-bottom:2rem;"><hr><span>◆</span><hr></div>
 
-    <!-- SETUP PANEL -->
-    <div class="chat-setup-panel" id="chatSetupPanel">
-      <div class="chat-setup-title">Your Information</div>
-      <div class="chat-setup-grid">
+    <!-- CHAT SETUP PANEL -->
+    <div class="setup-panel" id="chatSetupPanel">
+      <div class="setup-title">Your Profile & Settings</div>
+      <div class="setup-grid">
+        <div><label class="field-label">Your Name</label><input class="field-input global-name" type="text" placeholder="e.g. Rina" maxlength="40" oninput="syncInputs(this, '.global-name')"></div>
+        <div><label class="field-label">Your @Username</label><input class="field-input global-handle" type="text" placeholder="e.g. @rinaxx" oninput="syncInputs(this, '.global-handle')"></div>
         <div>
-          <label class="chat-field-label">Your Name</label>
-          <input class="chat-field-input" id="chatUserName" type="text" placeholder="e.g. Rina, Sari, Zara..." maxlength="40" autocomplete="off">
-        </div>
-        <div>
-          <label class="chat-field-label">Your Age</label>
-          <input class="chat-field-input" id="chatUserAge" type="number" placeholder="e.g. 21" min="16" max="40">
-        </div>
-        <div>
-          <label class="chat-field-label">Era</label>
-          <select class="chat-field-select" id="chatEra">
-            <option value="college">College Era — Suryakencana Institute</option>
+          <label class="field-label">Era</label>
+          <select class="field-select global-era" onchange="syncInputs(this, '.global-era')">
+            <option value="college">College Era — Suryakencana</option>
             <option value="adult">Adult Era — Post-graduation</option>
           </select>
         </div>
         <div>
-          <label class="chat-field-label">Relationship to the Family</label>
-          <select class="chat-field-select" id="chatRelationship">
+          <label class="field-label">Relationship to Family</label>
+          <select class="field-select global-rel" onchange="syncInputs(this, '.global-rel')">
             <option value="friend">Friend / Acquaintance</option>
             <option value="lover-varen">Varen's Lover / Partner</option>
             <option value="lover-guntur">Guntur's Lover / Partner</option>
@@ -1067,70 +594,35 @@ footer p {
             <option value="lover-mahesa">Mahesa's Lover / Partner</option>
             <option value="lover-anggara">Anggara's Lover / Partner</option>
             <option value="rival">Rival / Campus Nemesis</option>
-            <option value="classmate">Classmate</option>
           </select>
         </div>
         
-        <div class="chat-setup-full" style="border-top: 1px solid var(--divider); margin-top: .5rem; padding-top: 1.5rem;">
-          <label class="chat-field-label">Who Would You Like to Chat With?</label>
+        <div class="setup-full" style="border-top: 1px solid var(--divider); padding-top: 1.5rem;">
+          <label class="field-label">Who Would You Like to Chat With?</label>
           <div class="chat-who-grid" id="chatWhoGrid">
-            <div class="chat-who-card selected" data-who="group" onclick="selectWho(this)">
-              <div class="chat-who-avatar" style="display:flex;align-items:center;justify-content:center;font-family:'Cormorant SC',serif;font-size:.7rem;color:var(--gold);">ALL</div>
-              <div><div class="chat-who-name">Group Chat</div><span class="chat-who-tag">All five — rumah</span></div>
-              <div class="chat-who-check">◆</div>
-            </div>
-            <div class="chat-who-card" data-who="varen" onclick="selectWho(this)">
-              <div class="chat-who-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/varen.jpg" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'"></div>
-              <div><div class="chat-who-name">Varen</div><span class="chat-who-tag">① The Eldest</span></div>
-              <div class="chat-who-check">◆</div>
-            </div>
-            <div class="chat-who-card" data-who="guntur" onclick="selectWho(this)">
-              <div class="chat-who-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/guntur.jpg" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'"></div>
-              <div><div class="chat-who-name">Guntur</div><span class="chat-who-tag">② The Giant</span></div>
-              <div class="chat-who-check">◆</div>
-            </div>
-            <div class="chat-who-card" data-who="kaivan" onclick="selectWho(this)">
-              <div class="chat-who-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/kaivan.jpg" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'"></div>
-              <div><div class="chat-who-name">Kaivan</div><span class="chat-who-tag">③ The Artist</span></div>
-              <div class="chat-who-check">◆</div>
-            </div>
-            <div class="chat-who-card" data-who="mahesa" onclick="selectWho(this)">
-              <div class="chat-who-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/mahesa.jpg" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'"></div>
-              <div><div class="chat-who-name">Mahesa</div><span class="chat-who-tag">④ The Loud One</span></div>
-              <div class="chat-who-check">◆</div>
-            </div>
-            <div class="chat-who-card" data-who="anggara" onclick="selectWho(this)">
-              <div class="chat-who-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/anggara.jpg" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'"></div>
-              <div><div class="chat-who-name">Anggara</div><span class="chat-who-tag">⑤ The Genius</span></div>
-              <div class="chat-who-check">◆</div>
-            </div>
+            <div class="chat-who-card selected" data-who="group" onclick="selectWho(this)"><div class="chat-who-avatar" style="display:flex;align-items:center;justify-content:center;font-family:'Cormorant SC',serif;font-size:.7rem;color:var(--gold);">ALL</div><div><div class="chat-who-name">Group Chat</div><span class="chat-who-tag">All five — rumah</span></div><div class="chat-who-check">◆</div></div>
+            <div class="chat-who-card" data-who="varen" onclick="selectWho(this)"><div class="chat-who-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/varen.jpg" referrerpolicy="no-referrer"></div><div><div class="chat-who-name">Varen</div><span class="chat-who-tag">① The Eldest</span></div><div class="chat-who-check">◆</div></div>
+            <div class="chat-who-card" data-who="guntur" onclick="selectWho(this)"><div class="chat-who-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/guntur.jpg" referrerpolicy="no-referrer"></div><div><div class="chat-who-name">Guntur</div><span class="chat-who-tag">② The Giant</span></div><div class="chat-who-check">◆</div></div>
+            <div class="chat-who-card" data-who="kaivan" onclick="selectWho(this)"><div class="chat-who-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/kaivan.jpg" referrerpolicy="no-referrer"></div><div><div class="chat-who-name">Kaivan</div><span class="chat-who-tag">③ The Artist</span></div><div class="chat-who-check">◆</div></div>
+            <div class="chat-who-card" data-who="mahesa" onclick="selectWho(this)"><div class="chat-who-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/mahesa.jpg" referrerpolicy="no-referrer"></div><div><div class="chat-who-name">Mahesa</div><span class="chat-who-tag">④ The Loud One</span></div><div class="chat-who-check">◆</div></div>
+            <div class="chat-who-card" data-who="anggara" onclick="selectWho(this)"><div class="chat-who-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/anggara.jpg" referrerpolicy="no-referrer"></div><div><div class="chat-who-name">Anggara</div><span class="chat-who-tag">⑤ The Genius</span></div><div class="chat-who-check">◆</div></div>
           </div>
         </div>
 
-        <div class="chat-setup-full" style="border-top: 1px solid var(--divider); margin-top: .5rem; padding-top: 1.5rem;">
-          <label class="chat-field-label">API Settings</label>
-          <select class="chat-field-select" id="chatApiMode" onchange="toggleApiFields()">
+        <div class="setup-full" style="border-top: 1px solid var(--divider); padding-top: 1.5rem;">
+          <label class="field-label">API Settings</label>
+          <select class="field-select global-apimode" onchange="syncInputs(this, '.global-apimode'); toggleApiFieldsAll()">
             <option value="free">Free Tier (10 req/day, ends 25/04/2026)</option>
             <option value="custom">Custom API / Proxy</option>
           </select>
         </div>
-        
-        <div id="customApiFields" class="chat-setup-full">
-          <div style="grid-column: 1 / -1;">
-            <label class="chat-field-label">Proxy / API URL</label>
-            <input class="chat-field-input" id="chatApiUrl" type="text" placeholder="https://api.openai.com/v1/chat/completions">
-          </div>
-          <div>
-            <label class="chat-field-label">API Key</label>
-            <input class="chat-field-input" id="chatApiKey" type="password" placeholder="sk-...">
-          </div>
-          <div>
-            <label class="chat-field-label">Model Name</label>
-            <input class="chat-field-input" id="chatApiModel" type="text" placeholder="gpt-4o, claude-3-opus, etc.">
-          </div>
+        <div class="setup-full custom-api-fields global-apibox">
+          <div style="grid-column: 1 / -1;"><label class="field-label">Proxy / API URL</label><input class="field-input global-apiurl" type="text" placeholder="https://api.openai.com/v1/chat/completions" oninput="syncInputs(this, '.global-apiurl')"></div>
+          <div><label class="field-label">API Key</label><input class="field-input global-apikey" type="password" placeholder="sk-..." oninput="syncInputs(this, '.global-apikey')"></div>
+          <div><label class="field-label">Model Name</label><input class="field-input global-apimodel" type="text" placeholder="gpt-4o, claude-3-opus, etc." oninput="syncInputs(this, '.global-apimodel')"></div>
         </div>
       </div>
-      <button class="chat-start-btn" onclick="startChat()">Enter Chat</button>
+      <button class="primary-btn" style="margin-top: 2rem;" onclick="startChat()">Enter Chat</button>
     </div>
 
     <!-- CHAT WINDOW -->
@@ -1149,100 +641,93 @@ footer p {
         <button class="chat-send-btn" id="chatSendBtn" onclick="sendChatMsg()">➤</button>
       </div>
     </div>
-
   </div>
-
-  <footer>
-    <p>The Nasution Family &nbsp;◆&nbsp; Nasution Group &nbsp;◆&nbsp; Jakarta, Indonesia</p>
-  </footer>
+  <footer><p>The Nasution Family &nbsp;◆&nbsp; Nasution Group &nbsp;◆&nbsp; Jakarta, Indonesia</p></footer>
 </div>
 
 <script>
 // ══════════════════════════════════════════════════════════════════
-// PAGE / PROFILE ROUTING
+// PAGE ROUTING & GLOBAL SETTINGS SYNC
 // ══════════════════════════════════════════════════════════════════
-
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
   const tabMap = {home:'Home',profiles:'Profiles',feed:'Dispatches',chat:'Chat'};
-  document.querySelectorAll('.nav-tab').forEach(t => {
-    t.classList.toggle('active', t.textContent.trim() === tabMap[id]);
-  });
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', t.textContent.trim() === tabMap[id]));
   window.scrollTo(0,0);
-  triggerReveal();
 }
 
 function showProfile(name, btn) {
-  document.querySelectorAll('[id^="profile-"]').forEach(p => {
-    if (!p.id.includes('-')) return;
-    p.style.display = 'none';
-  });
+  document.querySelectorAll('[id^="profile-"]').forEach(p => { if (p.id.includes('-')) p.style.display = 'none'; });
   document.getElementById('profile-' + name).style.display = 'block';
   document.querySelectorAll('.profile-selector-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 }
 
-// ══════════════════════════════════════════════════════════════════
-// SCROLL REVEAL
-// ══════════════════════════════════════════════════════════════════
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const delay = parseInt(entry.target.dataset.delay || 0) * 110;
-      setTimeout(() => entry.target.classList.add('visible'), delay);
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.08 });
-
-function triggerReveal() {
-  document.querySelectorAll('.son-card, .parent-card, .feed-card, .lore-pill').forEach(el => {
-    if (!el.classList.contains('visible')) observer.observe(el);
-  });
+// SYNC INPUTS ACROSS FORMS
+function syncInputs(source, classSelector) {
+  const val = source.value;
+  document.querySelectorAll(classSelector).forEach(el => el.value = val);
+  saveToLocal();
 }
-triggerReveal();
+
+function saveToLocal() {
+  const data = {
+    name: document.querySelector('.global-name').value,
+    handle: document.querySelector('.global-handle').value,
+    era: document.querySelector('.global-era').value,
+    rel: document.querySelector('.global-rel').value,
+    apimode: document.querySelector('.global-apimode').value,
+    apiurl: document.querySelector('.global-apiurl').value,
+    apikey: document.querySelector('.global-apikey').value,
+    apimodel: document.querySelector('.global-apimodel').value
+  };
+  localStorage.setItem('nasution_profile_settings', JSON.stringify(data));
+}
+
+function loadFromLocal() {
+  const saved = localStorage.getItem('nasution_profile_settings');
+  if (saved) {
+    const data = JSON.parse(saved);
+    document.querySelectorAll('.global-name').forEach(el => el.value = data.name || '');
+    document.querySelectorAll('.global-handle').forEach(el => el.value = data.handle || '');
+    document.querySelectorAll('.global-era').forEach(el => el.value = data.era || 'college');
+    document.querySelectorAll('.global-rel').forEach(el => el.value = data.rel || 'friend');
+    document.querySelectorAll('.global-apimode').forEach(el => el.value = data.apimode || 'free');
+    document.querySelectorAll('.global-apiurl').forEach(el => el.value = data.apiurl || '');
+    document.querySelectorAll('.global-apikey').forEach(el => el.value = data.apikey || '');
+    document.querySelectorAll('.global-apimodel').forEach(el => el.value = data.apimodel || '');
+  }
+  toggleApiFieldsAll();
+}
+
+function toggleApiFieldsAll() {
+  const mode = document.querySelector('.global-apimode').value;
+  document.querySelectorAll('.global-apibox').forEach(el => {
+    el.style.display = mode === 'custom' ? 'grid' : 'none';
+  });
+  updateUIForLimit();
+}
+window.addEventListener('DOMContentLoaded', loadFromLocal);
 
 // ══════════════════════════════════════════════════════════════════
-// CHAT SYSTEM WITH CUSTOM API / FREE TIER
+// API & RATE LIMIT LOGIC
 // ══════════════════════════════════════════════════════════════════
-
 const FREE_API_URL = "https://key-vault--malareissu.replit.app/api/chat";
-let chatMessages = [];
-let chatConfig = {};
-let selectedWho = 'group';
 
 const CHAR_DATA = {
-  varen: { name: 'Varen Togar Nasution', label: '1st · Varen', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/varen.jpg' },
-  guntur: { name: 'Guntur Sanggam Nasution', label: '2nd · Guntur', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/guntur.jpg' },
-  kaivan: { name: 'Kaivan Pandu Nasution', label: '3rd · Kaivan', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/kaivan.jpg' },
-  mahesa: { name: 'Mahesa Saut Nasution', label: '4th · Mahesa', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/mahesa.jpg' },
-  anggara: { name: 'Anggara Sahat Nasution', label: '5th · Anggara', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/anggara.jpg' }
+  varen: { name: 'Varen', label: '1st · Varen', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/varen.jpg' },
+  guntur: { name: 'Guntur', label: '2nd · Guntur', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/guntur.jpg' },
+  kaivan: { name: 'Kaivan', label: '3rd · Kaivan', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/kaivan.jpg' },
+  mahesa: { name: 'Mahesa', label: '4th · Mahesa', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/mahesa.jpg' },
+  anggara: { name: 'Anggara', label: '5th · Anggara', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/anggara.jpg' }
 };
 
-function toggleApiFields() {
-  const mode = document.getElementById('chatApiMode').value;
-  document.getElementById('customApiFields').style.display = mode === 'custom' ? 'grid' : 'none';
-  if(mode === 'custom') {
-    document.getElementById('chatInput').disabled = false;
-    document.getElementById('chatSendBtn').disabled = false;
-    document.getElementById('chatInput').placeholder = "Type a message...";
-  } else {
-    updateUIForLimit();
-  }
-}
-
-// --- Rate Limiting Logic (Local Storage) ---
 function checkDailyLimit() {
   const today = new Date().toDateString();
   const storedDate = localStorage.getItem('nasution_chat_date');
   let count = parseInt(localStorage.getItem('nasution_chat_count') || '0', 10);
-  if (storedDate !== today) {
-    count = 0;
-    localStorage.setItem('nasution_chat_date', today);
-    localStorage.setItem('nasution_chat_count', count);
-  }
+  if (storedDate !== today) { count = 0; localStorage.setItem('nasution_chat_date', today); localStorage.setItem('nasution_chat_count', count); }
   return count;
 }
 function incrementDailyLimit() {
@@ -1250,23 +735,209 @@ function incrementDailyLimit() {
   localStorage.setItem('nasution_chat_count', count + 1);
   return count + 1;
 }
+
 function updateUIForLimit() {
-  if (document.getElementById('chatApiMode').value === 'custom') return true;
+  const mode = document.querySelector('.global-apimode').value;
   const count = checkDailyLimit();
-  const input = document.getElementById('chatInput');
-  const btn = document.getElementById('chatSendBtn');
-  if (count >= 10) {
-    input.disabled = true;
-    btn.disabled = true;
-    input.placeholder = "Daily limit of 10 msgs reached on free tier. Change to custom proxy or wait until tomorrow.";
-    return false;
-  } else {
-    input.disabled = false;
-    btn.disabled = false;
-    input.placeholder = `Type a message... (${10 - count} left today)`;
-    return true;
+  const limitReached = mode === 'free' && count >= 10;
+  
+  // Update Chat UI
+  const cInput = document.getElementById('chatInput');
+  const cBtn = document.getElementById('chatSendBtn');
+  if(cInput) {
+    cInput.disabled = limitReached;
+    cBtn.disabled = limitReached;
+    cInput.placeholder = limitReached ? "Daily limit reached on free tier. Switch to Custom API." : (mode === 'free' ? `Type a message... (${10-count} left today)` : "Type a message...");
+  }
+  
+  // Update Social UI
+  const sBtn = document.getElementById('socialComposeBtn');
+  const sLimitText = document.getElementById('socialLimitText');
+  if(sBtn) {
+    sBtn.disabled = limitReached;
+    sLimitText.textContent = limitReached ? "Limit Reached" : (mode === 'free' ? `${10-count} posts left today` : "Custom API Ready");
+  }
+  return !limitReached;
+}
+
+async function doFetchCall(systemPrompt, userMessages) {
+  const mode = document.querySelector('.global-apimode').value;
+  let fetchUrl = FREE_API_URL;
+  let fetchHeaders = { 'Content-Type': 'application/json' };
+  let fetchBody = { system: systemPrompt, messages: userMessages };
+
+  if (mode === 'custom') {
+    fetchUrl = document.querySelector('.global-apiurl').value.trim() || 'https://api.openai.com/v1/chat/completions';
+    const key = document.querySelector('.global-apikey').value.trim();
+    const model = document.querySelector('.global-apimodel').value.trim() || 'gpt-3.5-turbo';
+    if (key) fetchHeaders['Authorization'] = `Bearer ${key}`;
+    fetchBody = { model: model, messages: [ { role: 'system', content: systemPrompt }, ...userMessages ] };
+  }
+
+  const res = await fetch(fetchUrl, { method: 'POST', headers: fetchHeaders, body: JSON.stringify(fetchBody) });
+  const data = await res.json();
+  
+  if (mode === 'free' && !data.error) incrementDailyLimit();
+  updateUIForLimit();
+
+  if (data.choices && data.choices[0]) return data.choices[0].message.content;
+  if (data.content && data.content[0]) return data.content[0].text;
+  if (data.reply) return data.reply;
+  if (data.error) throw new Error(data.error.message || 'API Error');
+  return JSON.stringify(data);
+}
+
+// ══════════════════════════════════════════════════════════════════
+// SOCIAL MEDIA LOGIC (FEED PAGE)
+// ══════════════════════════════════════════════════════════════════
+function getSocialContext() {
+  const name = document.querySelector('.global-name').value || 'User';
+  const handle = document.querySelector('.global-handle').value || '@user';
+  const era = document.querySelector('.global-era').value;
+  const rel = document.querySelector('.global-rel').value;
+  const loverMatch = rel.match(/lover-(.+)/);
+  const loverName = loverMatch ? loverMatch[1] : null;
+
+  let prompt = `You are playing the 5 Nasution brothers replying on Twitter/X to a user's post.
+Context: Era is ${era}. User Name: ${name}. Handle: ${handle}. Relationship: ${rel}.
+RULES:
+1. Pick 1 or 2 brothers randomly to reply. ${loverName ? `CRITICAL: Since the user is dating ${loverName.toUpperCase()}, ${loverName.toUpperCase()} MUST be one of the replies and act protective/soft.` : ''}
+2. Format strictly as "**[Brother Name]:** [tweet text]". 
+3. Writing style: Lowercase, short internet slang, casual. Use 1 Indonesian slang word per reply with immediate (english) translation.
+- Varen: tired, protective, formal slang.
+- Guntur: ALL CAPS sometimes, grumpy, asks if they ate.
+- Kaivan: aesthetic, vague, ignores punctuation.
+- Mahesa: loud, spams emojis (😭💀🙏🏻).
+- Anggara: 1 word replies. "y" or "done". No emojis.`;
+
+  return prompt;
+}
+
+async function postSocialNew() {
+  if (!updateUIForLimit()) return;
+  const input = document.getElementById('socialComposeText');
+  const text = input.value.trim();
+  if(!text) return;
+  input.value = '';
+
+  const name = document.querySelector('.global-name').value || 'User';
+  const handle = document.querySelector('.global-handle').value || '@user';
+
+  // 1. Create Post UI
+  const grid = document.getElementById('feedGrid');
+  const cardId = 'post-' + Date.now();
+  const cardHtml = `
+    <div class="feed-card type-x visible">
+      <div class="feed-header">
+        <div class="feed-avatar"><div class="feed-avatar-placeholder">${name.charAt(0).toUpperCase()}</div></div>
+        <div class="feed-handle"><strong>${name}</strong>${handle} · just now</div>
+      </div>
+      <div class="feed-x-text">${escHtml(text)}</div>
+      <div class="x-action-bar">
+        <div class="x-action-btn" onclick="toggleReplyBox('reply-${cardId}')">💬 Reply</div>
+      </div>
+      <div class="x-reply-box" id="reply-${cardId}">
+        <div class="x-reply-input-wrap">
+          <input type="text" class="x-reply-input" id="input-${cardId}" placeholder="Tweet your reply...">
+          <button class="x-reply-send" onclick="sendSocialReply('reply-${cardId}', 'input-${cardId}', 'threads-${cardId}', '${name}', '${escHtml(text)}')">Send</button>
+        </div>
+      </div>
+      <div class="thread-replies" id="threads-${cardId}">
+        <div class="thread-item loading" style="color:var(--gold); font-size:.7rem;"><i>waiting for replies...</i></div>
+      </div>
+    </div>`;
+  grid.insertAdjacentHTML('afterbegin', cardHtml);
+
+  // 2. Fetch AI Replies
+  try {
+    const sys = getSocialContext();
+    const msgs = [{ role: 'user', content: `The user just tweeted: "${text}"` }];
+    const replyTxt = await doFetchCall(sys, msgs);
+    
+    document.querySelector(`#threads-${cardId} .loading`).remove();
+    appendSocialReplies(`threads-${cardId}`, replyTxt);
+  } catch (e) {
+    document.querySelector(`#threads-${cardId} .loading`).innerHTML = `⚠ Failed to load replies.`;
   }
 }
+
+function toggleReplyBox(id) {
+  document.getElementById(id).classList.toggle('active');
+}
+
+async function sendSocialReply(boxId, inputId, threadContainerId, originalName, originalText) {
+  if (!updateUIForLimit()) return;
+  const input = document.getElementById(inputId);
+  const text = input.value.trim();
+  if(!text) return;
+  input.value = '';
+  document.getElementById(boxId).classList.remove('active');
+
+  const myName = document.querySelector('.global-name').value || 'User';
+  
+  // Append user's reply locally
+  const tContainer = document.getElementById(threadContainerId);
+  const userHtml = `
+    <div class="thread-item">
+      <div class="thread-avatar"><div class="feed-avatar-placeholder">${myName.charAt(0).toUpperCase()}</div></div>
+      <div class="thread-body">
+        <div class="thread-name">${myName}</div>
+        <div class="thread-text">${escHtml(text)}</div>
+      </div>
+    </div>
+    <div class="thread-item loading" style="color:var(--gold); font-size:.7rem;"><i>waiting...</i></div>`;
+  tContainer.insertAdjacentHTML('beforeend', userHtml);
+
+  // Fetch AI Reply
+  try {
+    const sys = getSocialContext();
+    const promptText = `Original Post by ${originalName}: "${originalText}"\nThe user replied to it with: "${text}"\nWrite 1 or 2 Nasution brothers reacting to the user's reply.`;
+    const replyTxt = await doFetchCall(sys, [{role:'user', content: promptText}]);
+    
+    tContainer.querySelector('.loading').remove();
+    appendSocialReplies(threadContainerId, replyTxt);
+  } catch (e) {
+    tContainer.querySelector('.loading').innerHTML = `⚠ Failed.`;
+  }
+}
+
+function appendSocialReplies(containerId, text) {
+  const container = document.getElementById(containerId);
+  const lines = text.split('\n');
+  let current = null;
+  const results = [];
+  
+  for (const line of lines) {
+    const match = line.match(/^\*?\*?([A-Za-z]+)\*?\*?:\s*(.*)/);
+    if (match) {
+      if(current) results.push(current);
+      current = { name: match[1], text: match[2] };
+    } else if (current && line.trim()) {
+      current.text += '<br>' + line;
+    }
+  }
+  if(current) results.push(current);
+
+  results.forEach(msg => {
+    const key = msg.name ? Object.keys(CHAR_DATA).find(k => CHAR_DATA[k].name.toLowerCase() === msg.name.toLowerCase()) : null;
+    const imgHtml = key ? `<img src="${CHAR_DATA[key].img}">` : `<div class="feed-avatar-placeholder">N</div>`;
+    const html = `
+      <div class="thread-item">
+        <div class="thread-avatar">${imgHtml}</div>
+        <div class="thread-body">
+          <div class="thread-name">${msg.name || 'Nasution'}</div>
+          <div class="thread-text">${formatMsgText(msg.text)}</div>
+        </div>
+      </div>`;
+    container.insertAdjacentHTML('beforeend', html);
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════
+// CHAT LOGIC
+// ══════════════════════════════════════════════════════════════════
+let chatMessages = [];
+let selectedWho = 'group';
 
 function selectWho(card) {
   document.querySelectorAll('.chat-who-card').forEach(c => c.classList.remove('selected'));
@@ -1274,106 +945,54 @@ function selectWho(card) {
   selectedWho = card.dataset.who;
 }
 
-function buildSystemPrompt(cfg) {
-  const eraText = cfg.era === 'college'
-    ? 'They are students at Suryakencana Institute. The quintuplets are campus royalty.'
-    : 'They are post-graduation, independently building their own empires while locked out of Nasution Corp.';
-
-  const relText = {
-    'friend': `${cfg.userName} is a friend/acquaintance.`,
-    'lover-varen': `${cfg.userName} is Varen's partner/lover. Varen should treat them with particular warmth.`,
-    'lover-guntur': `${cfg.userName} is Guntur's partner/lover. Guntur should be deeply protective and gruff-soft.`,
-    'lover-kaivan': `${cfg.userName} is Kaivan's partner/lover. Kaivan should be highly observant and quietly possessive.`,
-    'lover-mahesa': `${cfg.userName} is Mahesa's partner/lover. Mahesa should be clingy, loud, and praise-heavy.`,
-    'lover-anggara': `${cfg.userName} is Anggara's partner/lover. Anggara should track their habits silently and be highly attentive.`,
-    'rival': `${cfg.userName} is a campus rival.`,
-    'classmate': `${cfg.userName} is a classmate at Suryakencana.`
-  }[cfg.relationship] || `${cfg.userName} is known to the family.`;
-
-  const singleChar = cfg.who !== 'group';
-  const charName = singleChar ? CHAR_DATA[cfg.who]?.name : null;
-  const loverMatch = cfg.relationship.match(/lover-(.+)/);
+function buildChatSystemPrompt() {
+  const name = document.querySelector('.global-name').value || 'User';
+  const era = document.querySelector('.global-era').value;
+  const rel = document.querySelector('.global-rel').value;
+  const loverMatch = rel.match(/lover-(.+)/);
   const loverName = loverMatch ? loverMatch[1] : null;
 
-  let charInstructions = '';
-  if (singleChar) {
-    const profiles = {
-      varen: `You are VAREN, 1st born. Texting style: Proper, calm, slightly exhausted. Fixes collars, double-texts about food.`,
-      guntur: `You are GUNTUR, 2nd born. Texting style: Gruff, blunt, food-focused. Uses ALL CAPS when complaining or worried.`,
-      kaivan: `You are KAIVAN, 3rd born. Texting style: Aesthetic, lower case mostly, leaves things unsaid, mysterious.`,
-      mahesa: `You are MAHESA, 4th born. Texting style: Dramatic chat slang, spam emojis (🎸💀😭🙏🏻), loud and warm.`,
-      anggara: `You are ANGGARA, 5th born. Texting style: Extremely minimal. "y" or "done". Rarely punctuation.`
-    };
-    charInstructions = `\n\n${profiles[cfg.who]}\n\nYou are responding ONLY as ${charName}.`;
+  let prompt = `You are roleplaying text messages. Era: ${era}. User: ${name}. Rel: ${rel}.
+RULES: 1-2 short text bubbles max. Mostly English + 1 indonesian slang word with (english) translation. Format like texts, no actions in asterisks.`;
+
+  if (selectedWho === 'group') {
+    prompt += `\nYou are playing the "rumah" group chat with all 5 brothers. Randomly pick 1-4 brothers to reply. Randomize who speaks first. ${loverName ? `CRITICAL: ${loverName.toUpperCase()} MUST reply frequently because he is dating the user.` : ''}
+Format: "**[Name]:** text".
+- Varen: exhausted/formal.
+- Guntur: grumpy/ALL CAPS.
+- Kaivan: aesthetic/mysterious.
+- Mahesa: loud emojis (💀😭).
+- Anggara: 1 word ("y").`;
   } else {
-    let groupDyn = `You are playing ALL FIVE Nasution brothers in a group chat called "rumah". Each message MUST be tagged clearly with the sender (e.g. **Varen:** or **Guntur:**). `;
-    groupDyn += `\nDO NOT have everyone reply all the time. Randomly choose 1, 2, 3, or sometimes all 5 brothers to reply. `;
-    groupDyn += `\nMake the first person to reply completely RANDOM. It should NOT always be Mahesa. `;
-    if (loverName) {
-      groupDyn += `\nCRITICAL: Since the user is dating ${loverName.toUpperCase()}, ${loverName.toUpperCase()} MUST reply frequently to protect or react to his partner in the chat. `;
-    }
-    groupDyn += `\n\nTexting styles:
-- **Varen:** polite but tired texting. types properly.
-- **Guntur:** gruff, ALL CAPS sometimes, texts about food/safety.
-- **Kaivan:** cryptic, aesthetic, leaves things unsaid, lower case.
-- **Mahesa:** burst energy, spam emojis (🎸💀😭🙏🏻), dramatic chat slang.
-- **Anggara:** minimal. "y" or "done". No emojis.`;
-    charInstructions = `\n\n${groupDyn}`;
+    prompt += `\nYou are ONLY playing ${CHAR_DATA[selectedWho].name}.`;
   }
-
-  return `You are an AI roleplaying as character(s) from the Nasution Family creative fiction universe.
-WORLD: 2026. Jakarta high society.
-${eraText}
-
-THE USER:
-- Name: ${cfg.userName || 'the user'}
-- Age: ${cfg.userAge || 'unspecified'}
-- Relationship: ${relText}
-
-CRITICAL RULES (YOU MUST OBEY STRICTLY):
-1. TEXTING FORMAT: You are TEXTING. No spoken dialogue formatting. No asterisks for actions like *sighs*. Use lowercase where appropriate, chat abbreviations, and short punchy messages. It must read like an iMessage/WhatsApp screen.
-2. LENGTH LIMIT: 1-2 extremely short text bubbles max per character. NEVER write paragraphs. 
-3. LANGUAGE RULE: Mostly English, but sprinkle casual Indonesian slang (e.g., "anjir", "gue", "udah") with immediate English translation in parentheses like "udah (already)".${charInstructions}`;
-}
-
-function buildAvatarsHTML(who) {
-  const avatarsEl = document.getElementById('chatWindowAvatars');
-  avatarsEl.innerHTML = '';
-  const keys = who === 'group' ? ['varen','guntur','kaivan','mahesa','anggara'] : [who];
-  keys.slice(0, 5).forEach(k => {
-    const d = CHAR_DATA[k];
-    const div = document.createElement('div');
-    div.className = 'cwa';
-    div.innerHTML = `<img src="${d.img}" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'">`;
-    avatarsEl.appendChild(div);
-  });
+  return prompt;
 }
 
 function startChat() {
-  const userName = document.getElementById('chatUserName').value.trim() || 'you';
-  const userAge = document.getElementById('chatUserAge').value || '';
-  const era = document.getElementById('chatEra').value;
-  const relationship = document.getElementById('chatRelationship').value;
-  const who = selectedWho;
-
-  chatConfig = { userName, userAge, era, relationship, who };
   chatMessages = [];
-  chatMessages._system = buildSystemPrompt(chatConfig);
+  chatMessages._system = buildChatSystemPrompt();
 
-  const isGroup = who === 'group';
-  document.getElementById('chatWindowName').textContent = isGroup ? 'rumah' : CHAR_DATA[who]?.name.split(' ')[0];
-  document.getElementById('chatWindowSub').textContent = isGroup
-    ? `group chat · 5 brothers · ${era === 'college' ? 'Suryakencana Era' : 'Adult Era'}`
-    : `private chat · ${era === 'college' ? 'Suryakencana Era' : 'Adult Era'}`;
+  const isGroup = selectedWho === 'group';
+  document.getElementById('chatWindowName').textContent = isGroup ? 'rumah' : CHAR_DATA[selectedWho]?.name;
+  document.getElementById('chatWindowSub').textContent = isGroup ? `group chat · 5 brothers` : `private chat`;
 
-  buildAvatarsHTML(who);
+  const avatarsEl = document.getElementById('chatWindowAvatars');
+  avatarsEl.innerHTML = '';
+  const keys = isGroup ? ['varen','guntur','kaivan','mahesa','anggara'] : [selectedWho];
+  keys.forEach(k => {
+    avatarsEl.insertAdjacentHTML('beforeend', `<div class="cwa"><img src="${CHAR_DATA[k].img}" referrerpolicy="no-referrer"></div>`);
+  });
+
   document.getElementById('chatSetupPanel').style.display = 'none';
   document.getElementById('chatWindow').classList.add('active');
   document.getElementById('chatMessages').innerHTML = '';
-
   updateUIForLimit();
 
-  appendSystemNote(`${era === 'college' ? '📚 Suryakencana Institute Era' : '🏙️ Post-Grad Era'} · Chatting with: ${isGroup ? 'All Brothers (rumah)' : CHAR_DATA[who]?.name} · As: ${userName}${userAge ? ', ' + userAge : ''}`);
+  const el = document.createElement('div');
+  el.style.cssText = 'font-family:"Space Mono";font-size:.5rem;color:var(--text-dim);text-align:center;padding:.8rem;border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);margin:.5rem 0;';
+  el.textContent = `Chatting with ${isGroup ? 'rumah' : CHAR_DATA[selectedWho].name}`;
+  document.getElementById('chatMessages').appendChild(el);
 }
 
 function editChatSetup() {
@@ -1381,213 +1000,78 @@ function editChatSetup() {
   document.getElementById('chatWindow').classList.remove('active');
 }
 
-function appendSystemNote(text) {
-  const el = document.createElement('div');
-  el.style.cssText = 'font-family:"Space Mono",monospace;font-size:.5rem;color:var(--text-dim);text-align:center;padding:.8rem 1rem;border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);letter-spacing:.06em;opacity:.7;margin:.5rem 0;';
-  el.textContent = text;
-  document.getElementById('chatMessages').appendChild(el);
-}
+async function sendChatMsg() {
+  if (!updateUIForLimit()) return;
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if(!text) return;
+  input.value = '';
+  document.getElementById('chatSendBtn').disabled = true;
 
-function appendUserMsg(text) {
-  const name = chatConfig.userName || 'you';
-  const container = document.getElementById('chatMessages');
-  const el = document.createElement('div');
-  el.className = 'cm-msg user-msg';
-  el.innerHTML = `
-    <div class="cm-avatar">
-      <div class="cm-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant SC',serif;font-size:.65rem;color:var(--gold);">${name.charAt(0).toUpperCase()}</div>
-    </div>
-    <div class="cm-body">
-      <div class="cm-name">${name}</div>
-      <div class="cm-bubble">${escHtml(text)}</div>
-    </div>
-  `;
-  container.appendChild(el);
-  container.scrollTop = container.scrollHeight;
-}
-
-function appendTypingIndicator() {
-  const container = document.getElementById('chatMessages');
-  const el = document.createElement('div');
-  el.className = 'cm-typing'; el.id = 'typingIndicator';
-  const who = chatConfig.who;
+  const myName = document.querySelector('.global-name').value || 'you';
+  const c = document.getElementById('chatMessages');
   
-  // Generic "N" crest for group typing, or char face for single chat
-  const imgHtml = who === 'group' 
-    ? `<div style="width:100%;height:100%;background:var(--gold);display:flex;align-items:center;justify-content:center;color:#111;font-family:'Cormorant SC',serif;font-size:.6rem;font-weight:bold;">N</div>` 
-    : `<img src="${CHAR_DATA[who]?.img}" style="width:100%;height:100%;object-fit:cover;">`;
-    
-  el.innerHTML = `
-    <div class="cm-avatar">${imgHtml}</div>
-    <div class="cm-typing-dots"><span></span><span></span><span></span></div>
-  `;
-  container.appendChild(el);
-  container.scrollTop = container.scrollHeight;
-  return el;
-}
+  // Append User Msg
+  c.insertAdjacentHTML('beforeend', `
+    <div class="cm-msg user-msg">
+      <div class="cm-avatar"><div class="cm-avatar-placeholder">${myName.charAt(0).toUpperCase()}</div></div>
+      <div class="cm-body"><div class="cm-name">${myName}</div><div class="cm-bubble">${escHtml(text)}</div></div>
+    </div>`);
+  c.scrollTop = c.scrollHeight;
+  chatMessages.push({ role: 'user', content: text });
 
-function removeTypingIndicator() {
-  const el = document.getElementById('typingIndicator');
-  if (el) el.remove();
-}
+  // Append Typing
+  const tId = 'type-' + Date.now();
+  c.insertAdjacentHTML('beforeend', `
+    <div class="cm-typing" id="${tId}">
+      <div class="cm-avatar"><div style="width:100%;height:100%;background:var(--gold);display:flex;align-items:center;justify-content:center;color:#111;font-weight:bold;">N</div></div>
+      <div class="cm-typing-dots"><span></span><span></span><span></span></div>
+    </div>`);
+  c.scrollTop = c.scrollHeight;
 
-function parseGroupMessages(text) {
-  const lines = text.split('\n');
-  const result = [];
-  let current = null;
-  for (const line of lines) {
-    // Regex matches e.g. "**Varen:**" or "Varen:" or "**Varen**:"
-    const match = line.match(/^\*?\*?([A-Za-z]+)\*?\*?:\s*(.*)/);
-    if (match) {
-      if (current) result.push(current);
-      current = { name: match[1], text: match[2] };
-    } else if (current && line.trim()) {
-      current.text += '\n' + line;
+  try {
+    const replyTxt = await doFetchCall(chatMessages._system, chatMessages.filter(m => m.role));
+    document.getElementById(tId).remove();
+    chatMessages.push({ role: 'assistant', content: replyTxt });
+
+    if (selectedWho === 'group') {
+      const lines = replyTxt.split('\n');
+      let current = null;
+      lines.forEach(line => {
+        const match = line.match(/^\*?\*?([A-Za-z]+)\*?\*?:\s*(.*)/);
+        if (match) {
+          if(current) appendChatBotMsg(current.name, current.text);
+          current = { name: match[1], text: match[2] };
+        } else if (current && line.trim()) {
+          current.text += '<br>' + line;
+        }
+      });
+      if(current) appendChatBotMsg(current.name, current.text);
+    } else {
+      appendChatBotMsg(CHAR_DATA[selectedWho].name.split(' ')[0], replyTxt);
     }
+  } catch(e) {
+    document.getElementById(tId).remove();
+    c.insertAdjacentHTML('beforeend', `<div style="text-align:center;color:red;font-size:.7rem;">⚠ Error: ${e.message}</div>`);
   }
-  if (current) result.push(current);
-  if (result.length === 0) result.push({ name: null, text: text });
-  return result;
+  
+  if (updateUIForLimit()) { document.getElementById('chatSendBtn').disabled = false; input.focus(); }
 }
 
-function appendBotMessages(text) {
-  const container = document.getElementById('chatMessages');
-  const isGroup = chatConfig.who === 'group';
-
-  if (isGroup) {
-    const msgs = parseGroupMessages(text);
-    msgs.forEach(msg => {
-      const key = msg.name ? Object.keys(CHAR_DATA).find(k => CHAR_DATA[k].name.split(' ')[0].toLowerCase() === msg.name.toLowerCase()) : null;
-      const char = key ? CHAR_DATA[key] : null;
-      const el = document.createElement('div');
-      el.className = 'cm-msg';
-      el.innerHTML = `
-        <div class="cm-avatar">
-          ${char ? `<img src="${char.img}" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'" style="width:100%;height:100%;object-fit:cover;object-position:center top;">` : `<div class="cm-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant SC',serif;font-size:.6rem;color:var(--gold);">N</div>`}
-        </div>
-        <div class="cm-body">
-          <div class="cm-name">${msg.name || 'Nasution'}</div>
-          <div class="cm-bubble">${formatMsgText(msg.text)}</div>
-        </div>
-      `;
-      container.appendChild(el);
-    });
-  } else {
-    const who = chatConfig.who;
-    const char = CHAR_DATA[who];
-    const el = document.createElement('div');
-    el.className = 'cm-msg';
-    el.innerHTML = `
-      <div class="cm-avatar">
-        <img src="${char.img}" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
-      </div>
-      <div class="cm-body">
-        <div class="cm-name">${char.label}</div>
-        <div class="cm-bubble">${formatMsgText(text)}</div>
-      </div>
-    `;
-    container.appendChild(el);
-  }
-  container.scrollTop = container.scrollHeight;
-}
-
-function formatMsgText(text) {
-  return text
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    .replace(/\n/g, '<br>');
+function appendChatBotMsg(nameStr, text) {
+  const key = Object.keys(CHAR_DATA).find(k => CHAR_DATA[k].name.toLowerCase().includes(nameStr.toLowerCase()));
+  const imgHtml = key ? `<img src="${CHAR_DATA[key].img}">` : `<div class="cm-avatar-placeholder">N</div>`;
+  const c = document.getElementById('chatMessages');
+  c.insertAdjacentHTML('beforeend', `
+    <div class="cm-msg">
+      <div class="cm-avatar">${imgHtml}</div>
+      <div class="cm-body"><div class="cm-name">${nameStr}</div><div class="cm-bubble">${formatMsgText(text)}</div></div>
+    </div>`);
+  c.scrollTop = c.scrollHeight;
 }
 
 function escHtml(t) { return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-async function sendChatMsg() {
-  const apiMode = document.getElementById('chatApiMode').value;
-  
-  if (apiMode === 'free') {
-    if (!updateUIForLimit()) return;
-  }
-
-  const input = document.getElementById('chatInput');
-  const btn = document.getElementById('chatSendBtn');
-  const text = input.value.trim();
-  if (!text) return;
-
-  input.value = '';
-  btn.disabled = true;
-
-  appendUserMsg(text);
-  chatMessages.push({ role: 'user', content: text });
-  appendTypingIndicator();
-
-  // Setup Fetch logic
-  let fetchUrl = FREE_API_URL;
-  let fetchHeaders = { 'Content-Type': 'application/json' };
-  let fetchBody = {
-    system: chatMessages._system || buildSystemPrompt(chatConfig),
-    messages: chatMessages.filter(m => m.role)
-  };
-
-  if (apiMode === 'custom') {
-    fetchUrl = document.getElementById('chatApiUrl').value.trim() || 'https://api.openai.com/v1/chat/completions';
-    const key = document.getElementById('chatApiKey').value.trim();
-    const model = document.getElementById('chatApiModel').value.trim() || 'gpt-3.5-turbo';
-    if (key) fetchHeaders['Authorization'] = `Bearer ${key}`;
-    
-    fetchBody = {
-      model: model,
-      messages: [
-        { role: 'system', content: chatMessages._system },
-        ...chatMessages.filter(m => m.role)
-      ]
-    };
-  }
-
-  try {
-    const res = await fetch(fetchUrl, {
-      method: 'POST',
-      headers: fetchHeaders,
-      body: JSON.stringify(fetchBody)
-    });
-
-    const data = await res.json();
-    removeTypingIndicator();
-
-    if (apiMode === 'free') {
-      incrementDailyLimit();
-      updateUIForLimit(); 
-    }
-
-    let reply = '';
-    if (data.choices && data.choices[0] && data.choices[0].message) {
-      reply = data.choices[0].message.content;
-    } else if (data.content && data.content[0]) {
-      reply = data.content[0].text || '';
-    } else if (data.reply) {
-      reply = data.reply;
-    } else if (data.error) {
-      reply = `**System Error:** ${data.error.message || 'Unknown Custom Proxy Error'}`;
-    } else {
-      reply = JSON.stringify(data);
-    }
-
-    chatMessages.push({ role: 'assistant', content: reply });
-    appendBotMessages(reply);
-
-  } catch (err) {
-    removeTypingIndicator();
-    appendSystemNote(`⚠ Connection issue: ${err.message}. Check your API URL or connection.`);
-    console.error(err);
-    if(apiMode === 'free') updateUIForLimit(); 
-  }
-
-  if (apiMode === 'custom' || checkDailyLimit() < 10) {
-    btn.disabled = false;
-    input.focus();
-  }
-}
-
-// init toggle state
-toggleApiFields();
+function formatMsgText(t) { return t.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*(.*?)\*/g, '<em>$1</em>'); }
 </script>
 </body>
 </html>
