@@ -155,6 +155,8 @@ section { padding: 5.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
 .thread-body { flex: 1; min-width: 0; }
 .thread-name { font-family: 'Space Mono', monospace; font-size: .55rem; color: var(--gold); margin-bottom: .2rem; }
 .thread-text { font-family: 'Lato', sans-serif; font-size: .85rem; color: var(--text-bright); line-height: 1.6; }
+.thread-actions { margin-top: .4rem; font-family: 'Space Mono', monospace; font-size: .45rem; color: var(--gold); opacity: .5; cursor: pointer; transition: opacity .2s; text-transform: uppercase; letter-spacing: .05em; display: inline-block; }
+.thread-actions:hover { opacity: 1; color: var(--gold-light); }
 
 .x-reply-box { display: none; margin-top: 1rem; border-top: 1px solid var(--divider); padding-top: 1rem; }
 .x-reply-box.active { display: block; }
@@ -554,7 +556,7 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
         <div class="feed-x-text" id="mahesa-post-text">just played an unreleased song at varen's office bc he "looked tense" 🎶 he called security. i played THROUGH it. security stayed to listen 🙏 varen is still tense but that is a him problem and also a great sign bc it means the song hits</div>
         
         <div class="x-action-bar">
-          <div class="x-action-btn" onclick="toggleReplyBox('replybox-mahesa1')">💬 Reply</div>
+          <div class="x-action-btn" onclick="prepReply('replybox-mahesa1', 'input-mahesa1', '@mahesasaut')">💬 Reply</div>
           <div class="x-action-btn">🔁 Repost</div>
           <div class="x-action-btn">❤️ Like</div>
         </div>
@@ -563,7 +565,7 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
         <div class="x-reply-box" id="replybox-mahesa1">
           <div class="x-reply-input-wrap">
             <input type="text" class="x-reply-input" id="input-mahesa1" placeholder="Tweet your reply...">
-            <button class="x-reply-send" onclick="sendSocialReply('input-mahesa1', 'threads-mahesa1', 'Mahesa', 'just played an unreleased song at varen\'s office bc he looked tense...')">Send</button>
+            <button class="x-reply-send" onclick="sendSocialReply('replybox-mahesa1', 'input-mahesa1', 'threads-mahesa1', 'Mahesa', 'just played an unreleased song at varen\'s office bc he looked tense...')">Send</button>
           </div>
         </div>
       </div>
@@ -592,14 +594,14 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
         <div class="feed-x-text">submission: "anggara nasution corrected our professor mid-lecture. with sources. printed. the professor said thank you and asked if he had time to consult on the next module. anggara said he'd check his schedule. he has not checked his schedule. that was four weeks ago. i am not fine with this."</div>
         
         <div class="x-action-bar">
-          <div class="x-action-btn" onclick="toggleReplyBox('replybox-anon1')">💬 Reply</div>
+          <div class="x-action-btn" onclick="prepReply('replybox-anon1', 'input-anon1', '@sikonfes')">💬 Reply</div>
         </div>
         
         <div class="thread-replies" id="threads-anon1"></div>
         <div class="x-reply-box" id="replybox-anon1">
           <div class="x-reply-input-wrap">
             <input type="text" class="x-reply-input" id="input-anon1" placeholder="Tweet your reply...">
-            <button class="x-reply-send" onclick="sendSocialReply('input-anon1', 'threads-anon1', 'Campus Confessions', 'anggara nasution corrected our professor mid-lecture...')">Send</button>
+            <button class="x-reply-send" onclick="sendSocialReply('replybox-anon1', 'input-anon1', 'threads-anon1', 'Campus Confessions', 'anggara nasution corrected our professor mid-lecture...')">Send</button>
           </div>
         </div>
       </div>
@@ -765,6 +767,18 @@ const CHAR_DATA = {
   anggara: { name: 'Anggara', label: '5th · Anggara', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/anggara.jpg' }
 };
 
+const FUNNY_HANDLES = ['@winterfell_survivor', '@sith_lord_99', '@gojo_enthusiast', '@the_one_ring', '@tired_student_99', '@caffeine_addict', '@batman_jkt', '@sukunas_finger', '@hogwarts_dropout'];
+
+function getHandle(name) {
+  const n = name.toLowerCase();
+  if(n.includes('varen')) return '@varen_t';
+  if(n.includes('guntur')) return '@guntursanggam';
+  if(n.includes('kaivan')) return '@kaivanpandu';
+  if(n.includes('mahesa')) return '@mahesasaut';
+  if(n.includes('anggara')) return '@anggarasahat';
+  return FUNNY_HANDLES[Math.floor(Math.random() * FUNNY_HANDLES.length)];
+}
+
 function checkDailyLimit() {
   const today = new Date().toDateString();
   const storedDate = localStorage.getItem('nasution_chat_date');
@@ -830,7 +844,7 @@ async function doFetchCall(systemPrompt, userMessages) {
 // ══════════════════════════════════════════════════════════════════
 // SOCIAL MEDIA CONTINUOUS THREADS LOGIC
 // ══════════════════════════════════════════════════════════════════
-const socialHistories = {}; // Store conversation history per thread ID
+const socialHistories = {}; 
 
 function getSocialContext() {
   const name = document.querySelector('.global-name').value || 'User';
@@ -840,14 +854,20 @@ function getSocialContext() {
   const loverMatch = rel.match(/lover-(.+)/);
   const loverName = loverMatch ? loverMatch[1] : null;
 
-  return `You are playing the 5 Nasution brothers replying on Twitter/X. Era: ${era}. User: ${name} (${handle}). Rel: ${rel}.
+  return `You are playing the 5 Nasution brothers and random students replying on Twitter/X. Era: ${era}. User: ${name} (${handle}). Rel: ${rel}.
 RULES:
-1. Pick 1 or 2 brothers randomly to reply. ${loverName ? `CRITICAL: Since the user is dating ${loverName.toUpperCase()}, ${loverName.toUpperCase()} MUST be one of the replies.` : ''}
-2. Format strictly as "**[Brother Name]:** [tweet text]". 
-3. Lowercase, short internet slang, casual. Use 1 Indonesian slang word per reply with immediate (english) translation.`;
+1. Pick 1 or 2 characters to reply. It can be a brother or a random student. ${loverName ? `CRITICAL: Since user dates ${loverName.toUpperCase()}, he MUST reply.` : ''}
+2. Format strictly as "**[Name]:** [tweet text]". Do NOT include @handles in your generation, only their Name.
+3. Lowercase, short internet slang. Use 1 Indonesian slang word per reply with immediate (english) translation. If user mentions a specific handle (like @varen_t), make sure that character responds.`;
 }
 
-function toggleReplyBox(id) { document.getElementById(id).classList.toggle('active'); }
+function prepReply(boxId, inputId, handleToTag) {
+  const box = document.getElementById(boxId);
+  box.classList.add('active');
+  const input = document.getElementById(inputId);
+  input.value = handleToTag + ' ';
+  input.focus();
+}
 
 async function postSocialNew() {
   if (!updateUIForLimit()) return;
@@ -868,21 +888,20 @@ async function postSocialNew() {
         <div class="feed-handle"><strong>${name}</strong>${handle} · just now</div>
       </div>
       <div class="feed-x-text">${escHtml(text)}</div>
-      <div class="x-action-bar"><div class="x-action-btn" onclick="toggleReplyBox('replybox-${cardId}')">💬 Reply</div></div>
+      <div class="x-action-bar"><div class="x-action-btn" onclick="prepReply('replybox-${cardId}', 'input-${cardId}', '')">💬 Reply</div></div>
       <div class="thread-replies" id="threads-${cardId}">
         <div class="thread-item loading" style="color:var(--gold); font-size:.7rem;"><i>waiting for replies...</i></div>
       </div>
       <div class="x-reply-box" id="replybox-${cardId}">
         <div class="x-reply-input-wrap">
           <input type="text" class="x-reply-input" id="input-${cardId}" placeholder="Tweet your reply...">
-          <button class="x-reply-send" onclick="sendSocialReply('input-${cardId}', 'threads-${cardId}', '${name}', '${escHtml(text)}')">Send</button>
+          <button class="x-reply-send" onclick="sendSocialReply('replybox-${cardId}', 'input-${cardId}', 'threads-${cardId}', '${name}', '${escHtml(text)}')">Send</button>
         </div>
       </div>
     </div>`;
   grid.insertAdjacentHTML('afterbegin', cardHtml);
 
-  // Initialize history
-  socialHistories['threads-' + cardId] = [{ role: 'user', content: `The user just tweeted: "${text}"` }];
+  socialHistories['threads-' + cardId] = [{ role: 'user', content: `The user tweeted: "${text}"` }];
 
   try {
     const sys = getSocialContext();
@@ -890,33 +909,35 @@ async function postSocialNew() {
     socialHistories['threads-' + cardId].push({ role: 'assistant', content: replyTxt });
     
     document.querySelector(`#threads-${cardId} .loading`).remove();
-    appendSocialReplies(`threads-${cardId}`, replyTxt);
-    document.getElementById(`replybox-${cardId}`).classList.add('active'); // Keep input box open
+    appendSocialReplies(`threads-${cardId}`, replyTxt, `replybox-${cardId}`, `input-${cardId}`);
   } catch (e) { document.querySelector(`#threads-${cardId} .loading`).innerHTML = `⚠ Failed.`; }
 }
 
-async function sendSocialReply(inputId, threadContainerId, originalName, originalText) {
+async function sendSocialReply(boxId, inputId, threadContainerId, originalName, originalText) {
   if (!updateUIForLimit()) return;
   const input = document.getElementById(inputId);
   const text = input.value.trim();
   if(!text) return;
   input.value = '';
+  document.getElementById(boxId).classList.remove('active');
 
   const myName = document.querySelector('.global-name').value || 'User';
+  const myHandle = document.querySelector('.global-handle').value || '@user';
   const tContainer = document.getElementById(threadContainerId);
   
-  // Setup History if it's the first time interacting with a pre-existing post
   if (!socialHistories[threadContainerId]) {
     socialHistories[threadContainerId] = [
       { role: 'user', content: `Original Post by ${originalName}: "${originalText}"\n\nNow, respond to my replies:` }
     ];
   }
   
-  // Append User message locally
   tContainer.insertAdjacentHTML('beforeend', `
     <div class="thread-item">
       <div class="thread-avatar"><div class="feed-avatar-placeholder">${myName.charAt(0).toUpperCase()}</div></div>
-      <div class="thread-body"><div class="thread-name">${myName}</div><div class="thread-text">${escHtml(text)}</div></div>
+      <div class="thread-body">
+        <div class="thread-name">${myName} <span style="font-size:.45rem; opacity:.5; font-weight:normal;">${myHandle}</span></div>
+        <div class="thread-text">${escHtml(text)}</div>
+      </div>
     </div>
     <div class="thread-item loading" style="color:var(--gold); font-size:.7rem;"><i>waiting...</i></div>`);
     
@@ -928,32 +949,38 @@ async function sendSocialReply(inputId, threadContainerId, originalName, origina
     socialHistories[threadContainerId].push({ role: 'assistant', content: replyTxt });
     
     tContainer.querySelector('.loading').remove();
-    appendSocialReplies(threadContainerId, replyTxt);
+    appendSocialReplies(threadContainerId, replyTxt, boxId, inputId);
   } catch (e) { tContainer.querySelector('.loading').innerHTML = `⚠ Failed.`; }
 }
 
-function appendSocialReplies(containerId, text) {
+function appendSocialReplies(containerId, text, boxId, inputId) {
   const container = document.getElementById(containerId);
   const lines = text.split('\n');
   let current = null;
   const results = [];
   
   for (const line of lines) {
-    const match = line.match(/^\*?\*?([A-Za-z]+)\*?\*?:\s*(.*)/);
+    const match = line.match(/^\*?\*?([A-Za-z\s]+)\*?\*?:\s*(.*)/);
     if (match) {
       if(current) results.push(current);
-      current = { name: match[1], text: match[2] };
+      current = { name: match[1].trim(), text: match[2] };
     } else if (current && line.trim()) { current.text += '<br>' + line; }
   }
   if(current) results.push(current);
 
   results.forEach(msg => {
-    const key = msg.name ? Object.keys(CHAR_DATA).find(k => CHAR_DATA[k].name.toLowerCase() === msg.name.toLowerCase()) : null;
-    const imgHtml = key ? `<img src="${CHAR_DATA[key].img}">` : `<div class="feed-avatar-placeholder">N</div>`;
+    const key = msg.name ? Object.keys(CHAR_DATA).find(k => CHAR_DATA[k].name.toLowerCase().includes(msg.name.toLowerCase())) : null;
+    const imgHtml = key ? `<img src="${CHAR_DATA[key].img}">` : `<div class="feed-avatar-placeholder">${msg.name.charAt(0).toUpperCase()}</div>`;
+    const handle = getHandle(msg.name);
+
     container.insertAdjacentHTML('beforeend', `
       <div class="thread-item">
         <div class="thread-avatar">${imgHtml}</div>
-        <div class="thread-body"><div class="thread-name">${msg.name || 'Nasution'}</div><div class="thread-text">${formatMsgText(msg.text)}</div></div>
+        <div class="thread-body">
+          <div class="thread-name">${msg.name} <span style="font-size:.45rem; opacity:.5; font-weight:normal;">${handle}</span></div>
+          <div class="thread-text">${formatMsgText(msg.text)}</div>
+          <div class="thread-actions" onclick="prepReply('${boxId}', '${inputId}', '${handle}')">💬 Reply to this</div>
+        </div>
       </div>`);
   });
 }
