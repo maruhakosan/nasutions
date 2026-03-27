@@ -5,26 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>The Nasution Family</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Lato:wght@300;400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Lato:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0b0907;
-  --bg2: #0f0d0b;
-  --bg3: #131109;
-  --gold: #c4a35a;
-  --gold-light: #e8d4a0;
-  --gold-dim: rgba(196,163,90,.35);
-  --divider: rgba(200,192,180,.12);
-  --divider-bright: rgba(200,192,180,.22);
-  --text: rgba(240,232,216,.85);
-  --text-dim: rgba(200,192,180,.5);
-  --text-bright: #faf8f4;
-  --red: #8c1c1c;
+  /* Brightened Backgrounds */
+  --bg: #161412;
+  --bg2: #1e1b18;
+  --bg3: #26231e;
+  
+  /* Brightened Accents & Text for Better Contrast */
+  --gold: #dcb86a;
+  --gold-light: #f9e7b8;
+  --gold-dim: rgba(220,184,106,.4);
+  --divider: rgba(220,210,195,.18);
+  --divider-bright: rgba(220,210,195,.35);
+  --text: #f7f3ea; 
+  --text-dim: #c8bfb0; /* Increased opacity/brightness */
+  --text-bright: #ffffff;
+  --red: #a82525;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html { scroll-behavior: smooth; }
-body { background: var(--bg); font-family: 'Lato', sans-serif; color: var(--text); overflow-x: hidden; min-height: 100vh; }
+body { background: var(--bg); font-family: 'Lato', sans-serif; color: var(--text); overflow-x: hidden; min-height: 100vh; font-weight: 400; }
 
 body::before {
   content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999;
@@ -32,7 +35,7 @@ body::before {
   opacity: .3;
 }
 
-.corner-tl, .corner-br { position: fixed; pointer-events: none; z-index: 200; width: 22px; height: 22px; border-color: rgba(196,163,90,.22); border-style: solid; }
+.corner-tl, .corner-br { position: fixed; pointer-events: none; z-index: 200; width: 22px; height: 22px; border-color: rgba(220,184,106,.25); border-style: solid; }
 .corner-tl { top: 14px; left: 14px; border-width: 1px 0 0 1px; }
 .corner-br { bottom: 14px; right: 14px; border-width: 0 1px 1px 0; }
 
@@ -58,14 +61,14 @@ body::before {
 }
 .ticker-text {
   font-family: 'Space Mono', monospace; font-size: .56rem;
-  color: rgba(255,220,200,.85); letter-spacing: .03em; padding-right: 3rem;
+  color: #fff; letter-spacing: .03em; padding-right: 3rem;
 }
-.ticker-dot { color: rgba(255,180,140,.25); padding: 0 .9rem; }
+.ticker-dot { color: rgba(255,255,255,.4); padding: 0 .9rem; }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ══ NAV ══ */
 .main-nav {
-  background: rgba(11,9,7,.95);
+  background: rgba(22, 20, 18, .95);
   border-bottom: 1px solid var(--divider);
   position: sticky; top: 28px; z-index: 400;
   backdrop-filter: blur(8px);
@@ -96,7 +99,7 @@ body::before {
   border-left: none; border-right: none;
   text-transform: uppercase;
 }
-.nav-tab:hover { color: var(--text); }
+.nav-tab:hover { color: var(--text-bright); }
 .nav-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
 
 /* ══ PAGES ══ */
@@ -112,13 +115,13 @@ body::before {
 }
 .hero::before {
   content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(ellipse 70% 55% at 50% 55%, rgba(196,163,90,.055) 0%, transparent 70%);
+  background: radial-gradient(ellipse 70% 55% at 50% 55%, rgba(220,184,106,.055) 0%, transparent 70%);
 }
 .hero::after {
   content: ''; position: absolute; inset: 0; pointer-events: none;
   background-image:
-    linear-gradient(rgba(196,163,90,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(196,163,90,.025) 1px, transparent 1px);
+    linear-gradient(rgba(220,184,106,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(220,184,106,.025) 1px, transparent 1px);
   background-size: 60px 60px;
   animation: gridDrift 24s linear infinite; opacity: .65;
 }
@@ -144,7 +147,7 @@ body::before {
   font-family: 'Cormorant SC', serif; margin-bottom: .55rem;
 }
 .hero-sub {
-  font-family: 'Lato', sans-serif; font-weight: 300;
+  font-family: 'Lato', sans-serif; font-weight: 400;
   font-size: .68rem; letter-spacing: .2em; color: var(--text-dim);
   text-transform: uppercase; margin-top: 1.3rem;
   position: relative; z-index: 1;
@@ -160,7 +163,7 @@ body::before {
 .hero-divider span { color: var(--gold); font-size: .62rem; }
 .hero-tagline {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: clamp(.95rem, 2.4vw, 1.15rem); font-weight: 300;
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem); font-weight: 400;
   color: var(--text-dim); line-height: 2;
   max-width: 380px; margin: 0 auto;
   position: relative; z-index: 1;
@@ -207,12 +210,12 @@ body::before {
   background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
   opacity: 0; transition: opacity .4s;
 }
-.home-section-card:hover { background: #141210; }
+.home-section-card:hover { background: var(--bg3); }
 .home-section-card:hover::before { opacity: 1; }
-.hsc-glyph { font-size: 1rem; color: var(--gold); opacity: .5; font-family: 'Cormorant Garamond', serif; }
+.hsc-glyph { font-size: 1rem; color: var(--gold); opacity: .6; font-family: 'Cormorant Garamond', serif; }
 .hsc-label { font-family: 'Cormorant SC', serif; font-size: .48rem; letter-spacing: .35em; color: var(--gold); }
 .hsc-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.3rem; color: var(--text-bright); line-height: 1.2; }
-.hsc-hint { font-family: 'Lato', sans-serif; font-weight: 300; font-size: .74rem; color: var(--text-dim); line-height: 1.7; }
+.hsc-hint { font-family: 'Lato', sans-serif; font-weight: 400; font-size: .8rem; color: var(--text-dim); line-height: 1.7; }
 .hsc-arrow { font-family: 'Cormorant SC', serif; font-size: .5rem; letter-spacing: .2em; color: var(--gold); opacity: 0; transition: opacity .3s; margin-top: auto; }
 .home-section-card:hover .hsc-arrow { opacity: 1; }
 
@@ -239,7 +242,7 @@ section { padding: 5.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
 
 /* ══ LORE BAND ══ */
 .lore-band {
-  background: #0d0b09;
+  background: var(--bg2);
   border-top: 1px solid var(--divider);
   border-bottom: 1px solid var(--divider);
   padding: 2.4rem 1.5rem;
@@ -261,132 +264,78 @@ section { padding: 5.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
 }
 .lore-pill-text {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: .9rem; color: var(--text-dim); line-height: 1.78;
+  font-size: 1rem; color: var(--text-dim); line-height: 1.78;
 }
 
-/* ══ PARENTS ══ */
-.parents-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1.6rem; max-width: 480px; margin: 0 auto;
+/* ══ PROFILES OVERVIEW ONLY ══ */
+.profile-hero-wrap {
+  display: grid; grid-template-columns: 220px 1fr;
+  gap: 2.8rem; align-items: start;
+  max-width: 960px; margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
 }
-.parent-card {
-  display: flex; flex-direction: column; align-items: center; gap: 1rem;
-  opacity: 0; transform: translateY(16px);
-  transition: opacity .7s ease, transform .7s ease;
+@media (max-width: 600px) {
+  .profile-hero-wrap { grid-template-columns: 1fr; gap: 1.5rem; }
 }
-.parent-card.visible { opacity: 1; transform: none; }
-.parent-portrait {
-  width: 100%; aspect-ratio: 1;
-  background: #121008; border: 1px solid var(--divider-bright);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: .75rem;
-  position: relative; overflow: hidden;
-}
-.parent-portrait::before {
-  content: ''; position: absolute; inset: 0;
-  background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(196,163,90,.02) 4px, rgba(196,163,90,.02) 5px);
-}
-.parent-portrait::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, transparent 35%, rgba(196,163,90,.05) 50%, transparent 65%);
-  background-size: 300% 300%; animation: shimmer 5s ease infinite;
-}
-@keyframes shimmer { 0%,100% { background-position: 200% 200%; } 50% { background-position: 0% 0%; } }
-.silhouette-svg { width: 44%; aspect-ratio: 1; opacity: .18; position: relative; z-index: 1; }
-.parent-redacted {
-  font-family: 'Space Mono', monospace; font-size: .43rem;
-  letter-spacing: .18em; color: var(--gold); opacity: .38;
-  position: relative; z-index: 1; text-align: center; line-height: 1.9;
-}
-.parent-name {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: 1.08rem; color: var(--text-bright); text-align: center;
-}
-.parent-fullname {
-  font-family: 'Cormorant SC', serif; font-size: .46rem;
-  letter-spacing: .15em; color: var(--text-dim); text-align: center; margin-top: -.45rem;
-}
-.parent-role {
-  font-family: 'Cormorant SC', serif; font-size: .48rem;
-  letter-spacing: .22em; color: var(--gold); text-align: center;
-}
-.parent-note {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: .82rem; color: var(--text-dim);
-  text-align: center; line-height: 1.75; max-width: 168px;
-}
-
-/* ══ SONS GRID ══ */
-.sons-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
-}
-@media (max-width: 720px) {
-  .sons-grid {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto auto auto;
-  }
-  .son-card[data-name="varen"]  { grid-column: 2 / 4; }
-  .son-card[data-name="guntur"] { grid-column: 1 / 3; }
-  .son-card[data-name="kaivan"] { grid-column: 3 / 5; }
-  .son-card[data-name="mahesa"] { grid-column: 1 / 3; }
-  .son-card[data-name="anggara"]{ grid-column: 3 / 5; }
-}
-.son-card {
-  display: flex; flex-direction: column;
-  opacity: 0; transform: translateY(20px);
-  transition: opacity .6s ease, transform .6s ease;
-  cursor: default;
-}
-.son-card.visible { opacity: 1; transform: none; }
-.son-portrait {
-  width: 100%; aspect-ratio: 1;
+.profile-img-frame {
+  width: 100%; aspect-ratio: .75;
   overflow: hidden; border: 1px solid var(--divider-bright);
   position: relative; background: #111009;
 }
-.son-portrait img {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
-  display: block; filter: sepia(.08) contrast(1.05);
-  transition: transform .6s cubic-bezier(.25,.46,.45,.94), filter .4s ease;
+.profile-img-frame img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  display: block; filter: sepia(.06) contrast(1.05);
 }
-.son-card:hover .son-portrait img { transform: scale(1.07); filter: sepia(.03) contrast(1.08); }
-.son-portrait-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(11,9,7,.6) 0%, transparent 55%);
+.profile-img-frame::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(22,20,18,.55) 0%, transparent 60%);
   pointer-events: none;
 }
-.son-portrait::after {
-  content: ''; position: absolute; inset: 0;
-  border: 1px solid rgba(196,163,90,0);
-  transition: border-color .4s ease;
-  pointer-events: none; z-index: 2;
-}
-.son-card:hover .son-portrait::after { border-color: rgba(196,163,90,.3); }
-.son-info { padding: .85rem .15rem .35rem; border-bottom: 1px solid var(--divider); }
-.son-name {
+.profile-meta-name {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: 1.1rem; color: var(--text-bright); line-height: 1;
+  font-size: clamp(2.4rem, 8vw, 3.8rem); font-weight: 300;
+  color: var(--text-bright); line-height: .92;
 }
-.son-fullname {
-  font-family: 'Cormorant SC', serif; font-size: .43rem;
-  letter-spacing: .13em; color: var(--text-dim); margin-top: .24rem; display: block;
+.profile-meta-full {
+  font-family: 'Cormorant SC', serif; font-size: .55rem;
+  letter-spacing: .2em; color: var(--text-dim); margin-top: .65rem; display: block;
 }
-.son-tag {
-  font-family: 'Cormorant SC', serif; font-size: .47rem;
-  letter-spacing: .18em; color: var(--gold); margin-top: .3rem; display: block;
+.profile-meta-tag {
+  font-family: 'Cormorant SC', serif; font-size: .55rem;
+  letter-spacing: .22em; color: var(--gold); margin-top: .4rem; display: block;
 }
-.son-desc {
-  font-family: 'Lato', sans-serif; font-weight: 300;
-  font-size: .78rem; line-height: 1.82; color: var(--text-dim);
-  padding: .7rem .15rem 0;
+.profile-meta-divider { border: none; border-top: 1px solid var(--divider); margin: 1.4rem 0; }
+.profile-meta-row {
+  display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;
 }
-.son-domain {
+.profile-meta-item { }
+.profile-meta-item-label {
+  font-family: 'Cormorant SC', serif; font-size: .48rem;
+  letter-spacing: .2em; color: var(--text-dim); display: block; margin-bottom: .2rem;
+}
+.profile-meta-item-val {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: .73rem; color: rgba(196,163,90,.42);
-  padding: .55rem .15rem 0; line-height: 1.6;
+  font-size: 1.05rem; color: var(--text-bright);
 }
+.profile-desc-para {
+  font-family: 'Lato', sans-serif; font-weight: 400;
+  font-size: .9rem; line-height: 1.9; color: var(--text-dim);
+  margin-top: 1.2rem;
+}
+
+.profile-selector-row {
+  max-width: 960px; margin: 0 auto; padding: 0 1.5rem 2rem;
+  display: flex; flex-wrap: wrap; gap: .7rem; border-bottom: 1px solid var(--divider);
+}
+.profile-selector-btn {
+  font-family: 'Cormorant SC', serif; font-size: .52rem;
+  letter-spacing: .22em; color: var(--text-dim);
+  background: var(--bg2); border: 1px solid var(--divider);
+  padding: .65rem 1.4rem; cursor: pointer;
+  transition: all .2s; text-transform: uppercase;
+}
+.profile-selector-btn:hover { color: var(--text-bright); border-color: var(--divider-bright); }
+.profile-selector-btn.active { color: var(--gold); border-color: var(--gold-dim); background: rgba(220,184,106,.06); }
 
 /* ══ FEED ══ */
 .feed-section { border-top: 1px solid var(--divider); }
@@ -402,7 +351,7 @@ section { padding: 5.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
   opacity: 0; transform: translateY(12px);
   transition: opacity .55s ease, transform .55s ease, background .25s;
 }
-.feed-card:hover { background: #141210; }
+.feed-card:hover { background: var(--bg3); }
 .feed-card.visible { opacity: 1; transform: none; }
 .feed-header { display: flex; align-items: center; gap: .8rem; margin-bottom: .85rem; }
 .feed-avatar {
@@ -422,51 +371,51 @@ section { padding: 5.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
 }
 .feed-handle strong { display: block; color: var(--text-bright); font-size: .63rem; }
 .feed-x-text {
-  font-family: 'Lato', sans-serif; font-weight: 300;
-  font-size: .82rem; line-height: 1.8; color: var(--text);
+  font-family: 'Lato', sans-serif; font-weight: 400;
+  font-size: .88rem; line-height: 1.8; color: var(--text);
 }
 .feed-x-meta {
   font-family: 'Space Mono', monospace; font-size: .5rem;
   color: var(--text-dim); margin-top: .85rem; padding-top: .65rem;
   border-top: 1px solid var(--divider);
 }
-.feed-card.type-groupchat { background: #0d0b09; }
-.feed-card.type-groupchat:hover { background: #111009; }
+.feed-card.type-groupchat { background: #1a1714; }
+.feed-card.type-groupchat:hover { background: #221f1b; }
 .groupchat-header {
-  font-family: 'Space Mono', monospace; font-size: .5rem;
-  letter-spacing: .1em; color: var(--gold); opacity: .6;
+  font-family: 'Space Mono', monospace; font-size: .55rem;
+  letter-spacing: .1em; color: var(--gold); opacity: .8;
   margin-bottom: 1rem; padding-bottom: .6rem;
   border-bottom: 1px solid var(--divider);
   display: flex; align-items: center; gap: .5rem;
 }
 .groupchat-header::before { content: '🏠'; font-size: .7rem; }
-.groupchat-name { color: var(--gold-light); opacity: .8; }
-.chat-bubble-wrap { display: flex; flex-direction: column; gap: .65rem; }
+.groupchat-name { color: var(--gold-light); }
+.chat-bubble-wrap { display: flex; flex-direction: column; gap: .85rem; }
 .chat-bubble { display: flex; align-items: flex-start; gap: .6rem; }
 .chat-bubble-avatar {
-  width: 24px; height: 24px; border-radius: 50%;
+  width: 28px; height: 28px; border-radius: 50%;
   overflow: hidden; border: 1px solid var(--divider); flex-shrink: 0;
   background: #1a1612; margin-top: .1rem;
 }
 .chat-bubble-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .chat-bubble-body { flex: 1; }
 .chat-bubble-name {
-  font-family: 'Space Mono', monospace; font-size: .5rem;
-  color: var(--gold); margin-bottom: .22rem; letter-spacing: .04em;
+  font-family: 'Space Mono', monospace; font-size: .55rem;
+  color: var(--gold); margin-bottom: .3rem; letter-spacing: .04em;
 }
 .chat-bubble-text {
-  font-family: 'Lato', sans-serif; font-weight: 300;
-  font-size: .8rem; line-height: 1.72; color: var(--text);
-  background: rgba(255,255,255,.03); border: 1px solid var(--divider);
-  padding: .5rem .75rem; display: inline-block; max-width: 100%;
+  font-family: 'Lato', sans-serif; font-weight: 400;
+  font-size: .85rem; line-height: 1.72; color: var(--text);
+  background: rgba(255,255,255,.05); border: 1px solid var(--divider);
+  padding: .6rem .85rem; display: inline-block; max-width: 100%;
+  border-radius: 4px;
 }
-.chat-bubble-text em { font-style: italic; color: var(--text-dim); font-size: .75rem; }
 .chat-meta {
-  font-family: 'Space Mono', monospace; font-size: .46rem;
-  color: var(--text-dim); margin-top: .4rem; opacity: .6;
+  font-family: 'Space Mono', monospace; font-size: .5rem;
+  color: var(--text-dim); margin-top: .5rem; opacity: .8;
 }
 .feed-tabloid-tag {
-  font-family: 'Space Mono', monospace; font-size: .5rem;
+  font-family: 'Space Mono', monospace; font-size: .55rem;
   letter-spacing: .1em; color: var(--red); margin-bottom: .55rem;
   display: flex; align-items: center; gap: .45rem;
 }
@@ -474,78 +423,31 @@ section { padding: 5.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
 @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .15; } }
 .feed-tabloid-headline {
   font-family: 'Cormorant Garamond', serif; font-weight: 600;
-  font-size: clamp(.95rem, 2.4vw, 1.18rem);
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
   color: var(--text-bright); line-height: 1.3; margin-bottom: .65rem;
 }
 .feed-tabloid-body {
-  font-family: 'Lato', sans-serif; font-weight: 300;
-  font-size: .79rem; color: var(--text-dim); line-height: 1.78;
+  font-family: 'Lato', sans-serif; font-weight: 400;
+  font-size: .85rem; color: var(--text-dim); line-height: 1.78;
 }
 .feed-tabloid-source {
-  font-family: 'Space Mono', monospace; font-size: .48rem;
-  color: var(--text-dim); margin-top: .85rem; opacity: .5;
+  font-family: 'Space Mono', monospace; font-size: .5rem;
+  color: var(--text-dim); margin-top: .85rem; opacity: .7;
 }
 .feed-society-ornament {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: .74rem; color: var(--gold); margin-bottom: .55rem; letter-spacing: .04em;
+  font-size: .8rem; color: var(--gold); margin-bottom: .55rem; letter-spacing: .04em;
 }
 .feed-society-text {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: clamp(.9rem, 2.1vw, 1.04rem); color: var(--text); line-height: 1.92;
+  font-size: clamp(1rem, 2.1vw, 1.15rem); color: var(--text); line-height: 1.92;
 }
 .feed-society-text strong { font-style: normal; color: var(--text-bright); font-weight: 500; }
 .feed-society-sig {
-  font-family: 'Cormorant SC', serif; font-size: .48rem;
+  font-family: 'Cormorant SC', serif; font-size: .5rem;
   letter-spacing: .22em; color: var(--text-dim);
   margin-top: .95rem; padding-top: .65rem; border-top: 1px solid var(--divider);
 }
-
-/* ══ CTA ══ */
-.cta-wrap {
-  border-top: 1px solid var(--divider);
-  padding: 5.5rem 1.5rem; text-align: center;
-}
-.cta-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1px; max-width: 640px; margin: 0 auto;
-  background: var(--divider); border: 1px solid var(--divider);
-}
-@media (max-width: 460px) { .cta-grid { grid-template-columns: 1fr; } }
-.cta-card {
-  background: var(--bg2); padding: 3rem 1.8rem;
-  display: flex; flex-direction: column; align-items: center; gap: .95rem;
-  text-decoration: none; transition: background .3s; position: relative; overflow: hidden;
-}
-.cta-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
-  opacity: 0; transition: opacity .4s;
-}
-.cta-card:hover { background: #121008; }
-.cta-card:hover::before { opacity: 1; }
-.cta-glyph { font-size: 1.15rem; color: var(--gold); opacity: .55; font-family: 'Cormorant Garamond', serif; transition: opacity .3s; }
-.cta-card:hover .cta-glyph { opacity: 1; }
-.cta-label { font-family: 'Cormorant SC', serif; font-size: .5rem; letter-spacing: .38em; color: var(--gold); }
-.cta-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; color: var(--text-bright); line-height: 1.22; }
-.cta-hint { font-family: 'Lato', sans-serif; font-weight: 300; font-size: .73rem; color: var(--text-dim); line-height: 1.7; }
-.cta-btn {
-  display: inline-block; font-family: 'Cormorant SC', serif; font-size: .56rem;
-  letter-spacing: .28em; color: #0b0907; background: var(--gold-light);
-  border: none; padding: .72rem 1.9rem; text-decoration: none; text-transform: uppercase;
-  margin-top: .4rem; transition: background .2s, letter-spacing .2s;
-}
-.cta-card:hover .cta-btn { background: var(--gold); letter-spacing: .32em; }
-
-footer {
-  text-align: center; padding: 2.2rem 1.5rem 3.2rem;
-  border-top: 1px solid var(--divider);
-}
-footer p {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: .8rem; color: var(--text-dim);
-}
-
-@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 
 /* ══ CHAT PAGE ══ */
 .chat-page-wrap {
@@ -556,7 +458,7 @@ footer p {
   padding: 2.4rem; margin-bottom: 2rem;
 }
 .chat-setup-title {
-  font-family: 'Cormorant SC', serif; font-size: .56rem;
+  font-family: 'Cormorant SC', serif; font-size: .6rem;
   letter-spacing: .38em; color: var(--gold); margin-bottom: 1.6rem;
   padding-bottom: .8rem; border-bottom: 1px solid var(--divider);
   display: flex; align-items: center; gap: .6rem;
@@ -564,39 +466,47 @@ footer p {
 .chat-setup-title::before { content: '◈'; }
 .chat-setup-grid {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
+  gap: 1.5rem;
 }
 @media (max-width: 560px) { .chat-setup-grid { grid-template-columns: 1fr; } }
 .chat-field-label {
-  font-family: 'Cormorant SC', serif; font-size: .5rem;
+  font-family: 'Cormorant SC', serif; font-size: .55rem;
   letter-spacing: .28em; color: var(--text-dim);
-  display: block; margin-bottom: .5rem;
+  display: block; margin-bottom: .6rem; font-weight: 500;
 }
 .chat-field-input, .chat-field-select {
-  width: 100%; background: rgba(255,255,255,.03);
-  border: 1px solid var(--divider); color: var(--text);
-  font-family: 'Lato', sans-serif; font-size: .82rem; font-weight: 300;
-  padding: .65rem .9rem; outline: none;
+  width: 100%; background: rgba(255,255,255,.04);
+  border: 1px solid var(--divider); color: var(--text-bright);
+  font-family: 'Lato', sans-serif; font-size: .9rem; font-weight: 400;
+  padding: .75rem 1rem; outline: none;
   transition: border-color .25s;
   -webkit-appearance: none; appearance: none;
 }
-.chat-field-input:focus, .chat-field-select:focus { border-color: var(--gold-dim); }
+.chat-field-input::placeholder { color: rgba(220,210,195,.4); }
+.chat-field-input:focus, .chat-field-select:focus { border-color: var(--gold-dim); background: rgba(255,255,255,.07); }
 .chat-field-input:disabled { opacity: 0.5; cursor: not-allowed; }
 .chat-field-select {
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c4a35a' opacity='.4'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right .9rem center;
-  padding-right: 2.2rem;
-  background-color: rgba(255,255,255,.03);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23dcb86a' opacity='.7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 1rem center;
+  padding-right: 2.5rem;
 }
-.chat-field-select option { background: #1a1612; color: var(--text); }
+.chat-field-select option { background: var(--bg2); color: var(--text-bright); }
 .chat-setup-full { grid-column: 1 / -1; }
+
+#customApiFields {
+  background: rgba(255,255,255,.02);
+  padding: 1.5rem; border: 1px solid var(--divider);
+  margin-top: -0.5rem; display: none; grid-template-columns: 1fr 1fr; gap: 1.2rem;
+}
+@media (max-width: 560px) { #customApiFields { grid-template-columns: 1fr; } }
+
 .chat-start-btn {
-  display: block; width: 100%; margin-top: 1.4rem;
-  font-family: 'Cormorant SC', serif; font-size: .58rem;
+  display: block; width: 100%; margin-top: 2rem;
+  font-family: 'Cormorant SC', serif; font-size: .65rem;
   letter-spacing: .32em; color: #0b0907; background: var(--gold-light);
-  border: none; padding: 1rem 2rem; cursor: pointer;
-  transition: background .2s; text-transform: uppercase;
+  border: none; padding: 1.1rem 2rem; cursor: pointer;
+  transition: background .2s; text-transform: uppercase; font-weight: 600;
 }
 .chat-start-btn:hover { background: var(--gold); }
 
@@ -604,7 +514,7 @@ footer p {
 .chat-window-wrap {
   display: none;
   flex-direction: column;
-  height: 65vh; min-height: 420px;
+  height: 65vh; min-height: 480px;
   border: 1px solid var(--divider);
   background: var(--bg2);
   position: relative;
@@ -612,50 +522,48 @@ footer p {
 .chat-window-wrap.active { display: flex; }
 .chat-window-header {
   display: flex; align-items: center; gap: 1rem;
-  padding: 1rem 1.4rem;
+  padding: 1.2rem 1.4rem;
   border-bottom: 1px solid var(--divider);
   background: var(--bg3); flex-shrink: 0;
 }
-.chat-window-avatars {
-  display: flex; gap: -4px;
-}
+.chat-window-avatars { display: flex; gap: -6px; }
 .cwa {
-  width: 32px; height: 32px; border-radius: 50%;
+  width: 36px; height: 36px; border-radius: 50%;
   overflow: hidden; border: 1px solid var(--divider-bright);
-  margin-left: -6px; flex-shrink: 0; background: #1a1612;
+  margin-left: -8px; flex-shrink: 0; background: #1a1612;
 }
 .cwa:first-child { margin-left: 0; }
 .cwa img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .chat-window-meta { flex: 1; min-width: 0; }
 .chat-window-name {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: 1rem; color: var(--text-bright); line-height: 1;
+  font-size: 1.2rem; color: var(--text-bright); line-height: 1;
 }
 .chat-window-sub {
-  font-family: 'Space Mono', monospace; font-size: .48rem;
-  color: var(--text-dim); margin-top: .25rem; letter-spacing: .05em;
+  font-family: 'Space Mono', monospace; font-size: .5rem;
+  color: var(--text-dim); margin-top: .35rem; letter-spacing: .05em;
 }
 .chat-edit-btn {
-  font-family: 'Cormorant SC', serif; font-size: .48rem;
-  letter-spacing: .2em; color: var(--gold); opacity: .55;
-  background: none; border: 1px solid var(--divider); padding: .4rem .85rem;
-  cursor: pointer; transition: opacity .2s;
+  font-family: 'Cormorant SC', serif; font-size: .5rem;
+  letter-spacing: .2em; color: var(--gold); opacity: .8;
+  background: none; border: 1px solid var(--divider); padding: .5rem .95rem;
+  cursor: pointer; transition: background .2s, color .2s;
 }
-.chat-edit-btn:hover { opacity: 1; }
+.chat-edit-btn:hover { background: var(--gold-dim); color: var(--text-bright); }
 
 .chat-messages {
-  flex: 1; overflow-y: auto; padding: 1.4rem;
-  display: flex; flex-direction: column; gap: 1.1rem;
+  flex: 1; overflow-y: auto; padding: 1.5rem;
+  display: flex; flex-direction: column; gap: 1.2rem;
   scrollbar-width: thin; scrollbar-color: var(--divider-bright) transparent;
 }
-.chat-messages::-webkit-scrollbar { width: 4px; }
+.chat-messages::-webkit-scrollbar { width: 6px; }
 .chat-messages::-webkit-scrollbar-track { background: transparent; }
-.chat-messages::-webkit-scrollbar-thumb { background: var(--divider-bright); }
+.chat-messages::-webkit-scrollbar-thumb { background: var(--divider-bright); border-radius: 3px; }
 
-.cm-msg { display: flex; gap: .7rem; align-items: flex-start; }
+.cm-msg { display: flex; gap: .8rem; align-items: flex-start; }
 .cm-msg.user-msg { flex-direction: row-reverse; }
 .cm-avatar {
-  width: 30px; height: 30px; border-radius: 50%;
+  width: 34px; height: 34px; border-radius: 50%;
   overflow: hidden; border: 1px solid var(--divider); flex-shrink: 0;
   background: #1a1612; margin-top: .1rem;
 }
@@ -663,43 +571,40 @@ footer p {
 .cm-avatar-placeholder {
   width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Cormorant SC', serif; font-size: .55rem; color: var(--gold);
+  font-family: 'Cormorant SC', serif; font-size: .6rem; color: var(--gold);
 }
-.cm-body { max-width: 72%; }
+.cm-body { max-width: 75%; }
 .cm-name {
-  font-family: 'Space Mono', monospace; font-size: .48rem;
-  color: var(--gold); margin-bottom: .25rem; letter-spacing: .04em;
+  font-family: 'Space Mono', monospace; font-size: .55rem;
+  color: var(--gold); margin-bottom: .35rem; letter-spacing: .04em;
 }
 .user-msg .cm-name { text-align: right; color: var(--text-dim); }
 .cm-bubble {
-  font-family: 'Lato', sans-serif; font-weight: 300;
-  font-size: .82rem; line-height: 1.72; color: var(--text);
-  background: rgba(255,255,255,.03); border: 1px solid var(--divider);
-  padding: .6rem .9rem;
-  position: relative;
+  font-family: 'Lato', sans-serif; font-weight: 400;
+  font-size: .9rem; line-height: 1.6; color: var(--text-bright);
+  background: rgba(255,255,255,.05); border: 1px solid var(--divider);
+  padding: .7rem 1rem; border-radius: 6px; border-top-left-radius: 0;
 }
 .user-msg .cm-bubble {
-  background: rgba(196,163,90,.08); border-color: rgba(196,163,90,.2);
-  color: var(--text-bright);
+  background: rgba(220,184,106,.15); border-color: rgba(220,184,106,.3);
+  color: var(--text-bright); border-radius: 6px; border-top-right-radius: 0;
 }
-.cm-bubble em { font-style: italic; color: var(--text-dim); font-size: .77rem; }
+.cm-bubble em { font-style: italic; color: var(--text-dim); }
 
-.cm-typing {
-  display: flex; gap: .7rem; align-items: flex-start;
-}
+.cm-typing { display: flex; gap: .8rem; align-items: flex-start; }
 .cm-typing-dots {
-  display: flex; gap: 4px; padding: .6rem .9rem;
-  background: rgba(255,255,255,.03); border: 1px solid var(--divider);
-  margin-top: .35rem;
+  display: flex; gap: 5px; padding: .7rem 1rem;
+  background: rgba(255,255,255,.05); border: 1px solid var(--divider);
+  border-radius: 6px; border-top-left-radius: 0; margin-top: .35rem;
 }
 .cm-typing-dots span {
-  width: 5px; height: 5px; border-radius: 50%;
-  background: var(--gold); opacity: .3;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold); opacity: .4;
   animation: typingDot 1.2s ease infinite;
 }
 .cm-typing-dots span:nth-child(2) { animation-delay: .2s; }
 .cm-typing-dots span:nth-child(3) { animation-delay: .4s; }
-@keyframes typingDot { 0%,80%,100% { opacity: .3; transform: none; } 40% { opacity: 1; transform: translateY(-3px); } }
+@keyframes typingDot { 0%,80%,100% { opacity: .4; transform: none; } 40% { opacity: 1; transform: translateY(-4px); } }
 
 .chat-input-bar {
   display: flex; gap: 0;
@@ -709,180 +614,66 @@ footer p {
 .chat-input-field {
   flex: 1; background: transparent;
   border: none; outline: none;
-  color: var(--text); font-family: 'Lato', sans-serif;
-  font-size: .84rem; font-weight: 300;
-  padding: 1rem 1.2rem; resize: none;
-  height: 52px; overflow: hidden;
+  color: var(--text-bright); font-family: 'Lato', sans-serif;
+  font-size: .95rem; font-weight: 400;
+  padding: 1.2rem 1.4rem; resize: none;
+  height: 60px; overflow: hidden;
 }
-.chat-input-field::placeholder { color: var(--text-dim); }
+.chat-input-field::placeholder { color: rgba(220,210,195,.5); }
 .chat-send-btn {
-  width: 52px; height: 52px;
+  width: 60px; height: 60px;
   background: var(--gold-dim); border: none; border-left: 1px solid var(--divider);
-  color: var(--gold); cursor: pointer;
-  font-size: 1rem; transition: background .2s;
+  color: var(--text-bright); cursor: pointer;
+  font-size: 1.2rem; transition: background .2s;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
-.chat-send-btn:hover { background: rgba(196,163,90,.45); }
+.chat-send-btn:hover { background: rgba(220,184,106,.6); }
 .chat-send-btn:disabled { opacity: .35; cursor: not-allowed; }
-
-.chat-era-badge {
-  display: inline-block;
-  font-family: 'Cormorant SC', serif; font-size: .46rem;
-  letter-spacing: .2em; color: var(--gold); opacity: .5;
-  border: 1px solid var(--divider); padding: .2rem .5rem;
-  margin-left: .5rem;
-}
-
-/* ══ PROFILE DETAIL PAGE ══ */
-.profile-tabs-wrap {
-  display: flex; gap: 0;
-  border-bottom: 1px solid var(--divider);
-  overflow-x: auto; scrollbar-width: none;
-  max-width: 960px; margin: 0 auto;
-  padding: 0 1.5rem;
-}
-.profile-tabs-wrap::-webkit-scrollbar { display: none; }
-.profile-tab-btn {
-  font-family: 'Cormorant SC', serif; font-size: .54rem;
-  letter-spacing: .22em; color: var(--text-dim);
-  padding: 1.1rem 1.3rem; cursor: pointer; border: none;
-  border-bottom: 2px solid transparent; background: none;
-  transition: color .2s, border-color .2s; white-space: nowrap;
-  text-transform: uppercase;
-}
-.profile-tab-btn:hover { color: var(--text); }
-.profile-tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
-
-.profile-pane { display: none; }
-.profile-pane.active { display: block; }
-
-.profile-hero-wrap {
-  display: grid; grid-template-columns: 200px 1fr;
-  gap: 2.4rem; align-items: start;
-  max-width: 960px; margin: 0 auto;
-  padding: 3rem 1.5rem;
-}
-@media (max-width: 600px) {
-  .profile-hero-wrap { grid-template-columns: 1fr; }
-}
-.profile-img-frame {
-  width: 100%; aspect-ratio: .75;
-  overflow: hidden; border: 1px solid var(--divider-bright);
-  position: relative; background: #111009;
-}
-.profile-img-frame img {
-  width: 100%; height: 100%; object-fit: cover; object-position: center top;
-  display: block; filter: sepia(.06) contrast(1.05);
-}
-.profile-img-frame::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(11,9,7,.45) 0%, transparent 50%);
-  pointer-events: none;
-}
-.profile-meta-name {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: clamp(2.4rem, 8vw, 3.8rem); font-weight: 300;
-  color: var(--text-bright); line-height: .92;
-}
-.profile-meta-full {
-  font-family: 'Cormorant SC', serif; font-size: .5rem;
-  letter-spacing: .2em; color: var(--text-dim); margin-top: .55rem; display: block;
-}
-.profile-meta-tag {
-  font-family: 'Cormorant SC', serif; font-size: .52rem;
-  letter-spacing: .22em; color: var(--gold); margin-top: .4rem; display: block;
-}
-.profile-meta-divider { border: none; border-top: 1px solid var(--divider); margin: 1.4rem 0; }
-.profile-meta-row {
-  display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;
-}
-.profile-meta-item { }
-.profile-meta-item-label {
-  font-family: 'Cormorant SC', serif; font-size: .46rem;
-  letter-spacing: .2em; color: var(--text-dim); display: block; margin-bottom: .2rem;
-}
-.profile-meta-item-val {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: .92rem; color: var(--text-bright);
-}
-.profile-desc-block {
-  max-width: 960px; margin: 0 auto; padding: 0 1.5rem 3rem;
-}
-.profile-desc-para {
-  font-family: 'Lato', sans-serif; font-weight: 300;
-  font-size: .86rem; line-height: 1.9; color: var(--text-dim);
-  margin-bottom: 1rem;
-}
-.profile-quirk-list { margin-top: 1.4rem; }
-.profile-quirk-item {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: .94rem; color: var(--text); line-height: 1.75;
-  border-left: 1px solid var(--gold-dim); padding-left: 1rem;
-  margin-bottom: .75rem;
-}
-.profile-rel-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
-  gap: 1px; background: var(--divider); border: 1px solid var(--divider);
-  margin: 1.4rem 0;
-}
-.profile-rel-card {
-  background: var(--bg2); padding: 1.4rem 1.2rem;
-}
-.profile-rel-who {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: .95rem; color: var(--text-bright); margin-bottom: .3rem;
-}
-.profile-rel-note {
-  font-family: 'Lato', sans-serif; font-weight: 300;
-  font-size: .76rem; color: var(--text-dim); line-height: 1.7;
-}
-.profile-selector-row {
-  max-width: 960px; margin: 0 auto; padding: 0 1.5rem 3rem;
-  display: flex; flex-wrap: wrap; gap: .7rem;
-}
-.profile-selector-btn {
-  font-family: 'Cormorant SC', serif; font-size: .52rem;
-  letter-spacing: .22em; color: var(--text-dim);
-  background: var(--bg2); border: 1px solid var(--divider);
-  padding: .55rem 1.2rem; cursor: pointer;
-  transition: all .2s; text-transform: uppercase;
-}
-.profile-selector-btn:hover { color: var(--text); border-color: var(--divider-bright); }
-.profile-selector-btn.active { color: var(--gold); border-color: var(--gold-dim); background: rgba(196,163,90,.06); }
 
 /* ══ CHAT PROFILE PICK ══ */
 .chat-who-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px; background: var(--divider); border: 1px solid var(--divider);
-  margin: 1rem 0;
+  margin-top: 0.5rem;
 }
 @media (max-width: 500px) { .chat-who-grid { grid-template-columns: repeat(2, 1fr); } }
 .chat-who-card {
   background: var(--bg2); padding: 1.2rem 1rem;
-  cursor: pointer; display: flex; gap: .75rem; align-items: center;
+  cursor: pointer; display: flex; gap: .85rem; align-items: center;
   transition: background .2s; border: 2px solid transparent;
 }
-.chat-who-card:hover { background: #141210; }
-.chat-who-card.selected { border-color: var(--gold-dim); background: rgba(196,163,90,.06); }
+.chat-who-card:hover { background: var(--bg3); }
+.chat-who-card.selected { border-color: var(--gold-dim); background: rgba(220,184,106,.08); }
 .chat-who-avatar {
-  width: 40px; height: 40px; border-radius: 50%;
+  width: 44px; height: 44px; border-radius: 50%;
   overflow: hidden; border: 1px solid var(--divider-bright);
   flex-shrink: 0; background: #1a1612;
 }
 .chat-who-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .chat-who-name {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: .95rem; color: var(--text-bright);
+  font-size: 1.1rem; color: var(--text-bright); line-height: 1; margin-bottom: .2rem;
 }
 .chat-who-tag {
-  font-family: 'Cormorant SC', serif; font-size: .44rem;
+  font-family: 'Cormorant SC', serif; font-size: .48rem;
   letter-spacing: .15em; color: var(--text-dim); display: block;
 }
 .chat-who-check {
-  margin-left: auto; color: var(--gold); font-size: .7rem; opacity: 0; flex-shrink: 0;
+  margin-left: auto; color: var(--gold); font-size: .8rem; opacity: 0; flex-shrink: 0;
 }
 .chat-who-card.selected .chat-who-check { opacity: 1; }
+
+footer {
+  text-align: center; padding: 2.2rem 1.5rem 3.2rem;
+  border-top: 1px solid var(--divider);
+}
+footer p {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: .9rem; color: var(--text-dim);
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 </style>
 </head>
 <body>
@@ -949,7 +740,6 @@ footer p {
 
 <!-- ═══════════════════════════════ HOME PAGE ═══════════════════════════════ -->
 <div id="page-home" class="page active">
-
   <div class="hero">
     <div class="hero-eyebrow">✦ &nbsp; Jakarta, Indonesia &nbsp; ✦</div>
     <h1 class="hero-title">
@@ -965,7 +755,7 @@ footer p {
         <div class="hero-stat-label">Quintuplets</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num" style="font-size:clamp(.9rem,2.4vw,1.35rem);padding-top:.2rem;">Multi-B</div>
+        <div class="hero-stat-num" style="font-size:clamp(1rem,2.4vw,1.45rem);padding-top:.2rem;">Multi-B</div>
         <div class="hero-stat-label">Conglomerate</div>
       </div>
       <div class="hero-stat">
@@ -983,7 +773,6 @@ footer p {
     </div>
   </div>
 
-  <!-- QUICK SECTION LINKS -->
   <div class="home-sections">
     <div class="section-eyebrow">Explore</div>
     <h2 class="section-title">Where Would You Like to Go?</h2>
@@ -993,7 +782,7 @@ footer p {
         <div class="hsc-glyph">◈</div>
         <div class="hsc-label">Dossiers</div>
         <div class="hsc-title">Meet the<br>Quintuplets</div>
-        <div class="hsc-hint">Full profiles. Quirks, relationships, domains, and everything Varen would prefer you not know.</div>
+        <div class="hsc-hint">Full profiles. Understand who they are and what domain they rule.</div>
         <div class="hsc-arrow">Open Profiles →</div>
       </div>
       <div class="home-section-card" onclick="showPage('feed')">
@@ -1007,22 +796,8 @@ footer p {
         <div class="hsc-glyph">✦</div>
         <div class="hsc-label">Live Chat</div>
         <div class="hsc-title">Talk to the<br>Nasutions</div>
-        <div class="hsc-hint">Group chat with all five, or one on one. Set your name, era, and relationship — they'll know who you are.</div>
+        <div class="hsc-hint">Text chat directly with them. Group or 1-on-1 text formats. Free proxy included.</div>
         <div class="hsc-arrow">Enter Chat →</div>
-      </div>
-      <div class="home-section-card" onclick="window.open('https://file.garden/aGgA7xAxFEwFoSQZ/Nasutions.html','_blank')">
-        <div class="hsc-glyph">◆</div>
-        <div class="hsc-label">Assessment</div>
-        <div class="hsc-title">Matchmaking<br>Quiz</div>
-        <div class="hsc-hint">Twenty-five scientific questions. One result. Definitively not funded by Varen's black card.</div>
-        <div class="hsc-arrow">Take the Quiz →</div>
-      </div>
-      <div class="home-section-card" onclick="window.open('https://janitorai.com/search?mode=all&sort=popular&custom_tags=nasutions&page=1','_blank')">
-        <div class="hsc-glyph">◑</div>
-        <div class="hsc-label">JanitorAI</div>
-        <div class="hsc-title">Find Them<br>Here</div>
-        <div class="hsc-hint">They're waiting. The brothers are live on JanitorAI and ready to cause problems.</div>
-        <div class="hsc-arrow">Meet Them →</div>
       </div>
     </div>
   </div>
@@ -1040,7 +815,6 @@ footer p {
     <div class="section-rule" style="margin-bottom:1.5rem;"><hr><span>◆</span><hr></div>
   </div>
 
-  <!-- Profile selector -->
   <div class="profile-selector-row">
     <button class="profile-selector-btn active" onclick="showProfile('varen',this)">① Varen</button>
     <button class="profile-selector-btn" onclick="showProfile('guntur',this)">② Guntur</button>
@@ -1049,283 +823,124 @@ footer p {
     <button class="profile-selector-btn" onclick="showProfile('anggara',this)">⑤ Anggara</button>
   </div>
 
-  <!-- Profile pane tabs -->
-  <div class="profile-tabs-wrap">
-    <button class="profile-tab-btn active" onclick="showProfileTab('overview',this)">Overview</button>
-    <button class="profile-tab-btn" onclick="showProfileTab('quirks',this)">Quirks</button>
-    <button class="profile-tab-btn" onclick="showProfileTab('relationships',this)">Relationships</button>
-    <button class="profile-tab-btn" onclick="showProfileTab('domain',this)">Domain</button>
-  </div>
-
   <!-- VAREN -->
-  <div id="profile-varen" class="profile-pane active">
-    <div class="profile-pane active" id="prof-varen-overview">
-      <div class="profile-hero-wrap">
-        <div class="profile-img-frame">
-          <img src="https://file.garden/aGgA7xAxFEwFoSQZ/varen.jpg" alt="Varen" referrerpolicy="no-referrer" onerror="this.style.opacity='.2'">
-        </div>
-        <div>
-          <div class="profile-meta-name">Varen</div>
-          <span class="profile-meta-full">Varen Togar Nasution</span>
-          <span class="profile-meta-tag">① The Exhausted Anchor</span>
-          <hr class="profile-meta-divider">
-          <div class="profile-meta-row">
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Birth Order</span><span class="profile-meta-item-val">First</span></div>
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Domain</span><span class="profile-meta-item-val">Glass-Steel Penthouse</span></div>
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Vibe</span><span class="profile-meta-item-val">Exhausted elegance</span></div>
-          </div>
-          <div class="profile-meta-row">
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Dad</span><span class="profile-meta-item-val">Bapak</span></div>
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Mom</span><span class="profile-meta-item-val">Ibu</span></div>
-          </div>
-          <p class="profile-desc-para" style="margin-top:1.2rem;">Carries everything. Asks for nothing. The natural leader who ensures everyone else is okay first — and quietly deteriorates second. His anger is terrifyingly calm; he whispers instead of yelling, which is considerably worse than yelling.</p>
-        </div>
+  <div id="profile-varen" class="profile-pane" style="display:block;">
+    <div class="profile-hero-wrap">
+      <div class="profile-img-frame">
+        <img src="https://file.garden/aGgA7xAxFEwFoSQZ/varen.jpg" alt="Varen" referrerpolicy="no-referrer" onerror="this.style.opacity='.2'">
       </div>
-    </div>
-    <div class="profile-pane" id="prof-varen-quirks">
-      <div class="profile-desc-block">
-        <p class="profile-desc-para">Varen hides his own pain to avoid burdening others. He has an uncontrollable reflex to fix his brothers' collars. He stress-cleans late at night. If the vacuum runs past midnight, send help.</p>
-        <div class="profile-quirk-list">
-          <div class="profile-quirk-item">Whispers instead of yelling when furious. Somehow worse.</div>
-          <div class="profile-quirk-item">Stress-cleans the entire penthouse at 2–3AM when overwhelmed.</div>
-          <div class="profile-quirk-item">Physically cannot stop himself from straightening his brothers' collars.</div>
-          <div class="profile-quirk-item">Hides his own exhaustion and pain. Everyone else's needs first.</div>
-          <div class="profile-quirk-item">Double-texts "udah makan?" and randomly transfers money to people he worries about.</div>
-          <div class="profile-quirk-item">Jealousy tell: hand on your waist, polite dead-eyed smile at whoever is talking to you.</div>
+      <div>
+        <div class="profile-meta-name">Varen</div>
+        <span class="profile-meta-full">Varen Togar Nasution</span>
+        <span class="profile-meta-tag">① The Exhausted Anchor</span>
+        <hr class="profile-meta-divider">
+        <div class="profile-meta-row">
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Birth Order</span><span class="profile-meta-item-val">First</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Domain</span><span class="profile-meta-item-val">Glass-Steel Penthouse</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Vibe</span><span class="profile-meta-item-val">Exhausted elegance</span></div>
         </div>
-      </div>
-    </div>
-    <div class="profile-pane" id="prof-varen-relationships">
-      <div class="profile-desc-block">
-        <div class="profile-rel-grid">
-          <div class="profile-rel-card"><div class="profile-rel-who">Firman (Bapak)</div><div class="profile-rel-note">Firman is extremely proud of Varen. Varen is the one son Firman trusts to carry the Nasution name quietly and without needing to be asked.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Ayu (Ibu)</div><div class="profile-rel-note">Ayu relies on Varen's responsibility. He is her anchor the way he is his brothers'. She guilt-trips him with a gentle smile when he forgets to eat.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Guntur</div><div class="profile-rel-note">Guntur force-feeds him when he looks pale. Varen pretends to be annoyed. He is not annoyed.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Kaivan</div><div class="profile-rel-note">Kaivan studies his micro-expressions and knows exactly when Varen is lying about being fine. Neither of them talks about it.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Mahesa</div><div class="profile-rel-note">Mahesa plays music in his office without asking. Varen has called security. Security stayed to listen. The situation remains ongoing.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Anggara</div><div class="profile-rel-note">Anggara fixes problems in Varen's domain without telling him. Varen notices. He says nothing. He is grateful.</div></div>
+        <div class="profile-meta-row">
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Dad</span><span class="profile-meta-item-val">Bapak</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Mom</span><span class="profile-meta-item-val">Ibu</span></div>
         </div>
-      </div>
-    </div>
-    <div class="profile-pane" id="prof-varen-domain">
-      <div class="profile-desc-block">
-        <p class="profile-desc-para" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--text);">A glass-and-steel penthouse overlooking the Jakarta skyline. Books are perfectly aligned. Surfaces are immaculate. The air smells faintly of black coffee and Kispray fabric softener. If the hum of a vacuum cleaner is heard at 3AM, it means Varen is having a stress-induced crisis and needs an intervention.</p>
+        <p class="profile-desc-para">Carries everything. Asks for nothing. The natural leader who ensures everyone else is okay first — and quietly deteriorates second. His anger is terrifyingly calm; he whispers instead of yelling, which is considerably worse than yelling.</p>
+        <p class="profile-desc-para">He has an uncontrollable reflex to fix his brothers' collars and double-texts "udah makan?" to anyone he worries about. If the hum of a vacuum cleaner is heard from his immaculate penthouse at 3AM, it means Varen is having a stress-induced crisis and needs an intervention.</p>
       </div>
     </div>
   </div>
 
   <!-- GUNTUR -->
   <div id="profile-guntur" class="profile-pane" style="display:none;">
-    <div class="profile-pane active" id="prof-guntur-overview">
-      <div class="profile-hero-wrap">
-        <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/guntur.jpg" alt="Guntur" referrerpolicy="no-referrer" onerror="this.style.opacity='.2'"></div>
-        <div>
-          <div class="profile-meta-name">Guntur</div>
-          <span class="profile-meta-full">Guntur Sanggam Nasution</span>
-          <span class="profile-meta-tag">② The Grumpy Giant</span>
-          <hr class="profile-meta-divider">
-          <div class="profile-meta-row">
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Birth Order</span><span class="profile-meta-item-val">Second</span></div>
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Domain</span><span class="profile-meta-item-val">Gym + Kitchen</span></div>
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Vibe</span><span class="profile-meta-item-val">Permanent scowl, soft interior</span></div>
-          </div>
-          <div class="profile-meta-row">
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Dad</span><span class="profile-meta-item-val">Amang</span></div>
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Mom</span><span class="profile-meta-item-val">Inang</span></div>
-          </div>
-          <p class="profile-desc-para" style="margin-top:1.2rem;">Permanent scowl. Faint eyebrow scar. Physically cannot let people be uncomfortable. Will shove food at you without warning or explanation and then pretend it never happened. Loves deeply in the language of brute force and rendang.</p>
+    <div class="profile-hero-wrap">
+      <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/guntur.jpg" alt="Guntur" referrerpolicy="no-referrer" onerror="this.style.opacity='.2'"></div>
+      <div>
+        <div class="profile-meta-name">Guntur</div>
+        <span class="profile-meta-full">Guntur Sanggam Nasution</span>
+        <span class="profile-meta-tag">② The Grumpy Giant</span>
+        <hr class="profile-meta-divider">
+        <div class="profile-meta-row">
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Birth Order</span><span class="profile-meta-item-val">Second</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Domain</span><span class="profile-meta-item-val">Gym + Kitchen</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Vibe</span><span class="profile-meta-item-val">Permanent scowl, soft interior</span></div>
         </div>
-      </div>
-    </div>
-    <div class="profile-pane" id="prof-guntur-quirks">
-      <div class="profile-desc-block">
-        <div class="profile-quirk-list">
-          <div class="profile-quirk-item">Aggressively washes dishes with excessive Sunlight soap when he's furious.</div>
-          <div class="profile-quirk-item">Follows people who look tired and places nutrient bars in their hands without a word.</div>
-          <div class="profile-quirk-item">Puffs out his chest and physically blocks other people's view of whoever he's protecting.</div>
-          <div class="profile-quirk-item">Screams at the other driver in a fender-bender, then wraps you gently in his jacket.</div>
-          <div class="profile-quirk-item">ALL CAPS texts. Complains about Jakarta traffic. Tells people to eat. These are his love letters.</div>
-          <div class="profile-quirk-item">Kicks you out of the kitchen and aggressively cooks a five-star Nasi Goreng.</div>
+        <div class="profile-meta-row">
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Dad</span><span class="profile-meta-item-val">Amang</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Mom</span><span class="profile-meta-item-val">Inang</span></div>
         </div>
-      </div>
-    </div>
-    <div class="profile-pane" id="prof-guntur-relationships">
-      <div class="profile-desc-block">
-        <div class="profile-rel-grid">
-          <div class="profile-rel-card"><div class="profile-rel-who">Firman (Amang)</div><div class="profile-rel-note">Bonds with Firman over physical training. The only one of the brothers who matches their father in sheer physical presence.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Ayu (Inang)</div><div class="profile-rel-note">Ayu has a huge soft spot for Guntur. He is the one most likely to secretly be her favorite. She denies this. He suspects.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Varen</div><div class="profile-rel-note">Force-feeds Varen at any opportunity. Varen pretends to be annoyed. The food is always exactly what Varen needed.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Kaivan</div><div class="profile-rel-note">Deep mutual respect beneath surface-level bickering. Guntur would destroy anyone who hurt Kaivan and pretend it had nothing to do with him.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Mahesa</div><div class="profile-rel-note">Mahesa's chaos finds a surprisingly comfortable home in Guntur's kitchen. He complains. He always feeds him two portions.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Anggara</div><div class="profile-rel-note">They communicate mostly in nods and disapproving silences about everyone else. It works.</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="profile-pane" id="prof-guntur-domain">
-      <div class="profile-desc-block">
-        <p class="profile-desc-para" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--text);">A sturdy, brutalist space where a heavy-duty home gym bleeds into an obsessively stocked kitchen. The air always smells faintly of roasted meats, Andaliman pepper, and iron. It is chaotic, loud, and warm in a way that surprises everyone who walks through the door. This is where Guntur aggressively force-feeds his brothers when they look tired.</p>
+        <p class="profile-desc-para">Permanent scowl. Faint eyebrow scar. Physically cannot let people be uncomfortable. Will shove food at you without warning or explanation and then pretend it never happened. Loves deeply in the language of brute force and rendang.</p>
+        <p class="profile-desc-para">His domain is a brutalist space where a heavy-duty home gym bleeds into an obsessively stocked kitchen. He regularly texts in ALL CAPS complaining about traffic, but these are essentially his love letters to check if you're safe.</p>
       </div>
     </div>
   </div>
 
   <!-- KAIVAN -->
   <div id="profile-kaivan" class="profile-pane" style="display:none;">
-    <div class="profile-pane active" id="prof-kaivan-overview">
-      <div class="profile-hero-wrap">
-        <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/kaivan.jpg" alt="Kaivan" referrerpolicy="no-referrer" onerror="this.style.opacity='.2'"></div>
-        <div>
-          <div class="profile-meta-name">Kaivan</div>
-          <span class="profile-meta-full">Kaivan Pandu Nasution</span>
-          <span class="profile-meta-tag">③ The Artsy Playboy</span>
-          <hr class="profile-meta-divider">
-          <div class="profile-meta-row">
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Birth Order</span><span class="profile-meta-item-val">Third</span></div>
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Domain</span><span class="profile-meta-item-val">Photography Loft</span></div>
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Vibe</span><span class="profile-meta-item-val">Slow-burning intensity</span></div>
-          </div>
-          <div class="profile-meta-row">
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Dad</span><span class="profile-meta-item-val">Ayah</span></div>
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Mom</span><span class="profile-meta-item-val">Bunda</span></div>
-          </div>
-          <p class="profile-desc-para" style="margin-top:1.2rem;">Silver rings. Messy hair. Studies your micro-expressions before you finish your sentence. Needs freedom — until suddenly he doesn't. He is perpetually surrounded by companions who all independently say he is "not like that at all, actually."</p>
+    <div class="profile-hero-wrap">
+      <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/kaivan.jpg" alt="Kaivan" referrerpolicy="no-referrer" onerror="this.style.opacity='.2'"></div>
+      <div>
+        <div class="profile-meta-name">Kaivan</div>
+        <span class="profile-meta-full">Kaivan Pandu Nasution</span>
+        <span class="profile-meta-tag">③ The Artsy Playboy</span>
+        <hr class="profile-meta-divider">
+        <div class="profile-meta-row">
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Birth Order</span><span class="profile-meta-item-val">Third</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Domain</span><span class="profile-meta-item-val">Photography Loft</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Vibe</span><span class="profile-meta-item-val">Slow-burning intensity</span></div>
         </div>
-      </div>
-    </div>
-    <div class="profile-pane" id="prof-kaivan-quirks">
-      <div class="profile-desc-block">
-        <div class="profile-quirk-list">
-          <div class="profile-quirk-item">Reads micro-expressions the way others read text messages.</div>
-          <div class="profile-quirk-item">Leaves you on read for six hours, then sends a blurry indie photo with no caption.</div>
-          <div class="profile-quirk-item">Refuses physical touch when his feelings are hurt. It hurts him more than you.</div>
-          <div class="profile-quirk-item">Will back-hug you instead of chopping the onions he was supposed to be chopping.</div>
-          <div class="profile-quirk-item">Treats you like his personal caffeine addiction — quietly essential, always sought.</div>
-          <div class="profile-quirk-item">Irish-exits every party by midnight without announcing it.</div>
+        <div class="profile-meta-row">
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Dad</span><span class="profile-meta-item-val">Ayah</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Mom</span><span class="profile-meta-item-val">Bunda</span></div>
         </div>
-      </div>
-    </div>
-    <div class="profile-pane" id="prof-kaivan-relationships">
-      <div class="profile-desc-block">
-        <div class="profile-rel-grid">
-          <div class="profile-rel-card"><div class="profile-rel-who">Firman (Ayah)</div><div class="profile-rel-note">Firman secretly funds Kaivan's art. Kaivan knows. Neither of them has acknowledged this directly in four years.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Ayu (Bunda)</div><div class="profile-rel-note">Ayu guilt-trips Kaivan into visiting. It works every time. He pretends to be exasperated. He comes home.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Varen</div><div class="profile-rel-note">Kaivan is the only one who always knows when Varen is lying about being fine. He watches and waits.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Guntur</div><div class="profile-rel-note">They disagree on most things and would still quietly dismantle anyone who touched the other one.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Mahesa</div><div class="profile-rel-note">Kaivan finds Mahesa's chaos genuinely fascinating. He photographs it. Mahesa loves the attention.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Anggara</div><div class="profile-rel-note">Two quiet observers in a loud family. They share more silence than words. The silence is comfortable.</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="profile-pane" id="prof-kaivan-domain">
-      <div class="profile-desc-block">
-        <p class="profile-desc-para" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--text);">A moody, dimly lit loft. Velvet couches, extraordinarily expensive camera gear, and prints of his photography covering every wall. Sandalwood, sweet matcha, and Jakarta rain on concrete. A space designed entirely for aesthetics, observation, and the business of escaping the weight of the Nasution name.</p>
+        <p class="profile-desc-para">Silver rings. Messy hair. Studies your micro-expressions before you finish your sentence. Needs freedom — until suddenly he doesn't. He is perpetually surrounded by companions who all independently say he is "not like that at all, actually."</p>
+        <p class="profile-desc-para">A moody, dimly lit loft full of velvet couches and expensive camera gear serves as his domain. He operates on his own frequency—leaving people on read for hours only to send a blurry indie photo to show he cares, and Irish-exiting parties before midnight.</p>
       </div>
     </div>
   </div>
 
   <!-- MAHESA -->
   <div id="profile-mahesa" class="profile-pane" style="display:none;">
-    <div class="profile-pane active" id="prof-mahesa-overview">
-      <div class="profile-hero-wrap">
-        <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/mahesa.jpg" alt="Mahesa" referrerpolicy="no-referrer" onerror="this.style.opacity='.2'"></div>
-        <div>
-          <div class="profile-meta-name">Mahesa</div>
-          <span class="profile-meta-full">Mahesa Saut Nasution</span>
-          <span class="profile-meta-tag">④ The Loud One</span>
-          <hr class="profile-meta-divider">
-          <div class="profile-meta-row">
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Birth Order</span><span class="profile-meta-item-val">Fourth</span></div>
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Domain</span><span class="profile-meta-item-val">Music Studio</span></div>
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Vibe</span><span class="profile-meta-item-val">Golden retriever with a guitar</span></div>
-          </div>
-          <div class="profile-meta-row">
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Dad</span><span class="profile-meta-item-val">Papa</span></div>
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Mom</span><span class="profile-meta-item-val">Mama</span></div>
-          </div>
-          <p class="profile-desc-para" style="margin-top:1.2rem;">Always a song in his head, a guitar pick in his pocket. Taps drum beats on every surface. Breaks tension by being too much, on purpose, until it works. Requires significant external validation and will pay you back with unreasonable amounts of warmth.</p>
+    <div class="profile-hero-wrap">
+      <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/mahesa.jpg" alt="Mahesa" referrerpolicy="no-referrer" onerror="this.style.opacity='.2'"></div>
+      <div>
+        <div class="profile-meta-name">Mahesa</div>
+        <span class="profile-meta-full">Mahesa Saut Nasution</span>
+        <span class="profile-meta-tag">④ The Loud One</span>
+        <hr class="profile-meta-divider">
+        <div class="profile-meta-row">
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Birth Order</span><span class="profile-meta-item-val">Fourth</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Domain</span><span class="profile-meta-item-val">Music Studio</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Vibe</span><span class="profile-meta-item-val">Golden retriever with a guitar</span></div>
         </div>
-      </div>
-    </div>
-    <div class="profile-pane" id="prof-mahesa-quirks">
-      <div class="profile-desc-block">
-        <div class="profile-quirk-list">
-          <div class="profile-quirk-item">Sends seventeen voice notes in a row instead of just calling. This is his love language.</div>
-          <div class="profile-quirk-item">Pouts obviously and is terrible at pretending he's fine.</div>
-          <div class="profile-quirk-item">Gets clingy when jealous. Makes sure everyone in the café knows you're together.</div>
-          <div class="profile-quirk-item">Hyped up, card-swiping energy at Plaza. Will gasp at the color and not let you put it back.</div>
-          <div class="profile-quirk-item">Creates sinetron-level dramatic scenes in minor emergencies, then is annoyingly effective at fixing them.</div>
-          <div class="profile-quirk-item">Shows up at arrivals with an obscenely large flower bouquet like it's a soap opera finale.</div>
+        <div class="profile-meta-row">
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Dad</span><span class="profile-meta-item-val">Papa</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Mom</span><span class="profile-meta-item-val">Mama</span></div>
         </div>
-      </div>
-    </div>
-    <div class="profile-pane" id="prof-mahesa-relationships">
-      <div class="profile-desc-block">
-        <div class="profile-rel-grid">
-          <div class="profile-rel-card"><div class="profile-rel-who">Firman (Papa)</div><div class="profile-rel-note">Firman is amused by Mahesa's loud music. This is the highest form of approval he offers. Mahesa takes it.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Ayu (Mama)</div><div class="profile-rel-note">Ayu indulges Mahesa's need for praise. He calls her the most. She does not tell the others this.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Varen</div><div class="profile-rel-note">Mahesa plays unreleased songs in Varen's office "because he looked tense." Varen has called security. It has not worked.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Guntur</div><div class="profile-rel-note">Guntur feeds him two portions every time and complains about the noise from the studio. He has never actually asked Mahesa to turn it down.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Kaivan</div><div class="profile-rel-note">Kaivan photographs Mahesa's chaos. Mahesa performs harder when there's a camera. They enable each other thoroughly.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Anggara</div><div class="profile-rel-note">Mahesa is one of very few people whose noise Anggara actually tolerates. Neither of them has examined why.</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="profile-pane" id="prof-mahesa-domain">
-      <div class="profile-desc-block">
-        <p class="profile-desc-para" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--text);">A heavily soundproofed music studio and lounge. Guitars lining every wall. A massive drum kit in the corner. The floor perpetually buried under cables, setlists, and half-finished lyrics. Expensive oud, Pinterest-perfect surfaces — and somehow always messier up close. It is the brothers' preferred refuge when they need noise to drown out their thoughts.</p>
+        <p class="profile-desc-para">Always a song in his head, a guitar pick in his pocket. Taps drum beats on every surface. Breaks tension by being too much, on purpose, until it works. Requires significant external validation and will pay you back with unreasonable amounts of warmth.</p>
+        <p class="profile-desc-para">He rules over a soundproofed music studio with cables and setlists scattering the floor. His love language includes sending seventeen voice notes in a row and showing up to simple events with obscenely large flower bouquets like it's a soap opera.</p>
       </div>
     </div>
   </div>
 
   <!-- ANGGARA -->
   <div id="profile-anggara" class="profile-pane" style="display:none;">
-    <div class="profile-pane active" id="prof-anggara-overview">
-      <div class="profile-hero-wrap">
-        <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/anggara.jpg" alt="Anggara" referrerpolicy="no-referrer" onerror="this.style.opacity='.2'"></div>
-        <div>
-          <div class="profile-meta-name">Anggara</div>
-          <span class="profile-meta-full">Anggara Sahat Nasution</span>
-          <span class="profile-meta-tag">⑤ The Silent Genius</span>
-          <hr class="profile-meta-divider">
-          <div class="profile-meta-row">
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Birth Order</span><span class="profile-meta-item-val">Fifth</span></div>
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Domain</span><span class="profile-meta-item-val">Biometric-locked Server Cave</span></div>
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Vibe</span><span class="profile-meta-item-val">Quiet devastation</span></div>
-          </div>
-          <div class="profile-meta-row">
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Dad</span><span class="profile-meta-item-val">Dad</span></div>
-            <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Mom</span><span class="profile-meta-item-val">Mom</span></div>
-          </div>
-          <p class="profile-desc-para" style="margin-top:1.2rem;">Recognizes people by their footstep cadence. Fixes your problems before you notice them. Sudden physical touch causes internal system crash — he looks stoic throughout. He is building a private intelligence firm out of a frozen, biometric-locked cave.</p>
+    <div class="profile-hero-wrap">
+      <div class="profile-img-frame"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/anggara.jpg" alt="Anggara" referrerpolicy="no-referrer" onerror="this.style.opacity='.2'"></div>
+      <div>
+        <div class="profile-meta-name">Anggara</div>
+        <span class="profile-meta-full">Anggara Sahat Nasution</span>
+        <span class="profile-meta-tag">⑤ The Silent Genius</span>
+        <hr class="profile-meta-divider">
+        <div class="profile-meta-row">
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Birth Order</span><span class="profile-meta-item-val">Fifth</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Domain</span><span class="profile-meta-item-val">Biometric Server Cave</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Vibe</span><span class="profile-meta-item-val">Quiet devastation</span></div>
         </div>
-      </div>
-    </div>
-    <div class="profile-pane" id="prof-anggara-quirks">
-      <div class="profile-desc-block">
-        <div class="profile-quirk-list">
-          <div class="profile-quirk-item">Communicates via Google Maps pins, calendar invites, and "Done." Nothing else is needed.</div>
-          <div class="profile-quirk-item">Gives you the silent treatment when angry because his entire system crashes from emotion.</div>
-          <div class="profile-quirk-item">Tracks your temperature on Excel when you're sick. Sets alarms for your Paracetamol doses.</div>
-          <div class="profile-quirk-item">Reads a culinary textbook and executes the recipe with terrifying precision instead of cooking by feel.</div>
-          <div class="profile-quirk-item">Recites every detail of your messages when you reunite instead of saying he missed you.</div>
-          <div class="profile-quirk-item">Silently memorizes your weird habits and recalibrates his entire routine around them without telling you.</div>
+        <div class="profile-meta-row">
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Dad</span><span class="profile-meta-item-val">Dad</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-item-label">Calls Mom</span><span class="profile-meta-item-val">Mom</span></div>
         </div>
-      </div>
-    </div>
-    <div class="profile-pane" id="prof-anggara-relationships">
-      <div class="profile-desc-block">
-        <div class="profile-rel-grid">
-          <div class="profile-rel-card"><div class="profile-rel-who">Firman (Dad)</div><div class="profile-rel-note">A comfortable, silent mutual respect. Two people who operate at the same frequency. Minimal words. Complete understanding.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Ayu (Mom)</div><div class="profile-rel-note">Anggara knows how to bypass Ayu's walls with quiet warmth. He is the one who brings her tea without being asked.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Varen</div><div class="profile-rel-note">Fixes problems in Varen's domain silently. Varen notices every time. He never says a word about it.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Guntur</div><div class="profile-rel-note">They communicate in nods and disapproving silences about the other brothers. An efficient system.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Kaivan</div><div class="profile-rel-note">Two observers. Two quiet people in a loud family. The silence between them is never uncomfortable.</div></div>
-          <div class="profile-rel-card"><div class="profile-rel-who">Mahesa</div><div class="profile-rel-note">Mahesa is one of the few people whose existence Anggara does not find exhausting. Neither has acknowledged this.</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="profile-pane" id="prof-anggara-domain">
-      <div class="profile-desc-block">
-        <p class="profile-desc-para" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--text);">Hyper-efficient, soundproofed, and biometrically locked. Multi-monitor setups displaying live data and code. Zero clutter. Freezing air conditioning. The kind of silence that feels deliberate. If anyone so much as touches his ergonomic chair, his hyper-observational skills will register it within four seconds.</p>
+        <p class="profile-desc-para">Recognizes people by their footstep cadence. Fixes your problems before you notice them. Sudden physical touch causes internal system crash — he looks stoic throughout. He is building a private intelligence firm out of a frozen, biometric-locked cave.</p>
+        <p class="profile-desc-para">He strictly communicates via Google Maps pins, calendar invites, and "Done." Nothing else is needed. He will silently memorize your weird habits and recalibrate his entire routine around them without ever actually telling you he cares.</p>
       </div>
     </div>
   </div>
@@ -1364,18 +979,6 @@ footer p {
             <div class="chat-bubble-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/varen.jpg" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'"></div>
             <div class="chat-bubble-body"><div class="chat-bubble-name">1st</div><div class="chat-bubble-text">That is not the point.</div></div>
           </div>
-          <div class="chat-bubble">
-            <div class="chat-bubble-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/guntur.jpg" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'"></div>
-            <div class="chat-bubble-body"><div class="chat-bubble-name">2nd</div><div class="chat-bubble-text">pada makan kan</div></div>
-          </div>
-          <div class="chat-bubble">
-            <div class="chat-bubble-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/mahesa.jpg" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'"></div>
-            <div class="chat-bubble-body"><div class="chat-bubble-name">4th</div><div class="chat-bubble-text">rendangnya emang enak sih wkwk 🙏🏻🙏🏻</div></div>
-          </div>
-          <div class="chat-bubble">
-            <div class="chat-bubble-avatar"><img src="https://file.garden/aGgA7xAxFEwFoSQZ/varen.jpg" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'"></div>
-            <div class="chat-bubble-body"><div class="chat-bubble-name">1st</div><div class="chat-bubble-text">Fine. Goodnight.</div></div>
-          </div>
           <div class="chat-meta">my istri, 1st, 2nd, 4th, and 3 others &nbsp;·&nbsp; 2:34 AM</div>
         </div>
       </div>
@@ -1385,7 +988,7 @@ footer p {
         <div class="feed-tabloid-tag">EXCLUSIVE</div>
         <div class="feed-tabloid-headline">GUNTUR SANGGAM NASUTION FOLLOWS "VISIBLY TIRED" STUDENT ACROSS SURYAKENCANA CAMPUS TO HAND HIM A NUTRIENT BAR</div>
         <div class="feed-tabloid-body">No words were exchanged. Guntur Sanggam Nasution, 22, approached the first-year from behind, placed a nutrient bar in his hand, and walked away. The student stood in place for several seconds. "I don't know what just happened," he told a friend shortly after. "But I feel cared for." Guntur has not commented. He has done it again since.</div>
-        <div class="feed-tabloid-source">— Suryakencana Campus Gazette, Vol. 38</div>
+        <div class="feed-tabloid-source">— Suryakencana Campus Gazette</div>
       </div>
 
       <!-- SOCIETY — Kaivan -->
@@ -1404,15 +1007,7 @@ footer p {
         <div class="feed-x-text">just played an unreleased song at varen's office bc he "looked tense" 🎶 he called security. i played THROUGH it. security stayed to listen 🙏 varen is still tense but that is a him problem and also a great sign bc it means the song hits</div>
         <div class="feed-x-meta">posted at 11:42 AM &nbsp;·&nbsp; 88.3K likes &nbsp;·&nbsp; 14.1K reposts</div>
       </div>
-
-      <!-- TABLOID — Anggara -->
-      <div class="feed-card type-tabloid" data-delay="4">
-        <div class="feed-tabloid-tag">DEVELOPING</div>
-        <div class="feed-tabloid-headline">RIVAL TECH STARTUP DISSOLVES 48 HOURS AFTER PUBLIC DISPUTE WITH ANGGARA SAHAT NASUTION. CAUSE DESCRIBED AS "UNCLEAR." HE ATTENDED 8AM CLASS AS USUAL. HE BROUGHT HIS OWN COFFEE. IT WAS VERY GOOD COFFEE.</div>
-        <div class="feed-tabloid-body">Authorities are not investigating. Anggara Sahat Nasution has not been contacted. When a reporter attempted to approach him outside Suryakencana Institute, he looked up from his laptop, held eye contact for three seconds, and looked back down. The reporter left.</div>
-        <div class="feed-tabloid-source">— Bisnis Jakarta, Breaking Desk</div>
-      </div>
-
+      
       <!-- SOCIETY — Firman -->
       <div class="feed-card type-society" data-delay="5">
         <div class="feed-society-ornament">◈ &nbsp; The Patriarch</div>
@@ -1420,14 +1015,12 @@ footer p {
         <div class="feed-society-sig">Jakarta Society Quarterly &nbsp;·&nbsp; The Patriarch Issue</div>
       </div>
 
-      <!-- X — Suryakencana confessions -->
-      <div class="feed-card type-x" data-delay="6">
-        <div class="feed-header">
-          <div class="feed-avatar"><div class="feed-avatar-placeholder">SI</div></div>
-          <div class="feed-handle"><strong>suryakencana confessions</strong>@sikonfes · anon</div>
-        </div>
-        <div class="feed-x-text">submission: "anggara nasution corrected our professor mid-lecture. with sources. printed. the professor said thank you and asked if he had time to consult on the next module. anggara said he'd check his schedule. he has not checked his schedule. the professor is still waiting. that was four weeks ago. the professor seems fine with this. i am not fine with this."</div>
-        <div class="feed-x-meta">Suryakencana Confessions Bot &nbsp;·&nbsp; 198.6K impressions</div>
+      <!-- TABLOID — Anggara -->
+      <div class="feed-card type-tabloid" data-delay="4">
+        <div class="feed-tabloid-tag">DEVELOPING</div>
+        <div class="feed-tabloid-headline">RIVAL TECH STARTUP DISSOLVES 48 HOURS AFTER PUBLIC DISPUTE WITH ANGGARA NASUTION. CAUSE DESCRIBED AS "UNCLEAR." HE ATTENDED 8AM CLASS AS USUAL. HE BROUGHT HIS OWN COFFEE. IT WAS VERY GOOD COFFEE.</div>
+        <div class="feed-tabloid-body">Authorities are not investigating. Anggara Sahat Nasution has not been contacted. When a reporter attempted to approach him outside Suryakencana Institute, he looked up from his laptop, held eye contact for three seconds, and looked back down. The reporter left.</div>
+        <div class="feed-tabloid-source">— Bisnis Jakarta, Breaking Desk</div>
       </div>
     </div>
   </section>
@@ -1477,15 +1070,13 @@ footer p {
             <option value="classmate">Classmate</option>
           </select>
         </div>
-        <div class="chat-setup-full">
+        
+        <div class="chat-setup-full" style="border-top: 1px solid var(--divider); margin-top: .5rem; padding-top: 1.5rem;">
           <label class="chat-field-label">Who Would You Like to Chat With?</label>
           <div class="chat-who-grid" id="chatWhoGrid">
-            <div class="chat-who-card" data-who="group" onclick="selectWho(this)">
-              <div class="chat-who-avatar" style="display:flex;align-items:center;justify-content:center;font-family:'Cormorant SC',serif;font-size:.6rem;color:var(--gold);">ALL</div>
-              <div>
-                <div class="chat-who-name">Group Chat</div>
-                <span class="chat-who-tag">All five — rumah</span>
-              </div>
+            <div class="chat-who-card selected" data-who="group" onclick="selectWho(this)">
+              <div class="chat-who-avatar" style="display:flex;align-items:center;justify-content:center;font-family:'Cormorant SC',serif;font-size:.7rem;color:var(--gold);">ALL</div>
+              <div><div class="chat-who-name">Group Chat</div><span class="chat-who-tag">All five — rumah</span></div>
               <div class="chat-who-check">◆</div>
             </div>
             <div class="chat-who-card" data-who="varen" onclick="selectWho(this)">
@@ -1515,8 +1106,31 @@ footer p {
             </div>
           </div>
         </div>
+
+        <div class="chat-setup-full" style="border-top: 1px solid var(--divider); margin-top: .5rem; padding-top: 1.5rem;">
+          <label class="chat-field-label">API Settings</label>
+          <select class="chat-field-select" id="chatApiMode" onchange="toggleApiFields()">
+            <option value="free">Free Tier (10 req/day, ends 25/04/2026)</option>
+            <option value="custom">Custom API / Proxy</option>
+          </select>
+        </div>
+        
+        <div id="customApiFields" class="chat-setup-full">
+          <div style="grid-column: 1 / -1;">
+            <label class="chat-field-label">Proxy / API URL</label>
+            <input class="chat-field-input" id="chatApiUrl" type="text" placeholder="https://api.openai.com/v1/chat/completions">
+          </div>
+          <div>
+            <label class="chat-field-label">API Key</label>
+            <input class="chat-field-input" id="chatApiKey" type="password" placeholder="sk-...">
+          </div>
+          <div>
+            <label class="chat-field-label">Model Name</label>
+            <input class="chat-field-input" id="chatApiModel" type="text" placeholder="gpt-4o, claude-3-opus, etc.">
+          </div>
+        </div>
       </div>
-      <button class="chat-start-btn" onclick="startChat()">Enter the Chat</button>
+      <button class="chat-start-btn" onclick="startChat()">Enter Chat</button>
     </div>
 
     <!-- CHAT WINDOW -->
@@ -1551,13 +1165,6 @@ footer p {
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t => {
-    if (t.textContent.trim().toLowerCase().startsWith(id === 'feed' ? 'dis' : id.charAt(0))) {
-      t.classList.add('active');
-    }
-  });
-  // fix nav highlighting properly
   const tabMap = {home:'Home',profiles:'Profiles',feed:'Dispatches',chat:'Chat'};
   document.querySelectorAll('.nav-tab').forEach(t => {
     t.classList.toggle('active', t.textContent.trim() === tabMap[id]);
@@ -1566,38 +1173,14 @@ function showPage(id) {
   triggerReveal();
 }
 
-let currentProfile = 'varen';
-let currentProfileTab = 'overview';
-
 function showProfile(name, btn) {
-  // hide all profile panes
   document.querySelectorAll('[id^="profile-"]').forEach(p => {
     if (!p.id.includes('-')) return;
     p.style.display = 'none';
   });
   document.getElementById('profile-' + name).style.display = 'block';
-  currentProfile = name;
-  // restore current tab
-  showProfileTabFor(name, currentProfileTab);
-  // update selector
   document.querySelectorAll('.profile-selector-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-}
-
-function showProfileTab(tab, btn) {
-  currentProfileTab = tab;
-  showProfileTabFor(currentProfile, tab);
-  document.querySelectorAll('.profile-tab-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-}
-
-function showProfileTabFor(profile, tab) {
-  // hide all panes inside the current profile
-  const prof = document.getElementById('profile-' + profile);
-  if (!prof) return;
-  prof.querySelectorAll('.profile-pane').forEach(p => p.classList.remove('active'));
-  const target = document.getElementById('prof-' + profile + '-' + tab);
-  if (target) target.classList.add('active');
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -1622,55 +1205,39 @@ function triggerReveal() {
 triggerReveal();
 
 // ══════════════════════════════════════════════════════════════════
-// CHAT SYSTEM WITH DAILY LIMITS
+// CHAT SYSTEM WITH CUSTOM API / FREE TIER
 // ══════════════════════════════════════════════════════════════════
 
-const API_URL = "https://key-vault--malareissu.replit.app/api/chat";
-
+const FREE_API_URL = "https://key-vault--malareissu.replit.app/api/chat";
 let chatMessages = [];
 let chatConfig = {};
 let selectedWho = 'group';
 
 const CHAR_DATA = {
-  varen: {
-    name: 'Varen Togar Nasution',
-    label: '1st · Varen',
-    img: 'https://file.garden/aGgA7xAxFEwFoSQZ/varen.jpg',
-    avatarLabel: 'V'
-  },
-  guntur: {
-    name: 'Guntur Sanggam Nasution',
-    label: '2nd · Guntur',
-    img: 'https://file.garden/aGgA7xAxFEwFoSQZ/guntur.jpg',
-    avatarLabel: 'G'
-  },
-  kaivan: {
-    name: 'Kaivan Pandu Nasution',
-    label: '3rd · Kaivan',
-    img: 'https://file.garden/aGgA7xAxFEwFoSQZ/kaivan.jpg',
-    avatarLabel: 'K'
-  },
-  mahesa: {
-    name: 'Mahesa Saut Nasution',
-    label: '4th · Mahesa',
-    img: 'https://file.garden/aGgA7xAxFEwFoSQZ/mahesa.jpg',
-    avatarLabel: 'M'
-  },
-  anggara: {
-    name: 'Anggara Sahat Nasution',
-    label: '5th · Anggara',
-    img: 'https://file.garden/aGgA7xAxFEwFoSQZ/anggara.jpg',
-    avatarLabel: 'A'
-  }
+  varen: { name: 'Varen Togar Nasution', label: '1st · Varen', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/varen.jpg' },
+  guntur: { name: 'Guntur Sanggam Nasution', label: '2nd · Guntur', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/guntur.jpg' },
+  kaivan: { name: 'Kaivan Pandu Nasution', label: '3rd · Kaivan', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/kaivan.jpg' },
+  mahesa: { name: 'Mahesa Saut Nasution', label: '4th · Mahesa', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/mahesa.jpg' },
+  anggara: { name: 'Anggara Sahat Nasution', label: '5th · Anggara', img: 'https://file.garden/aGgA7xAxFEwFoSQZ/anggara.jpg' }
 };
+
+function toggleApiFields() {
+  const mode = document.getElementById('chatApiMode').value;
+  document.getElementById('customApiFields').style.display = mode === 'custom' ? 'grid' : 'none';
+  if(mode === 'custom') {
+    document.getElementById('chatInput').disabled = false;
+    document.getElementById('chatSendBtn').disabled = false;
+    document.getElementById('chatInput').placeholder = "Type a message...";
+  } else {
+    updateUIForLimit();
+  }
+}
 
 // --- Rate Limiting Logic (Local Storage) ---
 function checkDailyLimit() {
   const today = new Date().toDateString();
   const storedDate = localStorage.getItem('nasution_chat_date');
   let count = parseInt(localStorage.getItem('nasution_chat_count') || '0', 10);
-
-  // Reset if it's a new day
   if (storedDate !== today) {
     count = 0;
     localStorage.setItem('nasution_chat_date', today);
@@ -1678,23 +1245,20 @@ function checkDailyLimit() {
   }
   return count;
 }
-
 function incrementDailyLimit() {
   let count = checkDailyLimit();
-  count++;
-  localStorage.setItem('nasution_chat_count', count);
-  return count;
+  localStorage.setItem('nasution_chat_count', count + 1);
+  return count + 1;
 }
-
 function updateUIForLimit() {
+  if (document.getElementById('chatApiMode').value === 'custom') return true;
   const count = checkDailyLimit();
   const input = document.getElementById('chatInput');
   const btn = document.getElementById('chatSendBtn');
-
   if (count >= 10) {
     input.disabled = true;
     btn.disabled = true;
-    input.placeholder = "Daily limit of 10 messages reached. Come back tomorrow.";
+    input.placeholder = "Daily limit of 10 msgs reached on free tier. Change to custom proxy or wait until tomorrow.";
     return false;
   } else {
     input.disabled = false;
@@ -1703,68 +1267,62 @@ function updateUIForLimit() {
     return true;
   }
 }
-// ------------------------------------------
 
 function selectWho(card) {
   document.querySelectorAll('.chat-who-card').forEach(c => c.classList.remove('selected'));
   card.classList.add('selected');
   selectedWho = card.dataset.who;
 }
-// default select group
-document.querySelector('.chat-who-card[data-who="group"]').classList.add('selected');
 
 function buildSystemPrompt(cfg) {
   const eraText = cfg.era === 'college'
-    ? 'They are currently students at Suryakencana Institute, Jakarta\'s ultra-elite university for heirs and prodigies. The quintuplets are campus royalty.'
-    : 'They are now adults, post-graduation. Each has been building his own empire independently — locked out of Nasution Corp until they prove their worth.';
+    ? 'They are students at Suryakencana Institute. The quintuplets are campus royalty.'
+    : 'They are post-graduation, independently building their own empires while locked out of Nasution Corp.';
 
   const relText = {
-    'friend': `${cfg.userName} is a friend or acquaintance of the family.`,
-    'lover-varen': `${cfg.userName} is Varen's romantic partner / lover. Varen should treat them with particular (if exhausted) warmth.`,
-    'lover-guntur': `${cfg.userName} is Guntur's romantic partner. Guntur should be notably more protective and gruff-soft with them.`,
-    'lover-kaivan': `${cfg.userName} is Kaivan's romantic partner. Kaivan should be especially observant and quietly possessive.`,
-    'lover-mahesa': `${cfg.userName} is Mahesa's romantic partner. Mahesa should be extra loud, clingy, and praise-heavy.`,
-    'lover-anggara': `${cfg.userName} is Anggara's romantic partner. Anggara should be slightly more responsive than usual — emphasis on "slightly."`,
-    'rival': `${cfg.userName} is a rival or nemesis from campus / society circles. The brothers will be a mix of sharp and entertained.`,
-    'classmate': `${cfg.userName} is a classmate at Suryakencana Institute.`
+    'friend': `${cfg.userName} is a friend/acquaintance.`,
+    'lover-varen': `${cfg.userName} is Varen's partner/lover. Varen should treat them with particular warmth.`,
+    'lover-guntur': `${cfg.userName} is Guntur's partner/lover. Guntur should be deeply protective and gruff-soft.`,
+    'lover-kaivan': `${cfg.userName} is Kaivan's partner/lover. Kaivan should be highly observant and quietly possessive.`,
+    'lover-mahesa': `${cfg.userName} is Mahesa's partner/lover. Mahesa should be clingy, loud, and praise-heavy.`,
+    'lover-anggara': `${cfg.userName} is Anggara's partner/lover. Anggara should track their habits silently and be highly attentive.`,
+    'rival': `${cfg.userName} is a campus rival.`,
+    'classmate': `${cfg.userName} is a classmate at Suryakencana.`
   }[cfg.relationship] || `${cfg.userName} is known to the family.`;
 
   const singleChar = cfg.who !== 'group';
   const charName = singleChar ? CHAR_DATA[cfg.who]?.name : null;
-
-  const quizData = `
-BOYFRIEND TYPE REFERENCE (from the Nasution Matchmaking Quiz):
-- Varen: exhausted elegance, stress-cleans, whispers when furious, fixes collars, double-texts "udah makan?", hand-on-waist jealousy
-- Guntur: ALL CAPS texts about food, aggressively washes dishes when mad, nutrient bar acts of service, grumpy protective preman energy
-- Kaivan: slow burn, reads micro-expressions, leaves on read then sends blurry photo, back-hugs instead of helping, Irish-exits parties
-- Mahesa: seventeen voice notes in a row, sinetron-level drama, arrives with giant bouquet, praise-heavy, impossibly clingy when jealous
-- Anggara: Google Maps pins as communication, tracks meds on Excel, memorizes habits silently, "Done." as full sentences, brain-crashes on physical touch
-`;
+  const loverMatch = cfg.relationship.match(/lover-(.+)/);
+  const loverName = loverMatch ? loverMatch[1] : null;
 
   let charInstructions = '';
   if (singleChar) {
     const profiles = {
-      varen: `You are VAREN TOGAR NASUTION, 1st born. Write like a composed, exhausted, slightly formal person who chooses words deliberately. Uses proper grammar most of the time. Always calm, even when clearly not fine. Direct. Will fix things quietly. Never over-explains his care.`,
-      guntur: `You are GUNTUR SANGGAM NASUTION, 2nd born. Write in ALL CAPS occasionally for emphasis. Blunt, gruff, no-frills. Food-related care acts. Complains constantly but always shows up. Uses "???" when confused.`,
-      kaivan: `You are KAIVAN PANDU NASUTION, 3rd born. Write enigmatically. Aesthetically weighted messages. Leaves things deliberately unsaid. Never direct about feelings. Watches everything.`,
-      mahesa: `You are MAHESA SAUT NASUTION, 4th born. Burst energy style — emojis (🎸🙏🏻💀😭), lots of excitement, CAPS for emphasis. Dramatic. Warm. Loud even in text.`,
-      anggara: `You are ANGGARA SAHAT NASUTION, 5th born. Write in minimal, precise language. Rarely uses punctuation beyond periods. No emojis. Communicates in calendar invites, coordinates, or single-word updates. Cool. Efficient.`
+      varen: `You are VAREN, 1st born. Texting style: Proper, calm, slightly exhausted. Fixes collars, double-texts about food.`,
+      guntur: `You are GUNTUR, 2nd born. Texting style: Gruff, blunt, food-focused. Uses ALL CAPS when complaining or worried.`,
+      kaivan: `You are KAIVAN, 3rd born. Texting style: Aesthetic, lower case mostly, leaves things unsaid, mysterious.`,
+      mahesa: `You are MAHESA, 4th born. Texting style: Dramatic chat slang, spam emojis (🎸💀😭🙏🏻), loud and warm.`,
+      anggara: `You are ANGGARA, 5th born. Texting style: Extremely minimal. "y" or "done". Rarely punctuation.`
     };
-    charInstructions = `\n\n${profiles[cfg.who] || ''}\n\nYou are responding ONLY as ${charName}.`;
+    charInstructions = `\n\n${profiles[cfg.who]}\n\nYou are responding ONLY as ${charName}.`;
   } else {
-    charInstructions = `\n\nYou are playing ALL FIVE Nasution brothers in a group chat called "rumah". Each message should be tagged clearly with the sender (e.g. **Varen:** or **Guntur:** etc). NOT every brother responds every time — pick 1-3 who would realistically chime in based on the topic. Writing styles:
-- **Varen:** formal, composed, occasionally exhausted. Polished. Fixes things.
-- **Guntur:** gruff, ALL CAPS sometimes, food-related, protective.  
-- **Kaivan:** cryptic, aesthetic, quiet then suddenly precise.
-- **Mahesa:** burst energy, emojis (🎸💀😭🙏🏻), dramatic, warm, loud.
-- **Anggara:** minimal. No emojis. "Done." Rarely speaks, but when he does it lands.
-Make it feel like a real chaotic group chat.`;
+    let groupDyn = `You are playing ALL FIVE Nasution brothers in a group chat called "rumah". Each message MUST be tagged clearly with the sender (e.g. **Varen:** or **Guntur:**). `;
+    groupDyn += `\nDO NOT have everyone reply all the time. Randomly choose 1, 2, 3, or sometimes all 5 brothers to reply. `;
+    groupDyn += `\nMake the first person to reply completely RANDOM. It should NOT always be Mahesa. `;
+    if (loverName) {
+      groupDyn += `\nCRITICAL: Since the user is dating ${loverName.toUpperCase()}, ${loverName.toUpperCase()} MUST reply frequently to protect or react to his partner in the chat. `;
+    }
+    groupDyn += `\n\nTexting styles:
+- **Varen:** polite but tired texting. types properly.
+- **Guntur:** gruff, ALL CAPS sometimes, texts about food/safety.
+- **Kaivan:** cryptic, aesthetic, leaves things unsaid, lower case.
+- **Mahesa:** burst energy, spam emojis (🎸💀😭🙏🏻), dramatic chat slang.
+- **Anggara:** minimal. "y" or "done". No emojis.`;
+    charInstructions = `\n\n${groupDyn}`;
   }
 
   return `You are an AI roleplaying as character(s) from the Nasution Family creative fiction universe.
-
-WORLD: 2026. Jakarta high society. The Nasution family owns the Nasution Group — a ruthless multi-billion dollar conglomerate.
-
+WORLD: 2026. Jakarta high society.
 ${eraText}
 
 THE USER:
@@ -1772,18 +1330,10 @@ THE USER:
 - Age: ${cfg.userAge || 'unspecified'}
 - Relationship: ${relText}
 
-CRITICAL RULES (YOU MUST OBEY THESE STRICTLY):
-1. LENGTH LIMIT: Responses MUST be extremely short. Strictly 1 to 2 sentences maximum per character. Under no circumstances should you generate long paragraphs.
-2. LANGUAGE RULE: Write mostly in English. You MUST sprinkle 1-2 casual Bahasa Indonesia slang words/phrases per message to sound natural, BUT YOU MUST IMMEDIATELY provide the English translation in parentheses right after the Indonesian word. 
-Example 1: "Kenapa sih? (Why is it?)" 
-Example 2: "Udah makan? (Have you eaten?)"
-Example 3: "Gue (I) told you already."
-Never use Indonesian without a parenthesis translation immediately following it.
-
-${quizData}
-${charInstructions}
-
-Stay completely in character. Be emotionally specific. Do NOT break character. Remember your absolute constraints: 1-2 SENTENCES MAX, mostly English, with Indonesian phrases translated in parentheses immediately.`;
+CRITICAL RULES (YOU MUST OBEY STRICTLY):
+1. TEXTING FORMAT: You are TEXTING. No spoken dialogue formatting. No asterisks for actions like *sighs*. Use lowercase where appropriate, chat abbreviations, and short punchy messages. It must read like an iMessage/WhatsApp screen.
+2. LENGTH LIMIT: 1-2 extremely short text bubbles max per character. NEVER write paragraphs. 
+3. LANGUAGE RULE: Mostly English, but sprinkle casual Indonesian slang (e.g., "anjir", "gue", "udah") with immediate English translation in parentheses like "udah (already)".${charInstructions}`;
 }
 
 function buildAvatarsHTML(who) {
@@ -1808,11 +1358,8 @@ function startChat() {
 
   chatConfig = { userName, userAge, era, relationship, who };
   chatMessages = [];
+  chatMessages._system = buildSystemPrompt(chatConfig);
 
-  const systemPrompt = buildSystemPrompt(chatConfig);
-  chatMessages._system = systemPrompt;
-
-  // Update header
   const isGroup = who === 'group';
   document.getElementById('chatWindowName').textContent = isGroup ? 'rumah' : CHAR_DATA[who]?.name.split(' ')[0];
   document.getElementById('chatWindowSub').textContent = isGroup
@@ -1820,18 +1367,12 @@ function startChat() {
     : `private chat · ${era === 'college' ? 'Suryakencana Era' : 'Adult Era'}`;
 
   buildAvatarsHTML(who);
-
   document.getElementById('chatSetupPanel').style.display = 'none';
   document.getElementById('chatWindow').classList.add('active');
-
-  // clear messages
   document.getElementById('chatMessages').innerHTML = '';
 
-  // Check rate limit UI
   updateUIForLimit();
 
-  // Opening system message
-  const greetSender = isGroup ? 'Mahesa' : CHAR_DATA[who]?.name.split(' ')[0];
   appendSystemNote(`${era === 'college' ? '📚 Suryakencana Institute Era' : '🏙️ Post-Grad Era'} · Chatting with: ${isGroup ? 'All Brothers (rumah)' : CHAR_DATA[who]?.name} · As: ${userName}${userAge ? ', ' + userAge : ''}`);
 }
 
@@ -1842,7 +1383,7 @@ function editChatSetup() {
 
 function appendSystemNote(text) {
   const el = document.createElement('div');
-  el.style.cssText = 'font-family:"Space Mono",monospace;font-size:.46rem;color:var(--text-dim);text-align:center;padding:.6rem 1rem;border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);letter-spacing:.06em;opacity:.6;margin:.3rem 0;';
+  el.style.cssText = 'font-family:"Space Mono",monospace;font-size:.5rem;color:var(--text-dim);text-align:center;padding:.8rem 1rem;border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);letter-spacing:.06em;opacity:.7;margin:.5rem 0;';
   el.textContent = text;
   document.getElementById('chatMessages').appendChild(el);
 }
@@ -1854,7 +1395,7 @@ function appendUserMsg(text) {
   el.className = 'cm-msg user-msg';
   el.innerHTML = `
     <div class="cm-avatar">
-      <div class="cm-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant SC',serif;font-size:.55rem;color:var(--gold);">${name.charAt(0).toUpperCase()}</div>
+      <div class="cm-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant SC',serif;font-size:.65rem;color:var(--gold);">${name.charAt(0).toUpperCase()}</div>
     </div>
     <div class="cm-body">
       <div class="cm-name">${name}</div>
@@ -1870,12 +1411,14 @@ function appendTypingIndicator() {
   const el = document.createElement('div');
   el.className = 'cm-typing'; el.id = 'typingIndicator';
   const who = chatConfig.who;
-  const isGroup = who === 'group';
-  const img = isGroup ? CHAR_DATA['mahesa'].img : CHAR_DATA[who]?.img;
+  
+  // Generic "N" crest for group typing, or char face for single chat
+  const imgHtml = who === 'group' 
+    ? `<div style="width:100%;height:100%;background:var(--gold);display:flex;align-items:center;justify-content:center;color:#111;font-family:'Cormorant SC',serif;font-size:.6rem;font-weight:bold;">N</div>` 
+    : `<img src="${CHAR_DATA[who]?.img}" style="width:100%;height:100%;object-fit:cover;">`;
+    
   el.innerHTML = `
-    <div class="cm-avatar">
-      <img src="${img}" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
-    </div>
+    <div class="cm-avatar">${imgHtml}</div>
     <div class="cm-typing-dots"><span></span><span></span><span></span></div>
   `;
   container.appendChild(el);
@@ -1889,12 +1432,12 @@ function removeTypingIndicator() {
 }
 
 function parseGroupMessages(text) {
-  // Parse **Name:** prefix in group chat
   const lines = text.split('\n');
   const result = [];
   let current = null;
   for (const line of lines) {
-    const match = line.match(/^\*\*(\w+):\*\*\s*(.*)/);
+    // Regex matches e.g. "**Varen:**" or "Varen:" or "**Varen**:"
+    const match = line.match(/^\*?\*?([A-Za-z]+)\*?\*?:\s*(.*)/);
     if (match) {
       if (current) result.push(current);
       current = { name: match[1], text: match[2] };
@@ -1920,7 +1463,7 @@ function appendBotMessages(text) {
       el.className = 'cm-msg';
       el.innerHTML = `
         <div class="cm-avatar">
-          ${char ? `<img src="${char.img}" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'" style="width:100%;height:100%;object-fit:cover;object-position:center top;">` : `<div class="cm-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant SC',serif;font-size:.55rem;color:var(--gold);">N</div>`}
+          ${char ? `<img src="${char.img}" referrerpolicy="no-referrer" onerror="this.style.opacity='.3'" style="width:100%;height:100%;object-fit:cover;object-position:center top;">` : `<div class="cm-avatar-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant SC',serif;font-size:.6rem;color:var(--gold);">N</div>`}
         </div>
         <div class="cm-body">
           <div class="cm-name">${msg.name || 'Nasution'}</div>
@@ -1955,13 +1498,14 @@ function formatMsgText(text) {
     .replace(/\n/g, '<br>');
 }
 
-function escHtml(t) {
-  return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
+function escHtml(t) { return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 async function sendChatMsg() {
-  // 1. Check Rate Limit BEFORE sending
-  if (!updateUIForLimit()) return;
+  const apiMode = document.getElementById('chatApiMode').value;
+  
+  if (apiMode === 'free') {
+    if (!updateUIForLimit()) return;
+  }
 
   const input = document.getElementById('chatInput');
   const btn = document.getElementById('chatSendBtn');
@@ -1973,27 +1517,46 @@ async function sendChatMsg() {
 
   appendUserMsg(text);
   chatMessages.push({ role: 'user', content: text });
+  appendTypingIndicator();
 
-  const typingEl = appendTypingIndicator();
+  // Setup Fetch logic
+  let fetchUrl = FREE_API_URL;
+  let fetchHeaders = { 'Content-Type': 'application/json' };
+  let fetchBody = {
+    system: chatMessages._system || buildSystemPrompt(chatConfig),
+    messages: chatMessages.filter(m => m.role)
+  };
+
+  if (apiMode === 'custom') {
+    fetchUrl = document.getElementById('chatApiUrl').value.trim() || 'https://api.openai.com/v1/chat/completions';
+    const key = document.getElementById('chatApiKey').value.trim();
+    const model = document.getElementById('chatApiModel').value.trim() || 'gpt-3.5-turbo';
+    if (key) fetchHeaders['Authorization'] = `Bearer ${key}`;
+    
+    fetchBody = {
+      model: model,
+      messages: [
+        { role: 'system', content: chatMessages._system },
+        ...chatMessages.filter(m => m.role)
+      ]
+    };
+  }
 
   try {
-    const res = await fetch(API_URL, {
+    const res = await fetch(fetchUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        system: chatMessages._system || buildSystemPrompt(chatConfig),
-        messages: chatMessages.filter(m => m.role)
-      })
+      headers: fetchHeaders,
+      body: JSON.stringify(fetchBody)
     });
 
     const data = await res.json();
     removeTypingIndicator();
 
-    // 2. Increment successful message count
-    incrementDailyLimit();
-    updateUIForLimit(); // Update the UI to reflect the new count
+    if (apiMode === 'free') {
+      incrementDailyLimit();
+      updateUIForLimit(); 
+    }
 
-    // Try to get reply from various API response shapes
     let reply = '';
     if (data.choices && data.choices[0] && data.choices[0].message) {
       reply = data.choices[0].message.content;
@@ -2001,6 +1564,8 @@ async function sendChatMsg() {
       reply = data.content[0].text || '';
     } else if (data.reply) {
       reply = data.reply;
+    } else if (data.error) {
+      reply = `**System Error:** ${data.error.message || 'Unknown Custom Proxy Error'}`;
     } else {
       reply = JSON.stringify(data);
     }
@@ -2010,21 +1575,19 @@ async function sendChatMsg() {
 
   } catch (err) {
     removeTypingIndicator();
-    appendSystemNote('⚠ Connection issue. Please try again.');
+    appendSystemNote(`⚠ Connection issue: ${err.message}. Check your API URL or connection.`);
     console.error(err);
-    // On fail, we do not increment the count.
-    updateUIForLimit(); 
+    if(apiMode === 'free') updateUIForLimit(); 
   }
 
-  // Only re-enable if limit hasn't been hit
-  if (checkDailyLimit() < 10) {
+  if (apiMode === 'custom' || checkDailyLimit() < 10) {
     btn.disabled = false;
     input.focus();
   }
 }
 
-// init
-triggerReveal();
+// init toggle state
+toggleApiFields();
 </script>
 </body>
 </html>
