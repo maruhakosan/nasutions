@@ -194,7 +194,7 @@ section { padding: 5.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
 /* ══ PROFILES ══ */
 .profile-hero-wrap { display: grid; grid-template-columns: 220px 1fr; gap: 2.8rem; align-items: start; max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 @media (max-width: 600px) { .profile-hero-wrap { grid-template-columns: 1fr; gap: 1.5rem; } }
-.profile-img-frame { width: 100%; aspect-ratio: .75; overflow: hidden; border: 1px solid var(--divider-bright); position: relative; background: #111009; }
+.profile-img-frame { width: 100%; aspect-ratio: 4/3; overflow: hidden; border: 1px solid var(--divider-bright); position: relative; background: #111009; }
 .profile-img-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; filter: sepia(.06) contrast(1.05); }
 .profile-img-frame::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(22,20,18,.55) 0%, transparent 60%); pointer-events: none; }
 .profile-meta-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(2.4rem, 8vw, 3.8rem); font-weight: 300; color: var(--text-bright); line-height: .92; }
@@ -565,7 +565,7 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
         <div class="x-reply-box" id="replybox-mahesa1">
           <div class="x-reply-input-wrap">
             <input type="text" class="x-reply-input" id="input-mahesa1" placeholder="Tweet your reply...">
-            <button class="x-reply-send" onclick="sendSocialReply('replybox-mahesa1', 'input-mahesa1', 'threads-mahesa1', 'Mahesa', 'just played an unreleased song at varen\'s office bc he looked tense...')">Send</button>
+            <button class="x-reply-send" onclick="sendSocialReply('replybox-mahesa1', 'input-mahesa1', 'threads-mahesa1', 'Mahesa', 'just played an unreleased song at varens office bc he looked tense...')">Send</button>
           </div>
         </div>
       </div>
@@ -696,12 +696,17 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
 // ══════════════════════════════════════════════════════════════════
 // PAGE ROUTING & GLOBAL SETTINGS SYNC
 // ══════════════════════════════════════════════════════════════════
+function initFeedCards() {
+  document.querySelectorAll('#feedGrid .feed-card').forEach(card => card.classList.add('visible'));
+}
+
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
   const tabMap = {home:'Home',profiles:'Profiles',feed:'Dispatches',chat:'Chat'};
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', t.textContent.trim() === tabMap[id]));
   window.scrollTo(0,0);
+  if (id === 'feed') initFeedCards();
 }
 
 function showProfile(name, btn) {
@@ -752,7 +757,7 @@ function toggleApiFieldsAll() {
   document.querySelectorAll('.global-apibox').forEach(el => el.style.display = mode === 'custom' ? 'grid' : 'none');
   updateUIForLimit();
 }
-window.addEventListener('DOMContentLoaded', loadFromLocal);
+window.addEventListener('DOMContentLoaded', () => { loadFromLocal(); initFeedCards(); });
 
 // ══════════════════════════════════════════════════════════════════
 // API & RATE LIMIT LOGIC
