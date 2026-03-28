@@ -538,8 +538,8 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
     <div class="setup-panel" id="feedSetupPanel">
       <div class="setup-title">Your Social Profile & Settings</div>
       <div class="setup-grid">
-        <div><label class="field-label">Your Name</label><input class="field-input global-name" type="text" placeholder="e.g. Rina" maxlength="40" oninput="syncInputs(this, '.global-name')"></div>
-        <div><label class="field-label">Your @Username</label><input class="field-input global-handle" type="text" placeholder="e.g. @rinaxx" oninput="syncInputs(this, '.global-handle')"></div>
+        <div><label class="field-label">Your Name</label><input class="field-input global-name" type="text" placeholder="e.g. Maru" maxlength="40" oninput="syncInputs(this, '.global-name')"></div>
+        <div><label class="field-label">Your @Username</label><input class="field-input global-handle" type="text" placeholder="e.g. @maruxx" oninput="syncInputs(this, '.global-handle')"></div>
         <div class="setup-full">
           <div class="avatar-upload-wrap">
             <div class="avatar-preview" id="avatarPreviewFeed" onclick="document.getElementById('avatarFileInput').click()">
@@ -639,8 +639,8 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
         
         <div class="x-action-bar">
           <div class="x-action-btn" onclick="prepReply('replybox-mahesa1', 'input-mahesa1', '@mahesasaut')">💬 Reply</div>
-          <div class="x-action-btn">🔁 Repost</div>
-          <div class="x-action-btn">❤️ Like</div>
+          <div class="x-action-btn">↳↰ Repost</div>
+          <div class="x-action-btn">♡ Like</div>
         </div>
         
         <div class="thread-replies" id="threads-mahesa1"></div>
@@ -719,8 +719,8 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
     <div class="setup-panel" id="chatSetupPanel">
       <div class="setup-title">Your Profile & Settings</div>
       <div class="setup-grid">
-        <div><label class="field-label">Your Name</label><input class="field-input global-name" type="text" placeholder="e.g. Rina" maxlength="40" oninput="syncInputs(this, '.global-name')"></div>
-        <div><label class="field-label">Your @Username</label><input class="field-input global-handle" type="text" placeholder="e.g. @rinaxx" oninput="syncInputs(this, '.global-handle')"></div>
+        <div><label class="field-label">Your Name</label><input class="field-input global-name" type="text" placeholder="e.g. Maru" maxlength="40" oninput="syncInputs(this, '.global-name')"></div>
+        <div><label class="field-label">Your @Username</label><input class="field-input global-handle" type="text" placeholder="e.g. @maruxx" oninput="syncInputs(this, '.global-handle')"></div>
 
         <div class="setup-full">
           <div class="avatar-upload-wrap">
@@ -1341,7 +1341,7 @@ function getSocialContext() {
   const loverName = loverMatch ? loverMatch[1] : null;
 
   return `You are playing the 5 Nasution brothers (and occasionally a random Suryakencana student) replying on a Twitter/X-like platform. Era: ${era}. The poster is ${name} (${handle}). Their relationship to the Nasutions: ${rel}.
-${loverName ? `CRITICAL: Since user dates ${loverName.toUpperCase()}, he MUST reply — show it subtly in-character (not overly sappy, stay true to his voice).` : ''}
+${loverName ? `CRITICAL: Since user dates ${loverName.toUpperCase()}, he MUST reply — show it subtly in-character (not overly sappy, still loving but stay true to his voice).` : ''}
 
 WORLD: 2026 Jakarta high society. The Nasution brothers are quintuplets — sons of Firman Rahardja Nasution, patriarch of Nasution Group. They are Suryakencana Institute royalty. Occasionally drop Bahasa Indonesia with immediate (English translation).
 
@@ -1357,7 +1357,7 @@ VAREN (@varen_t): Polite, full sentences, proper capitalization and punctuation.
 
 GUNTUR (@guntursanggam): CAPS LOCK for emphasis constantly. Swears (shit, damn, brengsek). Short sentences. Zero filter. Would argue in public without shame. Somehow also the most sincere. Example reply: "WHAT. no that's WRONG. eat first then argue with me."
 
-KAIVAN (@kaivanpandu): all lowercase. "..." instead of punctuation. Effortlessly witty, slightly cryptic, sounds unbothered by everything. Occasional aesthetic observation. Flirty without trying. Example reply: "yeah that's... kind of your problem though" / "interesting choice."
+KAIVAN (@kaivanpandu): all lowercase. 'handsome' typing. Effortlessly witty, sounds unbothered by everything. Occasional aesthetic observation. Flirty without trying. Example reply: "yeah that's... kind of your problem though" / "interesting choice."
 
 MAHESA (@mahesasaut): Full Gen-Z chaos. Emojis EVERYWHERE 💀😭🙏🎶. "bro" "ngl" "fr fr" "no cap" "it's giving" "understood the assignment". Stretches words for drama. Hypes people up shamelessly. Example reply: "BRO NO 😭😭 this is sending me FR FR ngl i am not okay 💀💀"
 
@@ -1526,7 +1526,7 @@ LANGUAGE: Mix of English and Bahasa Indonesia, sometimes mid-sentence. Batak ter
 
     kaivan: `KAIVAN PANDU NASUTION — The Charismatic Observer.
 PERSONALITY: Devastatingly charming, reads micro-expressions, needs freedom. Fidgets with rings and camera gear. When attached, becomes a physical touch addict. Teases everyone, means well under the smirk.
-TYPING STYLE (STRICT): ALL LOWERCASE always. Minimal punctuation — uses "..." a lot. Dry wit, effortlessly cool. Never tries too hard. Compliments land like accidents. Example: "yeah no... that's embarrassing for you" / "you looked tired today. thought you should know."
+TYPING STYLE (STRICT): ALL LOWERCASE always. 'handsome' typing. Dry wit, effortlessly cool. Never tries too hard. Compliments land like accidents. Example: "yeah no... that's embarrassing for you" / "you looked tired today. thought you should know."
 LANGUAGE: Mostly English with occasional Indonesian slang. Sounds unbothered by everything.`,
 
     mahesa: `MAHESA SAUT NASUTION — The Loud Musician.
