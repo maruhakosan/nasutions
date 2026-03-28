@@ -211,6 +211,54 @@ section { padding: 5.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
 .profile-selector-btn:hover { color: var(--text-bright); border-color: var(--divider-bright); }
 .profile-selector-btn.active { color: var(--gold); border-color: var(--gold-dim); background: rgba(220,184,106,.06); }
 
+/* ══ CHAT HISTORY SIDEBAR ══ */
+.ch-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 800; }
+.ch-overlay.active { display: block; }
+.ch-sidebar { position: fixed; top: 0; left: 0; height: 100%; width: min(340px, 92vw); background: var(--bg2); border-right: 1px solid var(--divider-bright); z-index: 801; transform: translateX(-100%); transition: transform .3s ease; display: flex; flex-direction: column; }
+.ch-sidebar.active { transform: translateX(0); }
+.ch-sidebar-head { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 1.5rem; border-bottom: 1px solid var(--divider); flex-shrink: 0; }
+.ch-sidebar-title { font-family: 'Cormorant SC', serif; font-size: .6rem; letter-spacing: .32em; color: var(--gold); }
+.ch-sidebar-close { background: none; border: none; color: var(--text-dim); font-size: 1.1rem; cursor: pointer; padding: .2rem .4rem; line-height: 1; transition: color .2s; }
+.ch-sidebar-close:hover { color: var(--text-bright); }
+.ch-list { flex: 1; overflow-y: auto; padding: .8rem 0; scrollbar-width: thin; scrollbar-color: var(--divider-bright) transparent; }
+.ch-list::-webkit-scrollbar { width: 4px; }
+.ch-list::-webkit-scrollbar-thumb { background: var(--divider-bright); }
+.ch-empty { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .95rem; color: var(--text-dim); text-align: center; padding: 3rem 1.5rem; opacity: .6; }
+.ch-item { display: flex; align-items: center; gap: .8rem; padding: .9rem 1.5rem; border-bottom: 1px solid var(--divider); cursor: pointer; transition: background .2s; position: relative; }
+.ch-item:hover { background: var(--bg3); }
+.ch-item.active-session { background: rgba(220,184,106,.07); border-left: 2px solid var(--gold); }
+.ch-item-avatar { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; border: 1px solid var(--divider-bright); flex-shrink: 0; background: #1a1612; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant SC', serif; font-size: .55rem; color: var(--gold); }
+.ch-item-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.ch-item-body { flex: 1; min-width: 0; }
+.ch-item-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--text-bright); line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ch-item-meta { font-family: 'Space Mono', monospace; font-size: .46rem; color: var(--text-dim); margin-top: .25rem; letter-spacing: .04em; }
+.ch-item-del { background: none; border: none; color: var(--text-dim); font-size: .75rem; cursor: pointer; padding: .3rem .45rem; opacity: 0; transition: opacity .2s, color .2s; flex-shrink: 0; line-height: 1; }
+.ch-item:hover .ch-item-del { opacity: 1; }
+.ch-item-del:hover { color: var(--red); }
+.ch-sidebar-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--divider); flex-shrink: 0; }
+.ch-clear-all { width: 100%; font-family: 'Space Mono', monospace; font-size: .48rem; letter-spacing: .1em; color: var(--red); background: none; border: 1px solid rgba(168,37,37,.35); padding: .6rem 1rem; cursor: pointer; text-transform: uppercase; transition: background .2s; }
+.ch-clear-all:hover { background: rgba(168,37,37,.12); }
+
+/* ══ SAVED DATA NOTICE & CLEAR BUTTONS ══ */
+.saved-notice { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; background: rgba(220,184,106,.07); border: 1px solid var(--gold-dim); padding: .75rem 1.2rem; margin-bottom: 1.5rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+.saved-notice-text { font-family: 'Space Mono', monospace; font-size: .5rem; color: var(--gold); letter-spacing: .06em; }
+.saved-notice-text span { color: var(--text-dim); display: block; margin-top: .2rem; font-size: .46rem; }
+.clear-btn { font-family: 'Space Mono', monospace; font-size: .48rem; letter-spacing: .1em; color: var(--red); background: none; border: 1px solid rgba(168,37,37,.4); padding: .4rem .85rem; cursor: pointer; transition: background .2s, color .2s; text-transform: uppercase; white-space: nowrap; }
+.clear-btn:hover { background: rgba(168,37,37,.15); color: #e05050; }
+.clear-btn-row { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
+
+/* ══ CONFIRM MODAL ══ */
+.confirm-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 9000; align-items: center; justify-content: center; }
+.confirm-overlay.active { display: flex; }
+.confirm-box { background: var(--bg2); border: 1px solid var(--divider-bright); padding: 2rem 2.4rem; max-width: 380px; width: 90%; text-align: center; }
+.confirm-box-title { font-family: 'Cormorant SC', serif; font-size: .6rem; letter-spacing: .3em; color: var(--gold); margin-bottom: 1rem; }
+.confirm-box-msg { font-family: 'Lato', sans-serif; font-size: .85rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 1.8rem; }
+.confirm-box-btns { display: flex; gap: .8rem; justify-content: center; }
+.confirm-yes { font-family: 'Space Mono', monospace; font-size: .52rem; letter-spacing: .12em; background: var(--red); color: #fff; border: none; padding: .65rem 1.4rem; cursor: pointer; text-transform: uppercase; transition: opacity .2s; }
+.confirm-yes:hover { opacity: .8; }
+.confirm-no { font-family: 'Space Mono', monospace; font-size: .52rem; letter-spacing: .12em; background: none; color: var(--text-dim); border: 1px solid var(--divider); padding: .65rem 1.4rem; cursor: pointer; text-transform: uppercase; transition: background .2s; }
+.confirm-no:hover { background: rgba(255,255,255,.05); }
+
 /* ══ CHAT WINDOW ══ */
 .chat-window-wrap { display: none; flex-direction: column; height: 65vh; min-height: 480px; border: 1px solid var(--divider); background: var(--bg2); position: relative; max-width: 900px; margin: 0 auto; }
 .chat-window-wrap.active { display: flex; }
@@ -268,26 +316,6 @@ section { padding: 5.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
 
 footer { text-align: center; padding: 2.2rem 1.5rem 3.2rem; border-top: 1px solid var(--divider); }
 footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .9rem; color: var(--text-dim); }
-
-/* ══ SAVED DATA NOTICE & CLEAR BUTTONS ══ */
-.saved-notice { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; background: rgba(220,184,106,.07); border: 1px solid var(--gold-dim); padding: .75rem 1.2rem; margin-bottom: 1.5rem; max-width: 900px; margin-left: auto; margin-right: auto; }
-.saved-notice-text { font-family: 'Space Mono', monospace; font-size: .5rem; color: var(--gold); letter-spacing: .06em; }
-.saved-notice-text span { color: var(--text-dim); display: block; margin-top: .2rem; font-size: .46rem; }
-.clear-btn { font-family: 'Space Mono', monospace; font-size: .48rem; letter-spacing: .1em; color: var(--red); background: none; border: 1px solid rgba(168,37,37,.4); padding: .4rem .85rem; cursor: pointer; transition: background .2s, color .2s; text-transform: uppercase; white-space: nowrap; }
-.clear-btn:hover { background: rgba(168,37,37,.15); color: #e05050; }
-.clear-btn-row { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
-
-/* ══ CONFIRM MODAL ══ */
-.confirm-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 9000; align-items: center; justify-content: center; }
-.confirm-overlay.active { display: flex; }
-.confirm-box { background: var(--bg2); border: 1px solid var(--divider-bright); padding: 2rem 2.4rem; max-width: 380px; width: 90%; text-align: center; }
-.confirm-box-title { font-family: 'Cormorant SC', serif; font-size: .6rem; letter-spacing: .3em; color: var(--gold); margin-bottom: 1rem; }
-.confirm-box-msg { font-family: 'Lato', sans-serif; font-size: .85rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 1.8rem; }
-.confirm-box-btns { display: flex; gap: .8rem; justify-content: center; }
-.confirm-yes { font-family: 'Space Mono', monospace; font-size: .52rem; letter-spacing: .12em; background: var(--red); color: #fff; border: none; padding: .65rem 1.4rem; cursor: pointer; text-transform: uppercase; transition: opacity .2s; }
-.confirm-yes:hover { opacity: .8; }
-.confirm-no { font-family: 'Space Mono', monospace; font-size: .52rem; letter-spacing: .12em; background: none; color: var(--text-dim); border: 1px solid var(--divider); padding: .65rem 1.4rem; cursor: pointer; text-transform: uppercase; transition: background .2s; }
-.confirm-no:hover { background: rgba(255,255,255,.05); }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 </style>
 </head>
@@ -388,7 +416,7 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
         <div class="hsc-glyph">◑</div>
         <div class="hsc-label">JanitorAI</div>
         <div class="hsc-title">Find Them<br>Here</div>
-        <div class="hsc-hint">They're waiting. The brothers are ready to cause problems.</div>
+        <div class="hsc-hint">They're waiting. The brothers are live on JanitorAI and ready to cause problems.</div>
       </div>
     </div>
   </div>
@@ -629,7 +657,22 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
     </div>
   </section>
   </div>
-  <footer><p>The Nasution Family &nbsp;◆&nbsp; Nasution Group &nbsp;◆&nbsp; Jakarta, Indonesia</p><p style="margin-top:.85rem;"><button class="clear-btn" onclick="clearAllSavedData()" style="font-size:.44rem; opacity:.6;">⚠ Clear All Saved Data</button></p></footer>
+  <footer><p>The Nasution Family &nbsp;◆&nbsp; Nasution Group &nbsp;◆&nbsp; Jakarta, Indonesia</p></footer>
+</div>
+
+<!-- ══ CHAT HISTORY SIDEBAR ══ -->
+<div class="ch-overlay" id="chOverlay" onclick="closeHistorySidebar()"></div>
+<div class="ch-sidebar" id="chSidebar">
+  <div class="ch-sidebar-head">
+    <span class="ch-sidebar-title">◈ &nbsp; Chat History</span>
+    <button class="ch-sidebar-close" onclick="closeHistorySidebar()">✕</button>
+  </div>
+  <div class="ch-list" id="chList">
+    <div class="ch-empty">No saved chats yet.</div>
+  </div>
+  <div class="ch-sidebar-footer">
+    <button class="ch-clear-all" onclick="clearAllHistory()">⚠ Delete All History</button>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════ CHAT PAGE ═══════════════════════════════ -->
@@ -689,7 +732,10 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
           <div><label class="field-label">Model Name</label><input class="field-input global-apimodel" type="text" placeholder="gpt-4o, claude-3-opus, etc." oninput="syncInputs(this, '.global-apimodel')"></div>
         </div>
       </div>
-      <button class="primary-btn" style="margin-top: 2rem;" onclick="startChat()">Enter Chat</button>
+      <div style="display:flex;gap:.8rem;margin-top:2rem;">
+        <button class="primary-btn" onclick="startChat()">Enter Chat</button>
+        <button class="primary-btn" onclick="openHistorySidebar()" style="background:var(--bg3);color:var(--gold);border:1px solid var(--gold-dim);flex:0 0 auto;width:auto;padding:1.1rem 1.6rem;">🕐</button>
+      </div>
     </div>
 
     <!-- CHAT WINDOW -->
@@ -700,6 +746,7 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
           <div class="chat-window-name" id="chatWindowName">rumah</div>
           <div class="chat-window-sub" id="chatWindowSub">group chat · 5 members</div>
         </div>
+        <button class="chat-edit-btn" onclick="openHistorySidebar()" style="margin-right:.4rem;">🕐 History</button>
         <button class="chat-edit-btn" onclick="editChatSetup()">Edit Setup</button>
       </div>
       <div class="chat-messages" id="chatMessages"></div>
@@ -725,9 +772,6 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
 </div>
 
 <script>
-// ══════════════════════════════════════════════════════════════════
-// PAGE ROUTING & GLOBAL SETTINGS SYNC
-// ══════════════════════════════════════════════════════════════════
 function initFeedCards() {
   document.querySelectorAll('#feedGrid .feed-card').forEach(card => card.classList.add('visible'));
 }
@@ -789,7 +833,7 @@ function toggleApiFieldsAll() {
   document.querySelectorAll('.global-apibox').forEach(el => el.style.display = mode === 'custom' ? 'grid' : 'none');
   updateUIForLimit();
 }
-window.addEventListener('DOMContentLoaded', () => { loadFromLocal(); initFeedCards(); restoreChatFromLocal(); restoreFeedFromLocal(); });
+window.addEventListener('DOMContentLoaded', () => { loadFromLocal(); initFeedCards(); restoreFeedFromLocal(); bootChat(); });
 
 // ══════════════════════════════════════════════════════════════════
 // CONFIRM MODAL
@@ -804,100 +848,179 @@ function closeConfirm() {
   document.getElementById('confirmOverlay').classList.remove('active');
   _confirmCallback = null;
 }
-document.getElementById('confirmYesBtn').addEventListener('click', () => {
-  if (_confirmCallback) _confirmCallback();
-  closeConfirm();
-});
-document.getElementById('confirmOverlay').addEventListener('click', function(e) {
-  if (e.target === this) closeConfirm();
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('confirmYesBtn').addEventListener('click', () => { if (_confirmCallback) _confirmCallback(); closeConfirm(); });
+  document.getElementById('confirmOverlay').addEventListener('click', function(e) { if (e.target === this) closeConfirm(); });
 });
 
 // ══════════════════════════════════════════════════════════════════
-// CHAT PERSISTENCE
+// CHAT HISTORY SYSTEM
 // ══════════════════════════════════════════════════════════════════
-const CHAT_SAVE_KEY = 'nasution_chat_session';
+const HISTORY_KEY = 'nasution_chat_history';
+const ACTIVE_KEY  = 'nasution_chat_active';
 
-function saveChatToLocal() {
-  const session = {
-    who: selectedWho,
-    messages: chatMessages.filter(m => m.role),
-    system: chatMessages._system,
-    open: document.getElementById('chatWindow').classList.contains('active'),
-    htmlSnapshot: document.getElementById('chatMessages').innerHTML
-  };
-  try { localStorage.setItem(CHAT_SAVE_KEY, JSON.stringify(session)); } catch(e) {}
+function getHistory() {
+  try { return JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]'); } catch(e) { return []; }
+}
+function saveHistory(arr) {
+  try { localStorage.setItem(HISTORY_KEY, JSON.stringify(arr)); } catch(e) {}
 }
 
-function restoreChatFromLocal() {
-  const raw = localStorage.getItem(CHAT_SAVE_KEY);
-  if (!raw) return;
-  try {
-    const session = JSON.parse(raw);
-    if (!session.messages || !session.messages.length) return;
+// Build a human-readable title for a session
+function sessionTitle(session) {
+  const who = session.who === 'group' ? 'rumah' : (CHAR_DATA[session.who]?.name || session.who);
+  const d = new Date(session.timestamp);
+  const dateStr = d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'2-digit' });
+  const msgs = session.messages ? session.messages.filter(m => m.role === 'user').length : 0;
+  return { who, dateStr, msgs };
+}
 
-    selectedWho = session.who || 'group';
-    chatMessages = session.messages;
-    chatMessages._system = session.system || '';
+// Save current in-progress chat to history (upsert by id)
+function saveCurrentToHistory() {
+  const msgs = chatMessages.filter(m => m.role);
+  if (!msgs.length) return;
 
-    // Restore who selector UI
-    document.querySelectorAll('.chat-who-card').forEach(c => {
-      c.classList.toggle('selected', c.dataset.who === selectedWho);
-    });
+  const history = getHistory();
+  const existing = history.findIndex(s => s.id === currentSessionId);
+  const session = {
+    id: currentSessionId,
+    who: selectedWho,
+    timestamp: currentSessionTimestamp,
+    messages: msgs,
+    system: chatMessages._system || '',
+    htmlSnapshot: document.getElementById('chatMessages')?.innerHTML || ''
+  };
 
-    if (session.open) {
-      const isGroup = selectedWho === 'group';
-      document.getElementById('chatWindowName').textContent = isGroup ? 'rumah' : (CHAR_DATA[selectedWho]?.name || selectedWho);
-      document.getElementById('chatWindowSub').textContent = isGroup ? 'group chat · 5 brothers' : 'private chat';
-      const avatarsEl = document.getElementById('chatWindowAvatars');
+  if (existing >= 0) history[existing] = session;
+  else history.unshift(session);
+
+  // cap at 30 sessions
+  if (history.length > 30) history.splice(30);
+  saveHistory(history);
+}
+
+// Restore a session by id
+function loadSession(sessionId) {
+  const history = getHistory();
+  const session = history.find(s => s.id === sessionId);
+  if (!session) return;
+
+  // Save current first
+  saveCurrentToHistory();
+
+  currentSessionId = session.id;
+  currentSessionTimestamp = session.timestamp;
+  selectedWho = session.who || 'group';
+  chatMessages = [...session.messages];
+  chatMessages._system = session.system || '';
+
+  // Update who selector
+  document.querySelectorAll('.chat-who-card').forEach(c => c.classList.toggle('selected', c.dataset.who === selectedWho));
+
+  const isGroup = selectedWho === 'group';
+  document.getElementById('chatWindowName').textContent = isGroup ? 'rumah' : (CHAR_DATA[selectedWho]?.name || selectedWho);
+  document.getElementById('chatWindowSub').textContent = isGroup ? 'group chat · 5 brothers' : 'private chat';
+
+  const avatarsEl = document.getElementById('chatWindowAvatars');
+  avatarsEl.innerHTML = '';
+  const keys = isGroup ? ['varen','guntur','kaivan','mahesa','anggara'] : [selectedWho];
+  keys.forEach(k => avatarsEl.insertAdjacentHTML('beforeend', `<div class="cwa"><img src="${CHAR_DATA[k].img}" referrerpolicy="no-referrer"></div>`));
+
+  document.getElementById('chatSetupPanel').style.display = 'none';
+  document.getElementById('chatWindow').classList.add('active');
+  if (session.htmlSnapshot) document.getElementById('chatMessages').innerHTML = session.htmlSnapshot;
+  updateUIForLimit();
+  setTimeout(() => { const c = document.getElementById('chatMessages'); if(c) c.scrollTop = c.scrollHeight; }, 80);
+
+  closeHistorySidebar();
+  renderHistorySidebar();
+}
+
+function deleteSession(sessionId, e) {
+  e.stopPropagation();
+  showConfirm('Delete this chat? This cannot be undone.', () => {
+    const history = getHistory().filter(s => s.id !== sessionId);
+    saveHistory(history);
+    renderHistorySidebar();
+  });
+}
+
+function clearAllHistory() {
+  showConfirm('Delete ALL saved chat history?', () => {
+    localStorage.removeItem(HISTORY_KEY);
+    renderHistorySidebar();
+  });
+}
+
+function renderHistorySidebar() {
+  const list = document.getElementById('chList');
+  const history = getHistory();
+  if (!history.length) {
+    list.innerHTML = '<div class="ch-empty">No saved chats yet.</div>';
+    return;
+  }
+  list.innerHTML = history.map(session => {
+    const { who, dateStr, msgs } = sessionTitle(session);
+    const isActive = session.id === currentSessionId;
+    const imgKey = session.who !== 'group' ? session.who : null;
+    const avatarHtml = imgKey
+      ? `<img src="${CHAR_DATA[imgKey].img}" referrerpolicy="no-referrer">`
+      : `<span>ALL</span>`;
+    return `
+      <div class="ch-item${isActive ? ' active-session' : ''}" onclick="loadSession('${session.id}')">
+        <div class="ch-item-avatar">${avatarHtml}</div>
+        <div class="ch-item-body">
+          <div class="ch-item-name">${who}</div>
+          <div class="ch-item-meta">${dateStr} &nbsp;·&nbsp; ${msgs} msg${msgs !== 1 ? 's' : ''}</div>
+        </div>
+        <button class="ch-item-del" onclick="deleteSession('${session.id}', event)" title="Delete">✕</button>
+      </div>`;
+  }).join('');
+}
+
+function openHistorySidebar() {
+  renderHistorySidebar();
+  document.getElementById('chSidebar').classList.add('active');
+  document.getElementById('chOverlay').classList.add('active');
+}
+
+function closeHistorySidebar() {
+  document.getElementById('chSidebar').classList.remove('active');
+  document.getElementById('chOverlay').classList.remove('active');
+}
+
+// Boot: restore last active session or just load settings
+function bootChat() {
+  const history = getHistory();
+  if (history.length) {
+    const last = history[0];
+    currentSessionId = last.id;
+    currentSessionTimestamp = last.timestamp;
+    selectedWho = last.who || 'group';
+    chatMessages = [...last.messages];
+    chatMessages._system = last.system || '';
+
+    document.querySelectorAll('.chat-who-card').forEach(c => c.classList.toggle('selected', c.dataset.who === selectedWho));
+
+    const isGroup = selectedWho === 'group';
+    document.getElementById('chatWindowName').textContent = isGroup ? 'rumah' : (CHAR_DATA[selectedWho]?.name || selectedWho);
+    document.getElementById('chatWindowSub').textContent = isGroup ? 'group chat · 5 brothers' : 'private chat';
+
+    const avatarsEl = document.getElementById('chatWindowAvatars');
+    if (avatarsEl) {
       avatarsEl.innerHTML = '';
       const keys = isGroup ? ['varen','guntur','kaivan','mahesa','anggara'] : [selectedWho];
-      keys.forEach(k => { avatarsEl.insertAdjacentHTML('beforeend', `<div class="cwa"><img src="${CHAR_DATA[k].img}" referrerpolicy="no-referrer"></div>`); });
-      document.getElementById('chatSetupPanel').style.display = 'none';
-      document.getElementById('chatWindow').classList.add('active');
-      if (session.htmlSnapshot) document.getElementById('chatMessages').innerHTML = session.htmlSnapshot;
-      updateUIForLimit();
-      setTimeout(() => { const c = document.getElementById('chatMessages'); c.scrollTop = c.scrollHeight; }, 100);
+      keys.forEach(k => avatarsEl.insertAdjacentHTML('beforeend', `<div class="cwa"><img src="${CHAR_DATA[k].img}" referrerpolicy="no-referrer"></div>`));
     }
 
-    showChatSavedNotice();
-  } catch(e) {}
-}
-
-function showChatSavedNotice() {
-  const panel = document.getElementById('chatSetupPanel');
-  if (!panel) return;
-  if (document.getElementById('chatSavedNotice')) return;
-  const raw = localStorage.getItem(CHAT_SAVE_KEY);
-  if (!raw) return;
-  try {
-    const session = JSON.parse(raw);
-    const count = session.messages ? session.messages.length : 0;
-    if (!count) return;
-    const who = session.who === 'group' ? 'rumah (group)' : (CHAR_DATA[session.who]?.name || session.who);
-    const notice = document.createElement('div');
-    notice.id = 'chatSavedNotice';
-    notice.className = 'saved-notice';
-    notice.innerHTML = `
-      <div class="saved-notice-text">◈ Saved chat found
-        <span>${count} messages · with ${who}</span>
-      </div>
-      <div class="clear-btn-row">
-        <button class="clear-btn" onclick="clearChatData()">Delete Chat</button>
-      </div>`;
-    panel.parentNode.insertBefore(notice, panel);
-  } catch(e) {}
-}
-
-function clearChatData() {
-  showConfirm('Delete your saved chat history? This cannot be undone.', () => {
-    localStorage.removeItem(CHAT_SAVE_KEY);
-    chatMessages = [];
-    document.getElementById('chatMessages').innerHTML = '';
-    document.getElementById('chatWindow').classList.remove('active');
-    document.getElementById('chatSetupPanel').style.display = 'block';
-    const notice = document.getElementById('chatSavedNotice');
-    if (notice) notice.remove();
-  });
+    if (last.htmlSnapshot && last.messages.length) {
+      document.getElementById('chatSetupPanel').style.display = 'none';
+      document.getElementById('chatWindow').classList.add('active');
+      document.getElementById('chatMessages').innerHTML = last.htmlSnapshot;
+      updateUIForLimit();
+      setTimeout(() => { const c = document.getElementById('chatMessages'); if(c) c.scrollTop = c.scrollHeight; }, 80);
+    }
+  }
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -908,13 +1031,8 @@ const FEED_SAVE_KEY = 'nasution_feed_posts';
 function saveFeedToLocal() {
   try {
     const userCards = [];
-    document.querySelectorAll('#feedGrid .feed-card.type-x[data-user-post="true"]').forEach(card => {
-      const cardId = card.dataset.cardId;
-      userCards.push({
-        cardId,
-        html: card.outerHTML,
-        history: socialHistories['threads-' + cardId] || []
-      });
+    document.querySelectorAll('#feedGrid .feed-card[data-user-post="true"]').forEach(card => {
+      userCards.push({ cardId: card.dataset.cardId, html: card.outerHTML });
     });
     localStorage.setItem(FEED_SAVE_KEY, JSON.stringify({ cards: userCards, histories: socialHistories }));
   } catch(e) {}
@@ -928,10 +1046,7 @@ function restoreFeedFromLocal() {
     if (saved.histories) Object.assign(socialHistories, saved.histories);
     if (saved.cards && saved.cards.length) {
       const grid = document.getElementById('feedGrid');
-      saved.cards.forEach(({ cardId, html }) => {
-        // Insert before the first static card (afterbegin puts newest first)
-        grid.insertAdjacentHTML('afterbegin', html);
-      });
+      saved.cards.forEach(({ html }) => grid.insertAdjacentHTML('afterbegin', html));
       initFeedCards();
     }
     showFeedSavedNotice();
@@ -940,8 +1055,7 @@ function restoreFeedFromLocal() {
 
 function showFeedSavedNotice() {
   const raw = localStorage.getItem(FEED_SAVE_KEY);
-  if (!raw) return;
-  if (document.getElementById('feedSavedNotice')) return;
+  if (!raw || document.getElementById('feedSavedNotice')) return;
   try {
     const saved = JSON.parse(raw);
     const count = saved.cards ? saved.cards.length : 0;
@@ -965,12 +1079,8 @@ function showFeedSavedNotice() {
 function clearFeedData() {
   showConfirm('Delete all your saved feed posts and thread replies?', () => {
     localStorage.removeItem(FEED_SAVE_KEY);
-    // Remove all user-posted cards from DOM
     document.querySelectorAll('#feedGrid .feed-card[data-user-post="true"]').forEach(c => c.remove());
-    // Clear socialHistories for user posts
-    Object.keys(socialHistories).forEach(k => {
-      if (k.startsWith('threads-post-')) delete socialHistories[k];
-    });
+    Object.keys(socialHistories).forEach(k => { if (k.startsWith('threads-post-')) delete socialHistories[k]; });
     const notice = document.getElementById('feedSavedNotice');
     if (notice) notice.remove();
   });
@@ -978,7 +1088,8 @@ function clearFeedData() {
 
 function clearAllSavedData() {
   showConfirm('Delete ALL saved data — chat history, feed posts, and profile settings?', () => {
-    localStorage.removeItem(CHAT_SAVE_KEY);
+    localStorage.removeItem(HISTORY_KEY);
+    localStorage.removeItem(ACTIVE_KEY);
     localStorage.removeItem(FEED_SAVE_KEY);
     localStorage.removeItem('nasution_profile_settings');
     chatMessages = [];
@@ -987,7 +1098,8 @@ function clearAllSavedData() {
     document.getElementById('chatSetupPanel').style.display = 'block';
     document.querySelectorAll('#feedGrid .feed-card[data-user-post="true"]').forEach(c => c.remove());
     Object.keys(socialHistories).forEach(k => delete socialHistories[k]);
-    ['chatSavedNotice','feedSavedNotice'].forEach(id => { const el = document.getElementById(id); if(el) el.remove(); });
+    const fn = document.getElementById('feedSavedNotice');
+    if (fn) fn.remove();
   });
 }
 
@@ -1091,11 +1203,30 @@ function getSocialContext() {
   const loverMatch = rel.match(/lover-(.+)/);
   const loverName = loverMatch ? loverMatch[1] : null;
 
-  return `You are playing the 5 Nasution brothers and random students replying on Twitter/X. Era: ${era}. User: ${name} (${handle}). Rel: ${rel}.
+  return `You are playing the 5 Nasution brothers (and occasionally a random Suryakencana student) replying on a Twitter/X-like platform. Era: ${era}. The poster is ${name} (${handle}). Their relationship to the Nasutions: ${rel}.
+${loverName ? `CRITICAL: Since user dates ${loverName.toUpperCase()}, he MUST reply — show it subtly in-character (not overly sappy, stay true to his voice).` : ''}
+
+WORLD: 2026 Jakarta high society. The Nasution brothers are quintuplets — sons of Firman Rahardja Nasution, patriarch of Nasution Group. They are Suryakencana Institute royalty. Occasionally drop Bahasa Indonesia with immediate (English translation).
+
 RULES:
-1. Pick 1 or 2 characters to reply. It can be a brother or a random student. ${loverName ? `CRITICAL: Since user dates ${loverName.toUpperCase()}, he MUST reply.` : ''}
-2. Format strictly as "**[Name]:** [tweet text]". Do NOT include @handles in your generation, only their Name.
-3. Lowercase, short internet slang. Use 1 Indonesian slang word per reply with immediate (english) translation. If user mentions a specific handle (like @varen_t), make sure that character responds.`;
+1. Pick 1–2 characters to reply: a Nasution brother or a random student. Format STRICTLY as "**[Name]:** [tweet]". Do NOT write @handles, only Name.
+2. Keep replies SHORT — this is social media, not essays. 1–2 sentences max per reply.
+3. EVERY character must match their exact typing style below. Non-negotiable.
+4. If user mentions a specific brother's handle, that brother must reply.
+
+CHARACTER SOCIAL MEDIA VOICES:
+
+VAREN (@varen_t): Polite, full sentences, proper capitalization and punctuation. Rare poster. When he posts it's calm and slightly formal. Dry humor delivered deadpan. Would never subtweet — would address things directly and quietly. Example reply: "That is genuinely concerning. Please eat something."
+
+GUNTUR (@guntursanggam): CAPS LOCK for emphasis constantly. Swears (shit, damn, brengsek). Short sentences. Zero filter. Would argue in public without shame. Somehow also the most sincere. Example reply: "WHAT. no that's WRONG. eat first then argue with me."
+
+KAIVAN (@kaivanpandu): all lowercase. "..." instead of punctuation. Effortlessly witty, slightly cryptic, sounds unbothered by everything. Occasional aesthetic observation. Flirty without trying. Example reply: "yeah that's... kind of your problem though" / "interesting choice."
+
+MAHESA (@mahesasaut): Full Gen-Z chaos. Emojis EVERYWHERE 💀😭🙏🎶. "bro" "ngl" "fr fr" "no cap" "it's giving" "understood the assignment". Stretches words for drama. Hypes people up shamelessly. Example reply: "BRO NO 😭😭 this is sending me FR FR ngl i am not okay 💀💀"
+
+ANGGARA (@anggarasahat): Rarely posts. When he does: 1–5 words max. No emoji. No punctuation sometimes. Devastating in its brevity. Example reply: "wrong." / "noted. irrelevant." / "eat."
+
+RANDOM STUDENT: Normal person, slightly in awe/afraid of the Nasutions, uses casual Indo-English slang.`;
 }
 
 function prepReply(boxId, inputId, handleToTag) {
@@ -1229,6 +1360,8 @@ function appendSocialReplies(containerId, text, boxId, inputId) {
 // ══════════════════════════════════════════════════════════════════
 let chatMessages = [];
 let selectedWho = 'group';
+let currentSessionId = 'sess-' + Date.now();
+let currentSessionTimestamp = Date.now();
 
 function selectWho(card) {
   document.querySelectorAll('.chat-who-card').forEach(c => c.classList.remove('selected'));
@@ -1243,22 +1376,63 @@ function buildChatSystemPrompt() {
   const loverMatch = rel.match(/lover-(.+)/);
   const loverName = loverMatch ? loverMatch[1] : null;
 
-  let prompt = `You are roleplaying text messages. Era: ${era}. User: ${name}. Rel: ${rel}.
-RULES: 1-2 short text bubbles max. Mostly English + 1 indonesian slang word with (english) translation. Format like texts, no actions in asterisks.`;
+  const CHAR_VOICES = {
+    varen: `VAREN TOGAR NASUTION — The Exhausted Anchor.
+PERSONALITY: Terrifyingly calm, structured, quietly self-sacrificing. Hides stress behind perfect composure. Whispers when angry (never yells). Reflexively takes responsibility for everything. Stress-cleans at 2AM. Fixes his brothers' collars without thinking.
+TYPING STYLE (STRICT): Proper capitalization. Full sentences. Correct punctuation. Polite but slightly formal even in casual texts. Never abbreviates. Occasional dry, deadpan humor delivered in a completely straight tone. When stressed, messages become shorter and clipped but still grammatically perfect. Example: "I am fine. The kitchen is clean now. Everything is fine." — Signs off sometimes with just "—V".
+LANGUAGE: Mostly English. Occasional Bahasa Indonesia in formal/filial moments. If uses slang, it sounds slightly wrong, like a dad trying.`,
+
+    guntur: `GUNTUR SANGGAM NASUTION — The Gruff Protector.
+PERSONALITY: Brick wall exterior, enormous hidden heart. Practical caretaker — physically cannot let people be uncomfortable. Gruffly shoves food/jackets at people. Ultimate human shield. Scowls permanently but cooks for everyone he loves.
+TYPING STYLE (STRICT): FREQUENT ALL CAPS for emphasis, frustration, or passion. Short, blunt sentences. Swears casually (shit, damn, hell, brengsek, bajingan — with immediate translation). Typos occasionally. Zero punctuation beyond periods and question marks. No emojis except the rare 💪. Ends texts abruptly. Example: "MAKAN DULU. (EAT FIRST.) dont argue. i made rendang."
+LANGUAGE: Mix of English and Bahasa Indonesia, sometimes mid-sentence. Batak terms of warmth slip through when genuinely worried.`,
+
+    kaivan: `KAIVAN PANDU NASUTION — The Charismatic Observer.
+PERSONALITY: Devastatingly charming, reads micro-expressions, needs freedom. Fidgets with rings and camera gear. When attached, becomes a physical touch addict. Teases everyone, means well under the smirk.
+TYPING STYLE (STRICT): ALL LOWERCASE always. Minimal punctuation — uses "..." a lot. Dry wit, effortlessly cool. Never tries too hard. Compliments land like accidents. Example: "yeah no... that's embarrassing for you" / "you looked tired today. thought you should know."
+LANGUAGE: Mostly English with occasional Indonesian slang. Sounds unbothered by everything.`,
+
+    mahesa: `MAHESA SAUT NASUTION — The Loud Musician.
+PERSONALITY: Frontman energy 24/7. Ultimate hype-man. Breaks tension with noise. Needs external validation, pays back with extreme warmth.
+TYPING STYLE (STRICT): Full Gen-Z/2026 internet slang. Emojis in every message — 💀😭🙏🎶✨. "bro" "ngl" "lowkey" "fr fr" "no cap" "it's giving" "understood the assignment". Stretches words: "nooooo" "whyyyy". Caps random words for EMPHASIS. Uses line breaks dramatically. Example: "BRO 😭😭 this is NOT IT. ngl this is lowkey sending me fr fr 💀"
+LANGUAGE: English-dominant Gen-Z slang. Indonesian slang mixed in: "anjir", "gila", "gue gasanggup (I can't)".`,
+
+    anggara: `ANGGARA SAHAT NASUTION — The Minimalist Genius.
+PERSONALITY: Intimidatingly intelligent, hyper-observant, quietly caring through efficiency. Recognizes people by footstep cadence. Short-circuits at unexpected touch. Fixes problems silently before people notice.
+TYPING STYLE (STRICT): Absolute minimum words. Single words or 2–4 word replies. No pleasantries. No emojis. No filler. If he sends 3+ sentences, something is seriously wrong. Example: "noted." / "already handled." / "don't." / "eat something."
+LANGUAGE: English only. Rarely uses Bahasa. When he does: one word. "Sudah. (Done.)"`,
+  };
+
+  let prompt = `You are roleplaying a private text message conversation. Era: ${era}. The user's name: ${name}. Their relationship to the family: ${rel}.
+
+WORLD: 2026 Jakarta high society. The Nasution brothers are quintuplets — sons of Firman Rahardja Nasution, patriarch of Nasution Group (multi-billion dollar conglomerate). They attend/attended Suryakencana Institute, Jakarta's ultra-elite college. Violently loyal to each other. Occasionally use Bahasa Indonesia mid-text — always include immediate English translation in parentheses.
+
+RULES:
+- Max 1–3 short text bubbles per reply. TEXT MESSAGES, not essays.
+- No asterisk actions. No narration. Pure dialogue only.
+- Each character must type EXACTLY in their defined style. Non-negotiable.
+- React naturally and in-character. Show don't tell.
+- If rel is lover-[name], that brother is affectionate but still in-character.`;
 
   if (selectedWho === 'group') {
-    prompt += `\nYou are playing the "rumah" group chat with all 5 brothers. Randomly pick 1-4 brothers to reply. Randomize who speaks first. ${loverName ? `CRITICAL: ${loverName.toUpperCase()} MUST reply frequently because he is dating the user.` : ''}
-Format: "**[Name]:** text".
-- Varen: exhausted/formal.
-- Guntur: grumpy/ALL CAPS.
-- Kaivan: aesthetic/mysterious.
-- Mahesa: loud emojis (💀😭).
-- Anggara: 1 word ("y").`;
-  } else { prompt += `\nYou are ONLY playing ${CHAR_DATA[selectedWho].name}.`; }
+    prompt += `\n\nYou are playing the "rumah" group chat. Randomly pick 1–3 brothers to reply. Vary who responds. ${loverName ? `CRITICAL: ${loverName.toUpperCase()} must reply since they are dating the user — show it subtly in-character, not overly sappy.` : ''}
+Format each message as: "**[Name]:** [message]"
+Each brother keeps their typing style even in the group chat.
+
+${Object.values(CHAR_VOICES).join('\n\n')}`;
+  } else {
+    prompt += `\n\nYou are ONLY playing ${CHAR_DATA[selectedWho].name}. Stay in this one character entirely.\n\n${CHAR_VOICES[selectedWho]}`;
+  }
+
   return prompt;
 }
 
 function startChat() {
+  // Auto-save current session silently before starting fresh
+  saveCurrentToHistory();
+
+  currentSessionId = 'sess-' + Date.now();
+  currentSessionTimestamp = Date.now();
   chatMessages = [];
   chatMessages._system = buildChatSystemPrompt();
 
@@ -1275,11 +1449,6 @@ function startChat() {
   document.getElementById('chatWindow').classList.add('active');
   document.getElementById('chatMessages').innerHTML = '';
   updateUIForLimit();
-
-  // Clear old save when starting a fresh chat
-  localStorage.removeItem(CHAT_SAVE_KEY);
-  const oldNotice = document.getElementById('chatSavedNotice');
-  if (oldNotice) oldNotice.remove();
 
   const el = document.createElement('div');
   el.style.cssText = 'font-family:"Space Mono";font-size:.5rem;color:var(--text-dim);text-align:center;padding:.8rem;border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);margin:.5rem 0;';
@@ -1310,7 +1479,6 @@ async function sendChatMsg() {
     </div>`);
   c.scrollTop = c.scrollHeight;
   chatMessages.push({ role: 'user', content: text });
-  saveChatToLocal();
 
   const tId = 'type-' + Date.now();
   c.insertAdjacentHTML('beforeend', `
@@ -1337,7 +1505,7 @@ async function sendChatMsg() {
       });
       if(current) appendChatBotMsg(current.name, current.text);
     } else { appendChatBotMsg(CHAR_DATA[selectedWho].name.split(' ')[0], replyTxt); }
-    saveChatToLocal();
+    saveCurrentToHistory();
   } catch(e) { document.getElementById(tId).remove(); c.insertAdjacentHTML('beforeend', `<div style="text-align:center;color:red;font-size:.7rem;">⚠ Error: ${e.message}</div>`); }
   
   if (updateUIForLimit()) { document.getElementById('chatSendBtn').disabled = false; input.focus(); }
