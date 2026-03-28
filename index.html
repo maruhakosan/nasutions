@@ -118,6 +118,24 @@ section { padding: 5.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
 .custom-api-fields { background: rgba(255,255,255,.02); padding: 1.5rem; border: 1px solid var(--divider); margin-top: -0.5rem; display: none; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 @media (max-width: 600px) { .custom-api-fields { grid-template-columns: 1fr; padding: 1rem; } }
 
+/* ══ AVATAR UPLOAD ══ */
+.avatar-upload-wrap { display: flex; align-items: center; gap: 1.2rem; }
+.avatar-preview { width: 52px; height: 52px; border-radius: 50%; overflow: hidden; border: 1px solid var(--divider-bright); flex-shrink: 0; background: var(--bg3); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant SC', serif; font-size: .7rem; color: var(--gold); cursor: pointer; position: relative; transition: border-color .2s; }
+.avatar-preview:hover { border-color: var(--gold-dim); }
+.avatar-preview img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.avatar-preview-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .2s; font-size: .6rem; color: #fff; border-radius: 50%; }
+.avatar-preview:hover .avatar-preview-overlay { opacity: 1; }
+.avatar-upload-info { flex: 1; min-width: 0; }
+.avatar-upload-info .field-label { margin-bottom: .4rem; }
+.avatar-upload-hint { font-family: 'Space Mono', monospace; font-size: .46rem; color: var(--text-dim); line-height: 1.6; margin-bottom: .5rem; }
+.avatar-upload-btns { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
+.avatar-btn { font-family: 'Space Mono', monospace; font-size: .46rem; letter-spacing: .08em; padding: .35rem .8rem; border: none; cursor: pointer; text-transform: uppercase; transition: background .2s; white-space: nowrap; }
+.avatar-btn-upload { background: var(--gold-dim); color: var(--text-bright); }
+.avatar-btn-upload:hover { background: rgba(220,184,106,.6); }
+.avatar-btn-remove { background: none; color: var(--red); border: 1px solid rgba(168,37,37,.4); }
+.avatar-btn-remove:hover { background: rgba(168,37,37,.12); }
+#avatarFileInput { display: none; }
+
 .primary-btn { display: block; width: 100%; font-family: 'Cormorant SC', serif; font-size: .65rem; letter-spacing: .32em; color: #0b0907; background: var(--gold-light); border: none; padding: 1.1rem 2rem; cursor: pointer; transition: background .2s; text-transform: uppercase; font-weight: 600; text-align: center; }
 .primary-btn:hover { background: var(--gold); }
 
@@ -522,6 +540,22 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
       <div class="setup-grid">
         <div><label class="field-label">Your Name</label><input class="field-input global-name" type="text" placeholder="e.g. Rina" maxlength="40" oninput="syncInputs(this, '.global-name')"></div>
         <div><label class="field-label">Your @Username</label><input class="field-input global-handle" type="text" placeholder="e.g. @rinaxx" oninput="syncInputs(this, '.global-handle')"></div>
+        <div class="setup-full">
+          <div class="avatar-upload-wrap">
+            <div class="avatar-preview" id="avatarPreviewFeed" onclick="document.getElementById('avatarFileInput').click()">
+              <span id="avatarPreviewLetterFeed">?</span>
+              <div class="avatar-preview-overlay">change</div>
+            </div>
+            <div class="avatar-upload-info">
+              <label class="field-label">Profile Image</label>
+              <div class="avatar-upload-hint">Shown on your posts &amp; replies. Saved locally.</div>
+              <div class="avatar-upload-btns">
+                <button class="avatar-btn avatar-btn-upload" onclick="document.getElementById('avatarFileInput').click()">Upload Image</button>
+                <button class="avatar-btn avatar-btn-remove" id="avatarRemoveBtnFeed" style="display:none" onclick="removeAvatar()">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div>
           <label class="field-label">Era</label>
           <select class="field-select global-era" onchange="syncInputs(this, '.global-era')">
@@ -687,6 +721,24 @@ footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-si
       <div class="setup-grid">
         <div><label class="field-label">Your Name</label><input class="field-input global-name" type="text" placeholder="e.g. Rina" maxlength="40" oninput="syncInputs(this, '.global-name')"></div>
         <div><label class="field-label">Your @Username</label><input class="field-input global-handle" type="text" placeholder="e.g. @rinaxx" oninput="syncInputs(this, '.global-handle')"></div>
+
+        <div class="setup-full">
+          <div class="avatar-upload-wrap">
+            <div class="avatar-preview" id="avatarPreview" onclick="document.getElementById('avatarFileInput').click()">
+              <span id="avatarPreviewLetter">?</span>
+              <div class="avatar-preview-overlay">change</div>
+            </div>
+            <div class="avatar-upload-info">
+              <label class="field-label">Profile Image</label>
+              <div class="avatar-upload-hint">Shown on your chat bubbles, posts &amp; replies. Saved locally.</div>
+              <div class="avatar-upload-btns">
+                <button class="avatar-btn avatar-btn-upload" onclick="document.getElementById('avatarFileInput').click()">Upload Image</button>
+                <button class="avatar-btn avatar-btn-remove" id="avatarRemoveBtn" style="display:none" onclick="removeAvatar()">Remove</button>
+              </div>
+            </div>
+          </div>
+          <input type="file" id="avatarFileInput" accept="image/*" onchange="handleAvatarUpload(this)">
+        </div>
         <div>
           <label class="field-label">Era</label>
           <select class="field-select global-era" onchange="syncInputs(this, '.global-era')">
@@ -796,6 +848,7 @@ function syncInputs(source, classSelector) {
   const val = source.value;
   document.querySelectorAll(classSelector).forEach(el => el.value = val);
   saveToLocal();
+  if (classSelector === '.global-name') applyAvatarToUI();
 }
 
 function saveToLocal() {
@@ -826,6 +879,90 @@ function loadFromLocal() {
     document.querySelectorAll('.global-apimodel').forEach(el => el.value = data.apimodel || '');
   }
   toggleApiFieldsAll();
+  loadAvatarFromLocal();
+}
+
+// ══════════════════════════════════════════════════════════════════
+// USER AVATAR
+// ══════════════════════════════════════════════════════════════════
+const AVATAR_KEY = 'nasution_user_avatar';
+let userAvatar = null; // base64 data URL
+
+function getUserAvatarHtml(initial) {
+  if (userAvatar) return `<img src="${userAvatar}" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:50%;">`;
+  return `<div class="cm-avatar-placeholder">${initial}</div>`;
+}
+
+function getFeedAvatarHtml(initial) {
+  if (userAvatar) return `<img src="${userAvatar}" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">`;
+  return `<div class="feed-avatar-placeholder">${initial}</div>`;
+}
+
+function getThreadAvatarHtml(initial) {
+  if (userAvatar) return `<img src="${userAvatar}" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">`;
+  return `<div class="feed-avatar-placeholder">${initial}</div>`;
+}
+
+function handleAvatarUpload(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    userAvatar = e.target.result;
+    try { localStorage.setItem(AVATAR_KEY, userAvatar); } catch(err) {
+      // Storage quota — compress by reducing quality via canvas
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const MAX = 256;
+        const scale = Math.min(1, MAX / Math.max(img.width, img.height));
+        canvas.width = img.width * scale;
+        canvas.height = img.height * scale;
+        canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+        userAvatar = canvas.toDataURL('image/jpeg', 0.7);
+        try { localStorage.setItem(AVATAR_KEY, userAvatar); } catch(e2) {}
+        applyAvatarToUI();
+      };
+      img.src = e.target.result;
+      return;
+    }
+    applyAvatarToUI();
+  };
+  reader.readAsDataURL(file);
+  input.value = '';
+}
+
+function loadAvatarFromLocal() {
+  const saved = localStorage.getItem(AVATAR_KEY);
+  if (saved) { userAvatar = saved; applyAvatarToUI(); }
+}
+
+function applyAvatarToUI() {
+  const initial = document.querySelector('.global-name')?.value?.charAt(0)?.toUpperCase() || '?';
+  // Chat setup preview
+  const prev = document.getElementById('avatarPreview');
+  if (prev) {
+    prev.innerHTML = userAvatar
+      ? `<img src="${userAvatar}" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"><div class="avatar-preview-overlay">change</div>`
+      : `<span id="avatarPreviewLetter">${initial}</span><div class="avatar-preview-overlay">change</div>`;
+  }
+  const removeBtn = document.getElementById('avatarRemoveBtn');
+  if (removeBtn) removeBtn.style.display = userAvatar ? 'inline-block' : 'none';
+  // Feed setup preview
+  const prevFeed = document.getElementById('avatarPreviewFeed');
+  if (prevFeed) {
+    prevFeed.innerHTML = userAvatar
+      ? `<img src="${userAvatar}" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"><div class="avatar-preview-overlay">change</div>`
+      : `<span id="avatarPreviewLetterFeed">${initial}</span><div class="avatar-preview-overlay">change</div>`;
+  }
+  const removeBtnFeed = document.getElementById('avatarRemoveBtnFeed');
+  if (removeBtnFeed) removeBtnFeed.style.display = userAvatar ? 'inline-block' : 'none';
+}
+
+function removeAvatar() {
+  userAvatar = null;
+  localStorage.removeItem(AVATAR_KEY);
+  applyAvatarToUI();
 }
 
 function toggleApiFieldsAll() {
@@ -1252,7 +1389,7 @@ async function postSocialNew() {
   const cardHtml = `
     <div class="feed-card type-x visible" data-user-post="true" data-card-id="${cardId}">
       <div class="feed-header">
-        <div class="feed-avatar"><div class="feed-avatar-placeholder">${name.charAt(0).toUpperCase()}</div></div>
+        <div class="feed-avatar">${getFeedAvatarHtml(name.charAt(0).toUpperCase())}</div>
         <div class="feed-handle"><strong>${name}</strong>${handle} · just now</div>
       </div>
       <div class="feed-x-text">${escHtml(text)}</div>
@@ -1302,7 +1439,7 @@ async function sendSocialReply(boxId, inputId, threadContainerId, originalName, 
   
   tContainer.insertAdjacentHTML('beforeend', `
     <div class="thread-item">
-      <div class="thread-avatar"><div class="feed-avatar-placeholder">${myName.charAt(0).toUpperCase()}</div></div>
+      <div class="thread-avatar">${getThreadAvatarHtml(myName.charAt(0).toUpperCase())}</div>
       <div class="thread-body">
         <div class="thread-name">${myName} <span style="font-size:.45rem; opacity:.5; font-weight:normal;">${myHandle}</span></div>
         <div class="thread-text">${escHtml(text)}</div>
@@ -1474,7 +1611,7 @@ async function sendChatMsg() {
   
   c.insertAdjacentHTML('beforeend', `
     <div class="cm-msg user-msg">
-      <div class="cm-avatar"><div class="cm-avatar-placeholder">${myName.charAt(0).toUpperCase()}</div></div>
+      <div class="cm-avatar">${getUserAvatarHtml(myName.charAt(0).toUpperCase())}</div>
       <div class="cm-body"><div class="cm-name">${myName}</div><div class="cm-bubble">${escHtml(text)}</div></div>
     </div>`);
   c.scrollTop = c.scrollHeight;
